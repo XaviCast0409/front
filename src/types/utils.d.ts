@@ -19,7 +19,7 @@ export interface InputProps {
   placeholder?: string;
   color?: string;
   title?: string;
-  stateValue?: any;
+  stateValue?: unknown;
   handleChange: (e, name) => void;
   nameInput: string,
   className?: string
@@ -78,5 +78,5 @@ export interface MessageProps {
 }
 
 export interface PropsProfileConstructoraComponent {
-  CompanyId: string;
+  CompanyId: object;
 }
