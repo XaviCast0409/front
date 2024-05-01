@@ -55,7 +55,7 @@ const BlogComponents: React.FC = () => {
             >
               <h2>{blog.title}</h2>
               <p className="text-gray-500">
-                {new Date(blog.publicationDate).toLocaleDateString()}
+                {blog.publicationDate?.toLocaleString()}
               </p>
               <div className="blog-image">
               <img
