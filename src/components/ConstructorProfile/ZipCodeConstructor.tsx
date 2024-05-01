@@ -24,7 +24,7 @@ export default function PostalCodeForm() {
 
   return (
     <div className="flex flex-col min-h-screen justify-center items-center">
-      <img src={logoImage} alt="Logo" className="w-56 h-56 object-contain" />
+      <img src={logoImage} alt="Logo" className="w-56 h-56 object-contain md:w-80 md:h-80 lg:w-96 lg:h-96"  />
       <FormContainer title="Zip Code ">
         <InputForm
           id="floating_postal_code"
@@ -35,6 +35,7 @@ export default function PostalCodeForm() {
           handleChange={handleChange}
           color="black"
           title="Postal Code"
+          className="w-80 md:w-full lg:w-96"
         />
       </FormContainer>
       {validate === false ? (

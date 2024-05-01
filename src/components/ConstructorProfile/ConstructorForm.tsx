@@ -31,8 +31,8 @@ export default function ConstructorForm() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen justify-center items-center">
-      <FormContainer title="Register Company ">
+    <div className="flex flex-col min-h-screen justify-center items-center md:w-full ">
+      <FormContainer title="Register Company">
         <InputForm
           id="floating_company"
           nameInput="name_company"
@@ -41,7 +41,8 @@ export default function ConstructorForm() {
           stateValue={companyData}
           handleChange={handleChange}
           color="black"
-          title="Name Company"
+          title="Company"
+          className="w-80 md:w-full lg:w-96"
         />
         <InputForm
           id="floating_email"
@@ -52,6 +53,7 @@ export default function ConstructorForm() {
           handleChange={handleChange}
           color="black"
           title="Email"
+          className="w-80 md:w-full lg:w-96"
         />
         <InputForm
           id="floating_password"
@@ -62,6 +64,7 @@ export default function ConstructorForm() {
           handleChange={handleChange}
           color="black"
           title="Password"
+          className="w-80 md:w-full lg:w-96"
         />
         <InputForm
           id="floating_phone"
@@ -72,6 +75,7 @@ export default function ConstructorForm() {
           handleChange={handleChange}
           color="black"
           title="Phone"
+          className="w-80 md:w-full lg:w-96"
         />
         <InputForm
           id="floating_address"
@@ -82,6 +86,7 @@ export default function ConstructorForm() {
           handleChange={handleChange}
           color="black"
           title="Address"
+          className="w-80 md:w-full lg:w-96"
         />
         <div className="container_buttons">
           <BackButtonArrow />
