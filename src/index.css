@@ -1,0 +1,256 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  font-family: "Lato", sans-serif;
+  background-color: rgb(240, 240, 240);
+}
+
+.primary_color {
+  color: #3889f2;
+}
+
+.bg-primary {
+  color: #3889f2;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1.2;
+
+  display: flex;
+  justify-content: center;
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+}
+
+h2 {
+  font-size: 3rem; /* text-5xl equivale a un tamaño de fuente de 3rem */
+  font-weight: bold; /* Cambia "font-bold" por "700" si lo prefieres */
+  text-align: center; /* Alineación centrada del texto */
+  color: #2d3748; /* Cambia "dark:text-gray-900" por el color deseado o su valor hexadecimal */
+}
+
+h3 {
+  font-weight: 700; /* Grosor de la h3 */
+}
+
+h4 {
+  font-weight: 600; /* Grosor de la h4 */
+}
+
+h5 {
+  font-weight: 500; /* Grosor de la h5 */
+}
+
+h6 {
+  font-weight: 400; /* Grosor de la h6 */
+}
+
+p,
+span {
+  font-weight: 300; /* Hacer que los párrafos y spans sean thin */
+  text-align: center;
+  font-family: "Lato", sans-serif;
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* Estilos de Botones */
+.btn-primary {
+  @apply flex justify-center items-center bg-blue-500 text-white font-bold py-2 m-1 px-4 rounded-full hover:bg-blue-600;
+}
+
+.h2 {
+  @apply text-2xl font-bold mb-8 text-center;
+}
+
+.h4 {
+  @apply text-lg font-thin mb-5 text-center;
+}
+
+.h4_detailMatching {
+  @apply text-sm font-bold mb-5 text-center;
+}
+
+.container_form {
+  @apply flex justify-center items-center;
+  flex-direction: row; /* Agregar flex direction columna */
+  align-items: center; /* Centrar verticalmente */
+  background-color: #ffffff; /* Color de fondo blanco */
+  border-radius: 20px; /* Bordes redondeados más pronunciados */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+    /* Sombra superior */ 0 6px 8px rgba(0, 0, 0, 0.1),
+    /* Sombra inferior */ 0 10px 12px rgba(0, 0, 0, 0.1); /* Sombra más grande */
+  max-width: 80%; /* Ancho máximo del contenedor */
+  max-height: 80%; /* Alto máximo del contenedor */
+  overflow: auto; /* Añadir desplazamiento si el contenido es demasiado grande */
+  padding: 30px; /* Aumentar el relleno */
+  position: fixed; /* Fijar la posición */
+  top: 50%; /* Centrar verticalmente */
+  left: 50%; /* Centrar horizontalmente */
+  transform: translate(-50%, -50%); /* Centrar exactamente */
+}
+
+.container_form_column {
+  @apply flex justify-center items-center;
+  flex-direction: column;
+  align-items: center; /* Centrar verticalmente */
+  background-color: #ffffff; /* Color de fondo blanco */
+  border-radius: 20px; /* Bordes redondeados más pronunciados */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+    /* Sombra superior */ 0 6px 8px rgba(0, 0, 0, 0.1),
+    /* Sombra inferior */ 0 10px 12px rgba(0, 0, 0, 0.1); /* Sombra más grande */
+  max-width: 80%; /* Ancho máximo del contenedor */
+  max-height: 80%; /* Alto máximo del contenedor */
+  overflow: auto; /* Añadir desplazamiento si el contenido es demasiado grande */
+  padding: 30px; /* Aumentar el relleno */
+  margin: 2rem;
+  position: fixed; /* Fijar la posición */
+  top: 50%; /* Centrar verticalmente */
+  left: 50%; /* Centrar horizontalmente */
+  transform: translate(-50%, -50%); /* Centrar exactamente */
+}
+
+.h5_form {
+  @apply mb-2 text-xl font-normal tracking-tight text-gray-900 dark:text-white;
+}
+
+.card_form {
+  @apply flex flex-col justify-center items-center w-96 h-20 mx-4 my-3 bg-blue-600 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-blue-500 dark:border-gray-700 dark:hover:bg-blue-600;
+}
+
+.container_buttons {
+  @apply flex items-center justify-center mt-8 text-center lg:text-left;
+}
+
+.card_matching {
+  @apply flex flex-col justify-center items-center mx-4 my-3 p-3 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-blue-600;
+  width: auto;
+  min-width: max-content;
+  flex-grow: 1;
+  height: auto;
+  min-height: max-content;
+}
+
+.p {
+  @apply mb-3 font-light text-gray-700 dark:text-gray-400;
+}
+
+.container_form_trade {
+  @apply grid grid-cols-3 gap-6;
+  background-color: #f0f0f0; /* Agregar color de fondo */
+  border-radius: 10px; /* Agregar bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+    /* Sombra superior */ 0 4px 6px rgba(0, 0, 0, 0.1),
+    /* Sombra inferior */ 0 8px 10px rgba(0, 0, 0, 0.1); /* Sombra más grande */
+  max-width: 90%; /* Ancho máximo del contenedor */
+  max-height: 90%; /* Alto máximo del contenedor */
+  overflow: auto; /* Añadir desplazamiento si el contenido es demasiado grande */
+  padding: 20px; /* Ajustar el relleno */
+  position: fixed; /* Fijar la posición */
+  top: 50%; /* Centrar verticalmente */
+  left: 50%; /* Centrar horizontalmente */
+  transform: translate(-50%, -50%);
+}
+
+.h5_card_bloque {
+  @apply flex justify-center items-center font-semibold;
+}
+
+.toggle-checkbox:checked {
+  @apply: right-0 border-green-400;
+  right: 0;
+  border-color: #68d391;
+}
+
+.toggle-checkbox:checked + .toggle-label {
+  @apply: bg-green-400;
+  background-color: #68d391;
+}
+
+.bg-general {
+  background: linear-gradient(to right, #00b4d8, #3b71ca);
+}
+
+.wrong-error-input {
+  border-color: #ec4899;
+}
+
+.blog-text-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  font-size: 18px;
+}
+
+
+.blog-text {
+  font-family: "Ubuntu", sans-serif;
+  color: #000000;
+  text-align: center;
+  line-height: 1.5;
+
+  min-height: 100vh;
+  display: flex;
+  
+
+  flex-direction: column;
+  
+  font-size: 18px;
+}
+
+.item-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.item-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.item-exit {
+  opacity: 1;
+}
+
+.item-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
+
+.blog-image {
+  height: 50%; 
+  overflow: hidden;
+}
+
+.blog-image img {
+  height: 100%;
+}
