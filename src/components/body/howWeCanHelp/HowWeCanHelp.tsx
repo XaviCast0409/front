@@ -2,15 +2,8 @@ export function HowWeCanHelp() {
   return (
     <section>
       <div className="mx-auto max-w-screen-2xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:h-screen lg:grid-cols-2">
-          <div className="">
-            <img
-              alt="img"
-              src="https://images.pexels.com/photos/7710011/pexels-photo-7710011.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              className="inset-0 h-full w-full object-cover rounded-lg shadow-2xl block mx-auto"
-            />
-          </div>
-          <div className="flex items-center">
+        <div>
+          <div className="order-2 md:order-1">
             <div className="p-8 sm:p-16 lg:p-24">
               <h2 className="text-2xl font-bold sm:text-3xl">
                 How We Can Assist You
@@ -30,6 +23,13 @@ export function HowWeCanHelp() {
               </p>
             </div>
           </div>
+        </div>
+        <div className="order-1 md:order-2">
+          <img
+            alt="img"
+            src="https://images.pexels.com/photos/7710011/pexels-photo-7710011.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            className="inset-0 h-full w-full object-cover rounded-lg shadow-2xl block mx-auto"
+          />
         </div>
       </div>
     </section>

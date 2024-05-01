@@ -2,7 +2,7 @@ export default function WhatToExpect() {
   return (
     <section>
       <div className="mx-auto max-w-screen-2xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div>
           <div className="order-2 md:order-1">
             <div className="p-8 sm:p-16 lg:p-24">
               <h2 className="text-2xl font-bold sm:text-3xl">

@@ -4,7 +4,7 @@ import  Footer  from "../footer/footer.tsx";
 
 function Landing() {
   return (
-    <div className="mt-16">
+    <div className="mt-16 md:flex md:flex-col ">
       <Hero />
       <Body />
       <Footer />

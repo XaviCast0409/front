@@ -7,10 +7,13 @@ export default function Hero() {
   };
 
   return (
-    <div className=" flex items-center ">
+    <div className=" flex items-center  ">
       <section
         className="w-full bg-cover bg-center py-32"
-        style={{ backgroundImage: "url('https://images.pexels.com/photos/4969995/pexels-photo-4969995.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')" }}
+        style={{
+          backgroundImage:
+            "url('https://images.pexels.com/photos/4969995/pexels-photo-4969995.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
+        }}
       >
         <div className="flex justify-center items-center flex-col container mx-auto text-center">
           <h1
