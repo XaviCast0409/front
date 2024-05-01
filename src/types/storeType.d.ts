@@ -79,12 +79,12 @@ export interface ClassAttributes {
 
 
 export interface Blog {
-  publicationDate: string | number | Date;
-  id: number;
-  item: number;
-  title: string;
-  content: string;
-  imageUrl: string;
+  publicationDate?: string | number | Date;
+  id?: number;
+  item?: number;
+  title?: string;
+  content?: string;
+  imageUrl?: string;
 }
 
 export interface TradeUser {
