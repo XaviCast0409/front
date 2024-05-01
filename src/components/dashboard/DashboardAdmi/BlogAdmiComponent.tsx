@@ -14,7 +14,7 @@ const BlogAdmiComponent: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [previewImageUrl, setPreviewImageUrl] = useState<string | null>(null);
   const [isLoadingImage, setIsLoadingImage] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [/* errorMessage */, setErrorMessage] = useState<string | null>(null);
 
   const { handleCreateBlog, getAllBlog, blogData, handleDeleteBlog } =
     useBlogHook();

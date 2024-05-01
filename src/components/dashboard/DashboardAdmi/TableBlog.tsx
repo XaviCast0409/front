@@ -15,7 +15,7 @@ interface RowData {
 interface TableBlogProps {
   blogs: RowData[];
   setOpenModal: (data: boolean) => void;
-  handleDeleteBlog: (id: number) => Promise<void>;
+  handleDeleteBlog?: (id: number) => Promise<void>;
 }
 
 export const TableBlogs: React.FC<TableBlogProps> = ({

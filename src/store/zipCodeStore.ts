@@ -3,7 +3,7 @@ import axios, { AxiosResponse, AxiosInstance } from "axios";
 import { zipCodeAttributes } from "storeType";
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://api2-2aj3.onrender.com",
 });
 
 interface ZipCodeStoreAttributes {

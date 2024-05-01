@@ -15,7 +15,7 @@ export const useFunctionBlog = () => {
     content: "",
     imageUrl: "",
   });
-  const [ upDateBlog , setUpDateBlog ] = useState<{
+  const [ upDateBlog , /* setUpDateBlog */ ] = useState<{
     id: number;
     title: string;
     content: string;

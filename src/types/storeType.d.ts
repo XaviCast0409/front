@@ -51,11 +51,11 @@ export interface TradeAttributes {
 
 export interface zipCodeAttributes {
   id?: number,
-  city: string,
-  code: number,
-  state: string;
+  city?: string,
+  code?: number,
+  state?: string;
   ZipCodeId?: {
-    id: number
+    id?: number
   }
 }
 
@@ -79,6 +79,7 @@ export interface ClassAttributes {
 
 
 export interface Blog {
+  publicationDate: string | number | Date;
   id: number;
   item: number;
   title: string;

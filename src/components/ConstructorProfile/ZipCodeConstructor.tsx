@@ -16,12 +16,13 @@ export default function PostalCodeForm() {
   } = useZipcCodeHook();
 
   const createZipCode = () => {
-    onSubmitCreate(zipCode);
+    if (zipCode) {
+      onSubmitCreate(zipCode);
+    }
   };
 
   return (
     <div className="flex flex-col min-h-screen">
-      
       <img src={logoImage} alt="Logo" className="w-20 h-20 object-contain" />
       <section className="container_form_column" style={{ width: "60%" }}>
         <h1>Validate zipCode</h1>

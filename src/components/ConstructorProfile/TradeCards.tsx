@@ -1,16 +1,19 @@
 import { FaBuilding } from "react-icons/fa";
 import { useState } from "react";
-interface tradeProps {
+
+interface TradeProps {
   name?: string;
-  setTradeId?: any;
+  setTradeId?: React.Dispatch<React.SetStateAction<number[]>>;
   tradeId?: number;
 }
-export const TradeCards: React.FC<tradeProps> = ({
+
+export const TradeCards: React.FC<TradeProps> = ({
   name,
   setTradeId,
   tradeId
 }) => {
   const [tradeIdChecked, setTradeIdChecked] = useState<boolean>(false);
+  
   return (
     <div className="flex-shrink-0 m-6 relative overflow-hidden bg-orange-500 rounded-lg max-w-xs shadow-lg hover:bg-orange-600 transition duration-300">
       <FaBuilding className="text-white w-16 h-16 absolute top-2 right-2" />
@@ -51,13 +54,15 @@ export const TradeCards: React.FC<tradeProps> = ({
               onChange={(event) => {
                 const isChecked = event.target.checked;
                 if (isChecked) {
-                  if (typeof tradeId !== "undefined") {
-                    setTradeId((state: number[]) => [...state, tradeId]);
+                  if (typeof tradeId !== "undefined" && setTradeId) {
+                    setTradeId((prevState) => [...(prevState || []), tradeId]);
                   }
                 } else {
-                  setTradeId((state: number[]) =>
-                    state.filter((id) => id !== tradeId)
-                  );
+                  if (setTradeId) {
+                    setTradeId((prevState) =>
+                      prevState ? prevState.filter((id) => id !== tradeId) : []
+                    );
+                  }
                 }
                 setTradeIdChecked(isChecked);
               }}

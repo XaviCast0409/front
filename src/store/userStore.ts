@@ -5,7 +5,7 @@ import axios, { AxiosResponse } from "axios";
 import { UserAttributes } from "storeType";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://api2-2aj3.onrender.com",
 });
 
 interface UserStoreAttributes {

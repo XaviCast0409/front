@@ -3,7 +3,7 @@ import { Blog } from "storeType";
 import { create, SetState } from "zustand";
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://api2-2aj3.onrender.com",
 });
 
 interface BlogStoreAttributes {

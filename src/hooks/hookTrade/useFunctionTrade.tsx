@@ -11,7 +11,7 @@ export function useFunctionTrade() {
     totalTrade
   } = tradeStore();
 
-  const onSubmitProjectDetail = (values: {}) => {
+  const onSubmitProjectDetail = (values: object) => {
     try {
       addProjectDetail(values);
     } catch (error) {
@@ -19,7 +19,7 @@ export function useFunctionTrade() {
     }
   };
 
-  const onSubmitEstimateAction = (values: {}) => {
+  const onSubmitEstimateAction = (values: object) => {
     try {
       addEstimateAction(values);
     } catch (error) {

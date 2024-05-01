@@ -22,9 +22,10 @@ export function useFunctionZipCode() {
       validateZipCode(zipCode)
     }
     if (`${zipCode.zipCode}`.length === 0) setValidate()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [zipCode])
 
-  const onSubmitCreate = (values: any) => {
+  const onSubmitCreate = (values: object) => {
     try {
       createZipCode(values);
       console.log(values);
