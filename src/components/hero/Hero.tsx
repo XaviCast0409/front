@@ -31,7 +31,7 @@ export default function Hero() {
           <Button
             className="btn-primary"
             type={"button"}
-            text={<Link to="/form">Hire Local Professionals</Link>}
+            text={<Link to="/formUser">Hire Local Professionals</Link>}
             handleClick={handleClick}
           />
         </div>
