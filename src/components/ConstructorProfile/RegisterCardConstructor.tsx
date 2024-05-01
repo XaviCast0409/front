@@ -1,11 +1,11 @@
-import { useState } from "react";
+/* import { useState } from "react";
 import axios from "axios";
 import { loadStripe } from '@stripe/stripe-js';
 
-const stripePromise = loadStripe('pk_test_51OzkqmP7so0IzTMy9YUGBYQQ6nBLOUV8O9mD6QQk9J2DmpKjXIentDzVo6p12l20a0ggzgDDpfFHtZZsjbR9Duag00yNQC7nP0');
+const stripePromise = loadStripe('pk_test_51OzkqmP7so0IzTMy9YUGBYQQ6nBLOUV8O9mD6QQk9J2DmpKjXIentDzVo6p12l20a0ggzgDDpfFHtZZsjbR9Duag00yNQC7nP0'); */
 
 const RegisterCardConstructor = () => {
-  const [cardDetails, setCardDetails] = useState({
+/*   const [cardDetails, setCardDetails] = useState({
     customerId: "",
     cardNumber: "",
     expMonth: "",
@@ -48,9 +48,12 @@ const RegisterCardConstructor = () => {
     } catch (error) {
       console.error("Error:", error);
     }
-  };
+  }; */
   return (
-    <form  className="mt-70" onSubmit={handleSubmit}>
+    <div>
+      <h1>Register Card</h1>
+    </div>
+/*     <form  className="mt-70" onSubmit={handleSubmit}>
       <input
         type="text"
         name="expMonth"
@@ -81,7 +84,7 @@ const RegisterCardConstructor = () => {
       >
         Submit
       </button>
-    </form>
+    </form> */ 
   );
 };
 
