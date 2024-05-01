@@ -19,7 +19,7 @@ export default function ZipCodeForm() {
   const navigate = useNavigate();
 
   const createZipCode = () => {
-    onSubmitCreate(zipCode);
+    onSubmitCreate(zipCode ?? {});
     setMessage()
     filterRegisterUser({ zipcode: Number(zipCodeNumber?.zipCode), tradeId: 0, classId: 0 })
     setTimeout(() => {
