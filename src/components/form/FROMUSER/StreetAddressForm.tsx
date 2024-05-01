@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import CheckBox from "../../../utils/CheckBox";
 import { useState } from "react";
 import { useUserHook } from "../../../hooks/hookUser/useUserHook";
+import { FormContainer } from "../../../utils/FormContainer";
 
 export default function StreetAddressForm() {
   const { handleChange, userData, setUserStore, useStoreCreate } = useUserHook();
@@ -20,9 +21,10 @@ export default function StreetAddressForm() {
   };
   console.log(useStoreCreate)
   return (
-    <div>
-      <form className="container_form_column w-1/2 h-1/2">
-        <h2 className="h1 mb-8"> What is your street address? </h2>
+    <div className="flex flex-col min-h-screen justify-center items-center">
+     <FormContainer title=" Enter your Street Address ">
+
+   
         <InputForm
           id="floating_address"
           nameInput="address"
@@ -31,10 +33,10 @@ export default function StreetAddressForm() {
           stateValue={userData.address}
           color="black"
           title="Street Address"
-          className="w-1/2"
+          className="w-80 md:w-full lg:w-96"
           handleChange={handleChange}
         />
-        <div className="checkbox-container">
+        <div className="checkbox-container flex justify-center">
           <CheckBox
             id="terms-agreement"
             labelText="I'm the Home Owner"
@@ -42,7 +44,7 @@ export default function StreetAddressForm() {
             handleChange={(event) => setIsChecked(event.target.checked)}
           />
         </div>
-
+        </FormContainer>
         <div className="container_buttons flex ">
           <BackButtonArrow />
           {Button && (
@@ -54,7 +56,7 @@ export default function StreetAddressForm() {
             />
           )}
         </div>
-      </form>
+     
     </div>
   );
 }
