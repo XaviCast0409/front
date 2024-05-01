@@ -3,6 +3,7 @@ import DataTable from "react-data-table-component";
 import { TableColumn } from "react-data-table-component";
 import SubHeaderClass from "./subHeaderClass";
 import { useBlogHook } from "../../../hooks/HookBlog/useBlogHook";
+import { Blog } from "storeType";
 
 interface RowData {
   id: number;
@@ -10,10 +11,11 @@ interface RowData {
   title: string;
   content: string;
   imageUrl: string;
+  publicationDate: string | number | Date;
 }
 
 interface TableBlogProps {
-  blogs: RowData[];
+  blogs: Blog[];
   setOpenModal: (data: boolean) => void;
   handleDeleteBlog?: (id: number) => Promise<void>;
 }
@@ -60,13 +62,7 @@ export const TableBlogs: React.FC<TableBlogProps> = ({
     <DataTable
       title="Blogs"
       columns={
-        columns as TableColumn<{
-          id: number;
-          item: number;
-          title: string | undefined;
-          content: string | undefined;
-          imageUrl: string | undefined;
-        }>[]
+        columns as TableColumn<Blog>[]
       }
       data={blogs}
       subHeader
