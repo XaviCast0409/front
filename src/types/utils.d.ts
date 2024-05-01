@@ -19,7 +19,7 @@ export interface InputProps {
   placeholder?: string;
   color?: string;
   title?: string;
-  stateValue?: { nameInput: string};
+  stateValue?: any;
   handleChange: (e, name) => void;
   nameInput: string,
   className?: string
