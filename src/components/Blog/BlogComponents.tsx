@@ -6,7 +6,6 @@ const POSTS_PER_PAGE = 5;
 const BlogComponents: React.FC = () => {
   const { blogData, getAllBlog } = useBlogHook();
   const [currentPage, setCurrentPage] = useState(1);
-  const [isTextVisible, setIsTextVisible] = useState(false);
 
   useEffect(() => {
     getAllBlog();
@@ -64,17 +63,8 @@ const BlogComponents: React.FC = () => {
                 className="w-full object-cover object-center rounded shadow-lg h-1/4"
               />
               </div>
-              <div className="blog-text">
-                {isTextVisible
-                  ? blog.content ?? ""
-                  : `${blog.content?.substring(0, 400)}...`}
-                <button
-                  onClick={() => setIsTextVisible(!isTextVisible)}
-                  className="primary_color"
-                  aria-label={isTextVisible ? "Leer menos contenido del blog" : "Leer más contenido del blog"}
-                >
-                  {isTextVisible ? "Leer menos" : "Leer más"}
-                </button>
+              <div className="blog-text p-4 m-1  ">
+                {blog.content ?? ""}
               </div>
             </div>
           ))}
