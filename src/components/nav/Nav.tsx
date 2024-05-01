@@ -106,11 +106,11 @@ export const NavBar: React.FC<NavBarProps> = ({ setIsLoggedIn }) => {
               Register
             </Link>
             <Link
-              to="/ruta-adicional"
+              to="/blog"
               onClick={toggleMobileMenu}
               className="text-white"
             >
-              Ruta adicional
+              Blog
             </Link>
             {sessionExpirate === "true" ? (
               <Link

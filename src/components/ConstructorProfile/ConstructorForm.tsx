@@ -31,69 +31,67 @@ export default function ConstructorForm() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen justify-center items-center">
       <FormContainer title="Register Company ">
-        <section className="container_form_column" style={{ width: "60%" }}>
-          <InputForm
-            id="floating_company"
-            nameInput="name_company"
-            type="text"
-            placeholder=" "
-            stateValue={companyData}
-            handleChange={handleChange}
-            color="black"
-            title="Name Company"
+        <InputForm
+          id="floating_company"
+          nameInput="name_company"
+          type="text"
+          placeholder=" "
+          stateValue={companyData}
+          handleChange={handleChange}
+          color="black"
+          title="Name Company"
+        />
+        <InputForm
+          id="floating_email"
+          nameInput="email"
+          type="text"
+          placeholder=" "
+          stateValue={companyData}
+          handleChange={handleChange}
+          color="black"
+          title="Email"
+        />
+        <InputForm
+          id="floating_password"
+          nameInput="password"
+          type="text"
+          placeholder=" "
+          stateValue={companyData}
+          handleChange={handleChange}
+          color="black"
+          title="Password"
+        />
+        <InputForm
+          id="floating_phone"
+          nameInput="phone"
+          type="text"
+          placeholder=" "
+          stateValue={companyData}
+          handleChange={handleChange}
+          color="black"
+          title="Phone"
+        />
+        <InputForm
+          id="floating_address"
+          nameInput="address"
+          type="text"
+          placeholder=" "
+          stateValue={companyData}
+          handleChange={handleChange}
+          color="black"
+          title="Address"
+        />
+        <div className="container_buttons">
+          <BackButtonArrow />
+          <Button
+            className="btn-primary"
+            type="button"
+            text="SUBMIT"
+            handleClick={handleSubmit}
           />
-          <InputForm
-            id="floating_email"
-            nameInput="email"
-            type="text"
-            placeholder=" "
-            stateValue={companyData}
-            handleChange={handleChange}
-            color="black"
-            title="Email"
-          />
-          <InputForm
-            id="floating_password"
-            nameInput="password"
-            type="text"
-            placeholder=" "
-            stateValue={companyData}
-            handleChange={handleChange}
-            color="black"
-            title="Password"
-          />
-          <InputForm
-            id="floating_phone"
-            nameInput="phone"
-            type="text"
-            placeholder=" "
-            stateValue={companyData}
-            handleChange={handleChange}
-            color="black"
-            title="Phone"
-          />
-          <InputForm
-            id="floating_address"
-            nameInput="address"
-            type="text"
-            placeholder=" "
-            stateValue={companyData}
-            handleChange={handleChange}
-            color="black"
-            title="Address"
-          />
-          <div className="container_buttons">
-            <BackButtonArrow />
-            <Button
-              className="btn-primary"
-              type="button"
-              text="SUBMIT"
-              handleClick={handleSubmit}
-            />
-          </div>
-        </section>
+        </div>
       </FormContainer>
       {messageCreate !== "" && (
         <Modal

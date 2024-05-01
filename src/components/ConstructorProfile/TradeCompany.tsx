@@ -16,7 +16,7 @@ export default function TradeCompany() {
     setMessage,
     isSuccess,
     message,
-    setMessageTradeCompany
+    setMessageTradeCompany,
   } = useCompanyHook();
   const [tradeId, setTradeId] = useState<number[]>([]);
 
@@ -34,32 +34,30 @@ export default function TradeCompany() {
 
   useEffect(() => {
     getAllTrades();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen justify-center items-center">
       <FormContainer title="Trade Company">
-        <section className="container_form_trade" style={{ width: "60%" }}>
-          {trade?.map((item, index) => (
-            <TradeCards
-              key={index}
-              name={item.name}
-              setTradeId={setTradeId}
-              tradeId={item.id}
-            />
-          ))}
+        {trade?.map((item, index) => (
+          <TradeCards
+            key={index}
+            name={item.name}
+            setTradeId={setTradeId}
+            tradeId={item.id}
+          />
+        ))}
 
-          <div className="container_buttons flex justify-center">
-            <BackButtonArrow />
-            <Button
-              className="btn-primary"
-              type="button"
-              text="SUBMIT"
-              handleClick={handleSubmit}
-            />
-          </div>
-        </section>
+        <div className="container_buttons flex justify-center">
+          <BackButtonArrow />
+          <Button
+            className="btn-primary"
+            type="button"
+            text="SUBMIT"
+            handleClick={handleSubmit}
+          />
+        </div>
         {message !== "" && (
           <Modal
             message={message}
@@ -69,6 +67,6 @@ export default function TradeCompany() {
           />
         )}
       </FormContainer>
-    </div>  
+    </div>
   );
 }
