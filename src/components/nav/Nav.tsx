@@ -7,11 +7,10 @@ interface NavBarProps {
   setIsLoggedIn: (data: boolean) => void;
 }
 
-export const NavBar: React.FC<NavBarProps> = ({ setIsLoggedIn }) => {
+export const NavBar: React.FC<NavBarProps> = () => {
   const lastScrollTop = useRef(0);
   const [isNavBarVisible, setIsNavBarVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const sessionExpirate = localStorage.getItem("expirate");
 
   const handleScroll = () => {
     const { pageYOffset } = window;
@@ -26,13 +25,6 @@ export const NavBar: React.FC<NavBarProps> = ({ setIsLoggedIn }) => {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
-
-  const handleSession = () => {
-    localStorage.setItem("expirate", "true");
-    localStorage.setItem("token", "");
-    setIsLoggedIn(true)
-    toggleMobileMenu()
-  }
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -52,7 +44,7 @@ export const NavBar: React.FC<NavBarProps> = ({ setIsLoggedIn }) => {
           <img
             src={logoImage}
             alt="Logo"
-            className="w-20 h-20 object-contain"
+            className="w-24 h-24 object-contain"
           />
         </Link>
         <div
@@ -60,34 +52,21 @@ export const NavBar: React.FC<NavBarProps> = ({ setIsLoggedIn }) => {
             isMobileMenuOpen ? "hidden" : ""
           }`}
         >
-          <Link to="/" className="text-white">
-            Home
-          </Link>
-          <Link to="/zipcodeconstructor" className="text-white">
-            Register
-          </Link>
           <Link to="/blog" className="text-white">
             Blog
           </Link>
 
-          {sessionExpirate === "true" ? (
-            <Link
-              to="/siginconstructorpage"
-              onClick={toggleMobileMenu}
-              className="text-white"
-            >
-              Log In
-            </Link>
-          ) : (
-            <Link
-              to="/"
-              onClick={handleSession}
-              className="text-white"
-            >
-              Log out
-            </Link>
-          )}
+          <Link to="/siginconstructorpage" className="text-white">
+            Are you a Contractor?
+          </Link>
 
+          <Link
+            to="/formUser"
+            onClick={toggleMobileMenu}
+            className="text-white"
+          >
+            GET FREE ESTIMATE
+          </Link>
         </div>
         <div
           className={`md:hidden ${
@@ -95,45 +74,25 @@ export const NavBar: React.FC<NavBarProps> = ({ setIsLoggedIn }) => {
           } fixed top-0 left-0 w-full h-screen bg-[#3889F2] bg-opacity-90 z-50`}
         >
           <div className="flex flex-col gap-12 items-center pt-16">
-            <Link to="/" onClick={toggleMobileMenu} className="text-white">
-              Home
-            </Link>
-            <Link
-              to="/zipcodeconstructor"
-              onClick={toggleMobileMenu}
-              className="text-white"
-            >
-              Register
-            </Link>
-            <Link
-              to="/blog"
-              onClick={toggleMobileMenu}
-              className="text-white"
-            >
+            <Link to="/blog" onClick={toggleMobileMenu} className="text-white">
               Blog
             </Link>
-            {sessionExpirate === "true" ? (
-              <Link
-                to="/siginconstructorpage"
-                onClick={toggleMobileMenu}
-                className="text-white"
-              >
-                Log In
-              </Link>
-            ) : (
-              <Link
-                to="/"
-                onClick={handleSession}
-                className="text-white"
-              >
-                Log out
-              </Link>
-            )}
-
+            <Link to="/siginconstructorpage" className="text-white">
+              Are you a Contractor?
+            </Link>
+            <Link
+              to="/formUser"
+              onClick={toggleMobileMenu}
+              className="text-white"
+            >
+              GET FREE ESTIMATE
+            </Link>
           </div>
         </div>
         <div className="md:hidden z-50 mr-4">
-          <div className="cursor-pointer" onClick={toggleMobileMenu}><BarsNav /></div>
+          <div className="cursor-pointer" onClick={toggleMobileMenu}>
+            <BarsNav />
+          </div>
         </div>
       </nav>
     </div>

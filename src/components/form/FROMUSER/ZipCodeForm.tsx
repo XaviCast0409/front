@@ -5,6 +5,7 @@ import BackButtonArrow from "../../../utils/BackButtonArrow";
 import { useZipcCodeHook } from "../../../hooks/hookZipCode/useZipCodeHook";
 import { useUserHook } from "../../../hooks/hookUser/useUserHook";
 import { FormContainer } from "../../../utils/FormContainer";
+import logoImage from "../../../assets/asset/images/HOWS-ADVISOR-website.png";
 
 export default function ZipCodeForm() {
   const {
@@ -34,6 +35,7 @@ export default function ZipCodeForm() {
 
   return (
     <div className="flex flex-col min-h-screen justify-center items-center">
+      <img src={logoImage} alt="Logo" className="w-56 h-56 object-contain md:w-80 md:h-80 lg:w-96 lg:h-96"  />
       <FormContainer title=" Validate Zip Code ">
         <InputForm
           id="floating_postal_code"
