@@ -3,6 +3,7 @@ import { InputForm } from "../../../utils/InputForm";
 import { useNavigate } from "react-router-dom";
 import Button from "../../../utils/Button";
 import { useState, useEffect } from "react";
+import { FormContainer } from "../../../utils/FormContainer";
 
 export default function EmailPhone() {
   const {
@@ -35,9 +36,8 @@ export default function EmailPhone() {
   }, [create, useStoreCreate, onSubmit, companiesId]);
 
   return (
-    <div>
-      <form className="container_form_column w-1/2 h-1/2">
-        <h2 className="h1 mb-8"> Email and Phone </h2>
+    <div className="flex flex-col min-h-screen justify-center items-center">
+      <FormContainer title="Email & Phone ">
         <InputForm
           id="floating_address"
           nameInput="email"
@@ -46,8 +46,8 @@ export default function EmailPhone() {
           stateValue={userData.email}
           color="black"
           title="Email"
-          className="w-1/2"
           handleChange={handleChange}
+          className="w-80 md:w-full lg:w-96"
         />
         <InputForm
           id="floating_address"
@@ -57,20 +57,20 @@ export default function EmailPhone() {
           stateValue={userData.phone}
           color="black"
           title="Phone"
-          className="w-1/2"
           handleChange={handleChange}
+          className="w-80 md:w-full lg:w-96"
         />
-        <div className="container_buttons flex ">
-          {Button && (
-            <Button
-              className="btn-primary"
-              type="button"
-              text="NEXT"
-              handleClick={handleSubmit}
-            />
-          )}
-        </div>
-      </form>
+      </FormContainer>
+      <div className="container_buttons flex ">
+        {Button && (
+          <Button
+            className="btn-primary"
+            type="button"
+            text="NEXT"
+            handleClick={handleSubmit}
+          />
+        )}
+      </div>
     </div>
   );
 }
