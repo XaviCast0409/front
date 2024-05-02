@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { CardElement, useStripe } from "@stripe/react-stripe-js";
 
 const CheckoutForm = ({ name, setName, amount, handlePayment }) => {
   const stripe = useStripe();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [paymentElement, setPaymentElement] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -33,7 +34,7 @@ const CheckoutForm = ({ name, setName, amount, handlePayment }) => {
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <form  className="w-full max-w-md">
+      <form  className="w-full max-w-md" onSubmit={handleSubmit}>
         <div className="mb-4">
           <input
             type="text"
@@ -44,21 +45,22 @@ const CheckoutForm = ({ name, setName, amount, handlePayment }) => {
           />
         </div>
         <div className="mb-4">
-          <CardElement className="form-control" />
+          <CardElement
+            className="form-control"
+            onChange={(element) => setPaymentElement(element)}
+          />
         </div>
         {error && <div style={{ color: "red" }}>{error}</div>}
         <button
           type="submit"
           disabled={loading}
           className="btn btn-primary text-center"
-          onSubmit={handleSubmit}
         >
           {loading ? "Procesando..." : "Ingresar Datos"}
         </button>
       </form>
     </div>
   );
-  
 };
 
 export default CheckoutForm;
