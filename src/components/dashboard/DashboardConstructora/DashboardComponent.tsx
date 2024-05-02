@@ -23,9 +23,10 @@ const DashboardComponent: React.FC = () => {
   const [tradeName, setTradeCreate] = useState<{ name: string }>({ name: "" });
   const [tradeId, setTradeId] = useState(0);
   const { getClasses } = classStore();
+  const id = Number(localStorage.getItem("id")) || 0;
   
   useEffect(() => {
-    findCompanyById(1);
+    findCompanyById(id);
     getClasses();
     getAllTrades()
     // eslint-disable-next-line react-hooks/exhaustive-deps

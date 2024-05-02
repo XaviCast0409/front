@@ -5,8 +5,9 @@ import { useEffect } from "react";
 
 const UsersCompany: React.FC = () => {
   const { findCompanyById, usersCompany } = useCompanyHook();
+  const id = Number(localStorage.getItem("id")) || 0;
   useEffect(() => {
-    findCompanyById(1);
+    findCompanyById(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   

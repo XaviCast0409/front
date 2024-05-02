@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../utils/Button";
-import { useCompanyHook } from "../../hooks/hookCompany/useCompanyHook";
 import { ImagenSigIn } from "./ImagenSigIn";
 import { InputForm } from "../../utils/InputForm";
 import { Modal } from "../../utils/ModalError";
@@ -10,13 +9,15 @@ import { useNavigate } from "react-router-dom";
 import { isTokenObj } from "../../function/validateSigIn";
 
 const SignInConstructor: React.FC = () => {
-  const { messageLogin, login, setMessageLogin } = useCompanyHook();
   const navigate = useNavigate();
+  const [login, setLogin] = useState(false);
 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const [messageLogin, setMessageLogin] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -29,29 +30,32 @@ const SignInConstructor: React.FC = () => {
       const token = response.data.company.token;
       localStorage.setItem("token", token);
       const tokenObj = isTokenObj(token);
-      console.log(tokenObj)
       // Redirige al usuario a la página correspondiente según si es administrador o no
-      if (tokenObj.isAdmin) {
+      if (tokenObj.isAdmin && token !== "") {
         localStorage.setItem("id", `${tokenObj.id}`);
         // Redirige al usuario administrador a una ruta específica
+        setLogin(true)
         navigate("/dashboardadmi");
-      } else {
+
+      } else if (tokenObj.isAdmin === false && token !== ""){
         // Redirige al usuario no administrador a otra ruta
+        localStorage.setItem("id", `${tokenObj.id}`);
+        setLogin(true)
         navigate("/dashboard");
+      } else {  
+        setLogin(false)
+        setMessageLogin("NOT_FOUND_USER")
       }
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
+      setLogin(false)
+      setMessageLogin("NOT_FOUND_USER")
     }
   };
 
 
-  console.log({
-    messageLogin,
-    login,
-  });
-
   const handleButtonModal = () => {
-    setMessageLogin();
+    setMessageLogin("");
   };
 
   return (
