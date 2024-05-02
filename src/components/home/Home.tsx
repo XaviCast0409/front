@@ -26,16 +26,15 @@ import BlogAdmiPage from "../../pages/BlogAdmiPage";
 import EmailPhonePage from "../../pages/EmailPhonePage";
 
 
-// import { ProtectedRouter } from "../../utils/ProtectedRoute";
+/* import { ProtectedRouter } from "../../utils/ProtectedRoute";
+const token = localStorage.getItem("token");
+const isAdmin = localStorage.getItem("isAdmin") === "true" ? true : false; */
 
-interface HomeProps {
-  setIsLoggedIn: (data: boolean) => void;
-}
-const Home: React.FC<HomeProps> = ({ setIsLoggedIn }) => {
+
+const Home= () => {
   return (
     <>
-    <NavBar setIsLoggedIn={setIsLoggedIn} />
-     
+    <NavBar />
       {/* Enrutamiento */}
       <Routes>
         {/* visual web */}
@@ -56,20 +55,21 @@ const Home: React.FC<HomeProps> = ({ setIsLoggedIn }) => {
         {/* login companies and admin */}
         <Route path="/siginconstructorpage" element={<SigInConstructorPage />}/>
 
-        {/* dashboard Admin*/}
-        <Route path="/dashboardadmi" element={<DashboardAdmiPage />} />
-        <Route path="/dashboardadmitrade" element={<ProfileDashboardTradePage />}/>
-        <Route path="/Classes" element={<ClassesPage />}/>
-        <Route path="/dashboardadmiblog" element={<BlogAdmiPage />}/>
-
-        {/* dashboard profile company */}
-        <Route path="/dashboard" element={<DashboardPage /> ?? null} />
-        <Route path="/company/table-user" element={<UserCompanyPage /> ?? null} />
+{/*         <Route element={<ProtectedRouter token={token} isAdmin={isAdmin} redirectPath={"/"}/>}> */}
+           {/* dashboard profile company */}
+          <Route path="/dashboard" element={<DashboardPage /> ?? null} />
+          <Route path="/company/table-user" element={<UserCompanyPage /> ?? null} />
+{/*         </ Route> */}
 
 
         {/* protección de rutas */}
-{/*         <Route element={<ProtectedRouter adminRedirectPath="/dashboardadmi" redirectPath="/profileconstructordashboard" isLoggedIn={isLoggedIn} loginCompany={loginCompany}/>}>
-        </ Route> */}
+       {/*  <Route element={<ProtectedRouter token={token} isAdmin={isAdmin} redirectPath={"/"}/>}> */}
+        {/* dashboard Admin*/}
+          <Route path="/dashboardadmi" element={<DashboardAdmiPage />} />
+          <Route path="/dashboardadmitrade" element={<ProfileDashboardTradePage />}/>
+          <Route path="/Classes" element={<ClassesPage />}/>
+          <Route path="/dashboardadmiblog" element={<BlogAdmiPage />}/>
+        {/* </ Route> */}
 
         {/* rutas a descartar */}
         <Route path="/profileconstructordashboard" element={<ProfileConstructoraPage />}/>

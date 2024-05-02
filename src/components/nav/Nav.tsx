@@ -1,11 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import logoImage from "../../assets/asset/images/HOWS-ADVISOR-blanco.png";
 import { BarsNav } from "../../assets/Icons";
 
-interface NavBarProps {
-  setIsLoggedIn: (data: boolean) => void;
-}
+
 
 export const NavBar: React.FC<NavBarProps> = () => {
   const lastScrollTop = useRef(0);

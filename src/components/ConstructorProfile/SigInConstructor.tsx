@@ -5,10 +5,13 @@ import { useCompanyHook } from "../../hooks/hookCompany/useCompanyHook";
 import { ImagenSigIn } from "./ImagenSigIn";
 import { InputForm } from "../../utils/InputForm";
 import { Modal } from "../../utils/ModalError";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { isTokenObj } from "../../function/validateSigIn";
 
 const SignInConstructor: React.FC = () => {
-  const { companyLogin, messageLogin, login, setMessageLogin } =
-    useCompanyHook();
+  const { messageLogin, login, setMessageLogin } = useCompanyHook();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -20,14 +23,32 @@ const SignInConstructor: React.FC = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = () => {
-    companyLogin(formData);
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post("https://api2-2aj3.onrender.com/login-company", formData);
+      const token = response.data.company.token;
+      localStorage.setItem("token", token);
+      const tokenObj = isTokenObj(token);
+      console.log(tokenObj)
+      // Redirige al usuario a la página correspondiente según si es administrador o no
+      if (tokenObj.isAdmin) {
+        localStorage.setItem("id", `${tokenObj.id}`);
+        // Redirige al usuario administrador a una ruta específica
+        navigate("/dashboardadmi");
+      } else {
+        // Redirige al usuario no administrador a otra ruta
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error);
+    }
   };
+
+
   console.log({
     messageLogin,
-    login
+    login,
   });
-  
 
   const handleButtonModal = () => {
     setMessageLogin();
@@ -58,14 +79,14 @@ const SignInConstructor: React.FC = () => {
                 />
               </div>
               <div className="mt-6 flex justify-center items-center">
-{/*                 <Link to="/dashboard"> */}
-                  <Button
-                    className="btn-primary"
-                    type="button"
-                    text="SUBMIT"
-                    handleClick={handleSubmit}
-                  />
-{/*                 </Link> */}
+                {/*                 <Link to="/dashboard"> */}
+                <Button
+                  className="btn-primary"
+                  type="button"
+                  text="SUBMIT"
+                  handleClick={handleSubmit}
+                />
+                {/*                 </Link> */}
               </div>
             </form>
             <p className="mt-4 text-gray-700">
@@ -81,7 +102,7 @@ const SignInConstructor: React.FC = () => {
             message={messageLogin}
             isSuccess={login}
             handleFunction={handleButtonModal}
-            link={ !login ? "/siginconstructorpage" : "/" }
+            link={!login ? "/siginconstructorpage" : "/"}
           />
         )}
       </section>
