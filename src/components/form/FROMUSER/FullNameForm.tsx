@@ -1,6 +1,6 @@
 import Button from "../../../utils/Button";
 import { useNavigate } from "react-router-dom";
-
+import { FormContainer } from "../../../utils/FormContainer";
 import BackButtonArrow from "../../../utils/BackButtonArrow";
 import { InputForm } from "../../../utils/InputForm";
 import { useUserHook } from "../../../hooks/hookUser/useUserHook";
@@ -16,17 +16,9 @@ export default function FullNameForm() {
     });
     navigate("/streetaddressform")
   };
-
   return (
-    <div>
-      <h2 className="h1">
-        Please enter <br /> your full name
-      </h2>
-      <form>
-        <section
-          className="container_form_column"
-          style={{ width: "60%", height: "60%" }}
-        >
+    <div className="flex flex-col min-h-screen justify-center items-center">
+      <FormContainer title=" Enter your Full Name ">
           <InputForm
             id="floating_name"
             nameInput="name"
@@ -35,7 +27,7 @@ export default function FullNameForm() {
             stateValue={userData.name}
             color="black"
             title="First Name"
-            className="w-1/2"
+            className="w-80 md:w-full lg:w-96"
             handleChange={handleChange}
           />
           <InputForm
@@ -46,16 +38,16 @@ export default function FullNameForm() {
             stateValue={userData.last_name}
             color="black"
             title="Last Name"
-            className="w-1/2"
+            className="w-80 md:w-full lg:w-96"
             handleChange={handleChange}
           />
+             </FormContainer>
 
           <div className="container_buttons">
             <BackButtonArrow />
             <Button className="btn-primary" type="button" text="SUBMIT" handleClick={handleSubmit} />
           </div>
-        </section>
-      </form>
+      
     </div>
   );
 }
