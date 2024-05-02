@@ -13,7 +13,7 @@ const RegisterCardConstructor: React.FC<RegisterCardConstructorProps> = () => {
   useEffect(() => {
     const fetchStripePromise = async () => {
       const stripe = await loadStripe('pk_test_51OzkqmP7so0IzTMy9YUGBYQQ6nBLOUV8O9mD6QQk9J2DmpKjXIentDzVo6p12l20a0ggzgDDpfFHtZZsjbR9Duag00yNQC7nP0');
-      setStripePromise(stripe);
+      setStripePromise(stripe as any);
     };
 
     fetchStripePromise();
