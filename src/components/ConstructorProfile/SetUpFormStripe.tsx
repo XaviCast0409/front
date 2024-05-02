@@ -1,3 +1,4 @@
+import { StripeCardElement } from "@stripe/stripe-js";
 import { useState , useEffect } from "react";
 import {
   CardNumberElement,
@@ -6,7 +7,6 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-import creditCardType from 'credit-card-type';
 
 import axios from "axios";
 
@@ -28,9 +28,9 @@ const inputStyle = {
 const CheckoutForm = ({ name, setName, amount, handlePayment }) => {
   const stripe = useStripe();
   const elements = useElements();
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState<boolean>(false);
+  const [success, /* setSuccess */] = useState<boolean>(false);
   const [cardType, setCardType] = useState<string>('');
 
 
@@ -58,10 +58,11 @@ const CheckoutForm = ({ name, setName, amount, handlePayment }) => {
 
     console.log("handleSubmit: creating payment method");
     try {
+
       const { error: stripeError, paymentMethod } =
         await stripe.createPaymentMethod({
           type: "card",
-          card: cardElement,
+          card: cardElement as unknown as StripeCardElement,
           billing_details: {
             name: "Nombre del titular de la tarjeta",
           },
@@ -70,7 +71,7 @@ const CheckoutForm = ({ name, setName, amount, handlePayment }) => {
       console.log("handleSubmit: payment method created");
       if (stripeError) {
         console.log("handleSubmit: stripe error", stripeError);
-        setError(stripeError.message || null);
+        setError(stripeError.message || "");
         setLoading(false);
         return;
       }
@@ -83,7 +84,7 @@ const CheckoutForm = ({ name, setName, amount, handlePayment }) => {
 
       console.log("handleSubmit: calling sendPaymentData");
       await sendPaymentData(paymentMethod.id);
-    } catch (e) {
+    } catch (e: any) {
       console.log("handleSubmit: error occurred during payment", e);
       setError(`Error occurred during payment: ${e.message}`);
       setLoading(false);
