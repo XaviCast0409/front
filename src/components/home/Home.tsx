@@ -28,13 +28,11 @@ import EmailPhonePage from "../../pages/EmailPhonePage";
 
 // import { ProtectedRouter } from "../../utils/ProtectedRoute";
 
-interface HomeProps {
-  setIsLoggedIn: (data: boolean) => void;
-}
-const Home: React.FC<HomeProps> = ({ setIsLoggedIn }) => {
+
+const Home= () => {
   return (
     <>
-    <NavBar setIsLoggedIn={setIsLoggedIn} />
+    <NavBar />
      
       {/* Enrutamiento */}
       <Routes>

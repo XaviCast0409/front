@@ -1,13 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import logoImage from "../../assets/asset/images/HOWS-ADVISOR-blanco.png";
 import { BarsNav } from "../../assets/Icons";
 
-interface NavBarProps {
-  setIsLoggedIn: (data: boolean) => void;
-}
 
-export const NavBar: React.FC<NavBarProps> = ({ setIsLoggedIn }) => {
+export const NavBar = () => {
   const lastScrollTop = useRef(0);
   const [isNavBarVisible, setIsNavBarVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -30,7 +27,6 @@ export const NavBar: React.FC<NavBarProps> = ({ setIsLoggedIn }) => {
   const handleSession = () => {
     localStorage.setItem("expirate", "true");
     localStorage.setItem("token", "");
-    setIsLoggedIn(true)
     toggleMobileMenu()
   }
 
