@@ -5,7 +5,7 @@ import { BarsNav } from "../../assets/Icons";
 
 
 
-export const NavBar: React.FC<NavBarProps> = () => {
+export const NavBar = () => {
   const lastScrollTop = useRef(0);
   const [isNavBarVisible, setIsNavBarVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
