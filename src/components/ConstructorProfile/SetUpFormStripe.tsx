@@ -8,6 +8,23 @@ import {
 } from "@stripe/react-stripe-js";
 import axios from "axios";
 
+
+const inputStyle = {
+    base: {
+      fontSize: '16px', 
+      color: '#000000',
+      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+      fontSmoothing: 'antialiased',
+      '::placeholder': {
+        color: '#000000',
+      },
+    },
+    invalid: {
+      color: '#fa755a',
+      iconColor: '#fa755a',
+    },
+  };
+
 const CheckoutForm = ({ name, setName, amount, handlePayment }) => {
   const stripe = useStripe();
   const elements = useElements();
@@ -94,13 +111,13 @@ const CheckoutForm = ({ name, setName, amount, handlePayment }) => {
           />
         </div>
         <div className="mb-4">
-          <CardNumberElement className="form-control" />
+          <CardNumberElement options={{ style: inputStyle }} />
         </div>
         <div className="mb-4">
-          <CardExpiryElement className="form-control" />
+          <CardExpiryElement options={{ style: inputStyle }} />
         </div>
         <div className="mb-4">
-          <CardCvcElement className="form-control" />
+          <CardCvcElement options={{ style: inputStyle }} />
         </div>
         {error && <div style={{ color: "red" }}>{error}</div>}
         <button
