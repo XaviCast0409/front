@@ -14,6 +14,7 @@ export const isTokenExpired = (token: string | null, marginInSeconds: number = 0
 };
 interface tokenPros {
   isAdmin: boolean;
+  id: number
 }
 
 export const isTokenObj = (token: string | null): tokenPros => {
@@ -23,7 +24,8 @@ export const isTokenObj = (token: string | null): tokenPros => {
     return tokenPayload;
   } else {
     return {
-      isAdmin: false
+      isAdmin: false,
+      id: 0
     }
   }
 }
