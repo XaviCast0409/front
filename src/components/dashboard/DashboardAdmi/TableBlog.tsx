@@ -33,11 +33,19 @@ export const TableBlogs: React.FC<TableBlogProps> = ({
     }
 
     try {
-      // Envía una solicitud DELETE al servidor para eliminar el blog por su ID
+      
       await axios.delete(`http://localhost:3000/company-blog-delete/${id}`);
+      console.log("Blog eliminado exitosamente");
     } catch (error) {
       console.error(`Error al eliminar el blog con id '${id}':`, error);
     }
+  };
+
+  const handleDeleteBlog = (id: string) => {
+    deleteBlog(id).catch((error) => {
+      console.error(`Error al eliminar el blog con id '${id}':`, error);
+    }
+    );
   };
 
   const columns: TableColumn<RowData>[] = [
@@ -62,9 +70,9 @@ export const TableBlogs: React.FC<TableBlogProps> = ({
       sortable: true,
     },
     {
-      name: "",
+      name: "Action",
       cell: (row: RowData) => (
-        <button onClick={() => deleteBlog(row.id.toString())}>Delete</button>
+        <button onClick={() => handleDeleteBlog(row.id.toString())}>Delete</button>
       ),
     },
   ];
