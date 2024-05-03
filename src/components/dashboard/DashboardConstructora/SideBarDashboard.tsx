@@ -15,7 +15,7 @@ const SideBarDashboard: React.FC = () => {
 
   return (
     <div className="flex flex-col bg-blue-500 text-white w-full h-screen md:w-64 py-6 px-4">
-      <h2 className="text-2xl font-semibold mb-6 mt-16">Dashboard</h2>
+      <h2 className="h2 mb-14 mt-14 text-white">Dashboard</h2>
       <ul className="flex flex-col gap-6 text-xl">
         {isAdmin && (
           <>
@@ -58,7 +58,7 @@ const SideBarDashboard: React.FC = () => {
                 <FiCreditCard className="mr-2" /> Table Users
               </li>
             </Link>
-            <Link to="/registercardconstructor" className="sidebar-link">
+             <Link to="/registercardconstructor" className="sidebar-link">
               <li className="sidebar-item flex">
                 <FiCreditCard className="mr-2" /> Register Card
               </li>

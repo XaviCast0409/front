@@ -1,8 +1,8 @@
 import React from "react";
+import axios from "axios"; // Importa Axios
 import DataTable from "react-data-table-component";
 import { TableColumn } from "react-data-table-component";
 import SubHeaderClass from "./subHeaderClass";
-import { useBlogHook } from "../../../hooks/HookBlog/useBlogHook";
 import { Blog } from "storeType";
 
 interface RowData {
@@ -17,18 +17,29 @@ interface RowData {
 interface TableBlogProps {
   blogs: Blog[];
   setOpenModal: (data: boolean) => void;
-  handleDeleteBlog?: (id: number) => Promise<void>;
 }
 
 export const TableBlogs: React.FC<TableBlogProps> = ({
   blogs,
   setOpenModal,
 }) => {
-  const { handleDeleteBlog } = useBlogHook();
+  console.log("Entra en TableBlogs");
+  console.log("blogs:", blogs);
 
-  const deleteBlog = async (id) => {
-    await handleDeleteBlog(id);
-  }
+  const deleteBlog = async (id: string | null) => {
+    if (!id) {
+      console.error("deleteBlog: id is null");
+      return;
+    }
+
+    try {
+      // Envía una solicitud DELETE al servidor para eliminar el blog por su ID
+      await axios.delete(`http://localhost:3000/api/blog/${id}`);
+    } catch (error) {
+      console.error(`Error al eliminar el blog con id '${id}':`, error);
+    }
+  };
+
   const columns: TableColumn<RowData>[] = [
     {
       name: "Post",
@@ -53,17 +64,17 @@ export const TableBlogs: React.FC<TableBlogProps> = ({
     {
       name: "",
       cell: (row: RowData) => (
-        <button onClick={() => deleteBlog(row.id)}>Delete</button>
+        <button onClick={() => deleteBlog(row.id.toString())}>Delete</button>
       ),
     },
   ];
 
+  console.log("columns:", columns);
+
   return (
     <DataTable
       title="Blogs"
-      columns={
-        columns as TableColumn<Blog>[]
-      }
+      columns={columns as TableColumn<Blog>[]}
       data={blogs}
       subHeader
       subHeaderComponent={<SubHeaderClass setOpenModal={setOpenModal} />}
