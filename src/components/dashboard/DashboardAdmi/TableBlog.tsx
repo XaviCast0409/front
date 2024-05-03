@@ -34,7 +34,7 @@ export const TableBlogs: React.FC<TableBlogProps> = ({
 
     try {
       // Envía una solicitud DELETE al servidor para eliminar el blog por su ID
-      await axios.delete(`http://localhost:3000/api/blog/${id}`);
+      await axios.delete(`http://localhost:3000/company-blog-delete/${id}`);
     } catch (error) {
       console.error(`Error al eliminar el blog con id '${id}':`, error);
     }
