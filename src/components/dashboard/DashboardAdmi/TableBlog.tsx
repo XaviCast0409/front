@@ -69,8 +69,6 @@ export const TableBlogs: React.FC<TableBlogProps> = ({
     },
   ];
 
-  console.log("columns:", columns);
-
   return (
     <DataTable
       title="Blogs"
