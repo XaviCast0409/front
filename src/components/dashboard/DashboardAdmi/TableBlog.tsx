@@ -26,7 +26,7 @@ export const TableBlogs: React.FC<TableBlogProps> = ({
   console.log("Entra en TableBlogs");
   console.log("blogs:", blogs);
 
-  const deleteBlog = async (id: string | null) => {
+  const deleteBlog = async (id: number) => {
     if (!id) {
       console.error("deleteBlog: id is null");
       return;
@@ -41,7 +41,7 @@ export const TableBlogs: React.FC<TableBlogProps> = ({
     }
   };
 
-  const handleDeleteBlog = (id: string) => {
+  const handleDeleteBlog = (id: number) => {
     deleteBlog(id).catch((error) => {
       console.error(`Error al eliminar el blog con id '${id}':`, error);
     }
@@ -72,7 +72,7 @@ export const TableBlogs: React.FC<TableBlogProps> = ({
     {
       name: "Action",
       cell: (row: RowData) => (
-        <button onClick={() => handleDeleteBlog(row.id.toString())}>Delete</button>
+        <button onClick={() => handleDeleteBlog(Number(row.id))}>Delete</button>
       ),
     },
   ];
