@@ -32,11 +32,11 @@ export const NavBar = () => {
   }, []);
 
   return (
-    <div className="absolute z-10">
+    <div className="absolute z-10 ">
       <nav
         className={`fixed top-0 left-0 transform ${
           isNavBarVisible ? "translate-y-0" : "-translate-y-72"
-        } flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 w-full h-16 shadow-md bg-[#3889F2] transition-transform duration-300`}
+        } flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 w-full h-16 shadow-md bg-[#3889F2] transition-transform duration-300 `}
       >
         <Link to="/" className="text-white ml-4">
           <img

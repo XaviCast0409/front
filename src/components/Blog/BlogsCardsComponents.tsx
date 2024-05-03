@@ -1,26 +1,105 @@
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useBlogHook } from "../../hooks/HookBlog/useBlogHook";
+import { useEffect, useState, useMemo } from "react";
 
-const BlogsCardsComponents = () => {
+const POSTS_PER_PAGE = 5;
+
+const BlogsCardsComponents: React.FC = () => {
+  const { blogData, getAllBlog } = useBlogHook();
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    getAllBlog();
+  }, [getAllBlog]);
+
+  const currentPosts = useMemo(() => {
+    const indexOfLastPost = currentPage * POSTS_PER_PAGE;
+    const indexOfFirstPost = indexOfLastPost - POSTS_PER_PAGE;
+    return blogData.slice(indexOfFirstPost, indexOfLastPost);
+  }, [blogData, currentPage]);
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+  const paginationButtons = useMemo(
+    () =>
+      Array(Math.ceil(blogData.length / POSTS_PER_PAGE))
+        .fill(null)
+        .map((_, index) => (
+          <button
+            key={index}
+            onClick={() => paginate(index + 1)}
+            className={`px-3 py-1 mx-1 ${
+              currentPage === index + 1
+                ? "bg-blue-500 text-white"
+                : "bg-gray-200 text-gray-800"
+            } rounded-md focus:outline-none focus:ring focus:ring-blue-300`}
+            aria-label={`Ir a la página ${index + 1}`}
+          >
+            {index + 1}
+          </button>
+        )),
+    [blogData.length, currentPage]
+  );
+
+  const truncateText = (text: string, maxLength: number) => {
+    if (text.length <= maxLength) {
+      return text;
+    }
+    const truncatedText = text.substr(0, maxLength);
+    const lastSpaceIndex = truncatedText.lastIndexOf(" ");
+    return lastSpaceIndex === -1 ? truncatedText : truncatedText.substr(0, lastSpaceIndex) + " ...";
+  };
+  
+
   return (
-    <div className="flex flex-col rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 md:max-w-xl md:flex-row">
-      <img
-        className="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-        src="https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg"
-        alt=""
-      />
-      <div className="flex flex-col justify-start p-6">
-        <h5 className="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
-          Card title
-        </h5>
-        <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-          This is a wider card with supporting text below as a natural lead-in
-          to additional content. This content is a little bit longer.
-        </p>
-        <p className="text-xs text-neutral-500 dark:text-neutral-300">
-          Last updated 3 mins ago
-        </p>
+    <section className="flex flex-col justify-center items-center">
+      <h1 className="text-black">All Blogs</h1>
+      <div className="flex flex-col justify-center items-center  w-full h-full">
+  {currentPosts.map((blog, index) => (
+    <div
+      className={`max-w-4xl m-6  border-b-4  ${
+        index !== currentPosts.length - 1 ? "mb-4" : ""
+      } blog-container `}
+      key={blog.id}
+    >
+      <div className="custom-card h-full flex flex-col justify-between ">
+        <div className="w-full h-full">
+        <img
+          src={blog.imageUrl}
+          alt={`Imagen del blog ${blog.title}`}
+          className="w-full  object-cover object-center rounded shadow-lg"
+        />
+         </div>
+         <div className="w-full h-full">
+        <div className="flex flex-col justify-center m-4 flex-grow ">
+          <h3>{blog.title}</h3>
+          <p className="text-white">
+            {blog.content ? truncateText(blog.content, 250) : ""}
+          </p>
+          <p className="text-white font-thin">
+            {blog.publicationDate
+              ? new Date(blog.publicationDate).toLocaleDateString("es-ES", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })
+              : ""}
+          </p>
+          <Link
+            to="/blog"
+            className="text-white hover:underline text-center m-1 bold"
+          >
+            Leer más
+          </Link>
+        </div>
+        </div>
       </div>
     </div>
+  ))}
+</div>
+
+      <div className="flex justify-center mt-4">{paginationButtons}</div>
+    </section>
   );
 };
 
