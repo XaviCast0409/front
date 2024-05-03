@@ -25,13 +25,14 @@ const inputStyle = {
       iconColor: "#fa755a",
     },
   };
-const CheckoutForm = ({ name, setName, amount, handlePayment }) => {
+const CheckoutForm = ({ handlePayment }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, /* setSuccess */] = useState<boolean>(false);
   const [cardType, setCardType] = useState<string>('');
+  const [name, setName] = useState<string>('');
 
 
   useEffect(() => {
@@ -79,7 +80,7 @@ const CheckoutForm = ({ name, setName, amount, handlePayment }) => {
       console.log("handleSubmit: calling handlePayment");
       await handlePayment({
         paymentMethodId: paymentMethod.id,
-        amount: amount,
+        amount: 1000,
       });
 
       console.log("handleSubmit: calling sendPaymentData");
