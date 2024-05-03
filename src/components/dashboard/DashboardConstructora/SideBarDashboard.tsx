@@ -35,11 +35,13 @@ const SideBarDashboard: React.FC = () => {
                 <FiUser className="mr-2" /> Class Trade
               </li>
             </Link>
+            
             <Link to="/dashboardadmiblog" className="sidebar-link">
               <li className="sidebar-item flex">
                 <FiCreditCard className="mr-2" /> Blog
               </li>
             </Link>
+           
           </>
         )}
 
@@ -54,6 +56,11 @@ const SideBarDashboard: React.FC = () => {
             <Link to="/company/table-user" className="sidebar-link">
               <li className="sidebar-item flex">
                 <FiCreditCard className="mr-2" /> Table Users
+              </li>
+            </Link>
+            <Link to="/registercardconstructor" className="sidebar-link">
+              <li className="sidebar-item flex">
+                <FiCreditCard className="mr-2" /> Register Card
               </li>
             </Link>
           </>

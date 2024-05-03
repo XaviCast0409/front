@@ -73,6 +73,7 @@ const SignInConstructor: React.FC = () => {
                   placeholder="Email"
                   stateValue={formData}
                   handleChange={handleChange}
+                  className="text-black"
                 />
                 <InputForm
                   type="password"
@@ -80,6 +81,7 @@ const SignInConstructor: React.FC = () => {
                   placeholder="Password"
                   stateValue={formData}
                   handleChange={handleChange}
+                  className="text-black"
                 />
               </div>
               <div className="mt-6 flex justify-center items-center">
@@ -101,7 +103,7 @@ const SignInConstructor: React.FC = () => {
             </p>
           </div>
         </div>
-        {!login && messageLogin === "NOT_FOUND_USER" && (
+        {!login && messageLogin === "NOT FOUND USER" && (
           <Modal
             message={messageLogin}
             isSuccess={login}
