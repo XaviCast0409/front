@@ -4,7 +4,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import SetupForm from "../../components/ConstructorProfile/SetUpFormStripe";
 
 interface RegisterCardConstructorProps {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 const RegisterCardConstructor: React.FC<RegisterCardConstructorProps> = () => {
