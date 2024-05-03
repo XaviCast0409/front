@@ -73,6 +73,7 @@ const SignInConstructor: React.FC = () => {
                   placeholder="Email"
                   stateValue={formData}
                   handleChange={handleChange}
+                  className="text-black"
                 />
                 <InputForm
                   type="password"
@@ -80,6 +81,7 @@ const SignInConstructor: React.FC = () => {
                   placeholder="Password"
                   stateValue={formData}
                   handleChange={handleChange}
+                  className="text-black"
                 />
               </div>
               <div className="mt-6 flex justify-center items-center">

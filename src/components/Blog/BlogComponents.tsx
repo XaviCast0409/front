@@ -54,18 +54,22 @@ const BlogComponents: React.FC = () => {
             >
               <h2>{blog.title}</h2>
               <p className="text-gray-500">
-                {blog.publicationDate?.toLocaleString()}
+                {blog.publicationDate
+                  ? new Date(blog.publicationDate).toLocaleDateString("es-ES", {
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    })
+                  : ""}
               </p>
               <div className="blog-image">
-              <img
-                src={blog.imageUrl}
-                alt={`Imagen del blog ${blog.title}`}
-                className="w-full object-cover object-center rounded shadow-lg h-1/4"
-              />
+                <img
+                  src={blog.imageUrl}
+                  alt={`Imagen del blog ${blog.title}`}
+                  className="w-full object-cover object-center rounded shadow-lg h-1/4"
+                />
               </div>
-              <div className="blog-text p-4 m-1  ">
-                {blog.content ?? ""}
-              </div>
+              <div className="blog-text p-4 m-1  ">{blog.content ?? ""}</div>
             </div>
           ))}
         </div>
