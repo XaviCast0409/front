@@ -43,11 +43,10 @@ const CheckoutForm = ({ handlePayment }) => {
     });
   }, [elements]);
 
- // Dentro de la función handleSubmit en SetupForm
-const handleSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
-  
+
     console.log("handleSubmit: entered");
     if (!stripe || !elements) {
       console.log("handleSubmit: stripe or elements is null");
@@ -55,12 +54,12 @@ const handleSubmit = async (event) => {
       setLoading(false);
       return;
     }
-  
+
     const cardElement = elements.getElement(CardNumberElement);
-  
+
     console.log("handleSubmit: creating payment method");
     try {
-  
+
       const { error: stripeError, paymentMethod } =
         await stripe.createPaymentMethod({
           type: "card",
@@ -69,7 +68,7 @@ const handleSubmit = async (event) => {
             name: "Nombre del titular de la tarjeta",
           },
         });
-  
+
       console.log("handleSubmit: payment method created");
       if (stripeError) {
         console.log("handleSubmit: stripe error", stripeError);
@@ -77,14 +76,13 @@ const handleSubmit = async (event) => {
         setLoading(false);
         return;
       }
-  
+
       console.log("handleSubmit: calling handlePayment");
       await handlePayment({
         paymentMethodId: paymentMethod.id,
         amount: 1000,
-        customerId: props.customerId, 
       });
-  
+
       console.log("handleSubmit: calling sendPaymentData");
       await sendPaymentData(paymentMethod.id);
     } catch (e: any) {
@@ -94,7 +92,6 @@ const handleSubmit = async (event) => {
       throw e;
     }
   };
-  
 
   const sendPaymentData = async (paymentMethodId) => {
     console.log("Sending payment data to server:", {
