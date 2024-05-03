@@ -16,7 +16,7 @@ const BlogAdmiComponent: React.FC = () => {
   const [isLoadingImage, setIsLoadingImage] = useState(false);
   const [/* errorMessage */, setErrorMessage] = useState<string | null>(null);
 
-  const { handleCreateBlog, getAllBlog, blogData, handleDeleteBlog } =
+  const { handleCreateBlog, getAllBlog, blogData } =
     useBlogHook();
 
   const createBlog = async () => {
@@ -57,9 +57,7 @@ const BlogAdmiComponent: React.FC = () => {
     getAllBlog();
   }, [getAllBlog]);
 
-  const deleteBlog = async (id) => {
-    await handleDeleteBlog(id);
-  };
+ 
 
   return (
     <div className="flex w-full">
@@ -114,13 +112,8 @@ const BlogAdmiComponent: React.FC = () => {
           </Modal>
         )}
 
-        <div className="w-full px-2 py-2">
-          <TableBlogs
-            blogs={blogData}
-            setOpenModal={setIsModalOpen}
-            handleDeleteBlog={deleteBlog}
-          />
-        </div>
+     
+
 
       </div>
     </div>
