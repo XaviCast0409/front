@@ -32,11 +32,11 @@ export const NavBar = () => {
   }, []);
 
   return (
-    <div className="absolute z-10">
+    <div className="absolute z-10 ">
       <nav
         className={`fixed top-0 left-0 transform ${
           isNavBarVisible ? "translate-y-0" : "-translate-y-72"
-        } flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 w-full h-16 shadow-md bg-[#3889F2] transition-transform duration-300`}
+        } flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 w-full h-16 shadow-md bg-[#3889F2] transition-transform duration-300 `}
       >
         <Link to="/" className="text-white ml-4">
           <img
@@ -50,7 +50,7 @@ export const NavBar = () => {
             isMobileMenuOpen ? "hidden" : ""
           }`}
         >
-          <Link to="/blog" className="text-white">
+          <Link to="/blogscards" className="text-white">
             Blog
           </Link>
 
@@ -72,7 +72,7 @@ export const NavBar = () => {
           } fixed top-0 left-0 w-full h-screen bg-[#3889F2] bg-opacity-90 z-50`}
         >
           <div className="flex flex-col gap-12 items-center pt-16">
-            <Link to="/blog" onClick={toggleMobileMenu} className="text-white">
+            <Link to="/blogscards" onClick={toggleMobileMenu} className="text-white">
               Blog
             </Link>
             <Link to="/siginconstructorpage" className="text-white">

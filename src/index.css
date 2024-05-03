@@ -198,7 +198,7 @@ footer {
   border-color: #ec4899;
 }
 
-.blog-text-container{
+.blog-text-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -207,7 +207,6 @@ footer {
   padding: 20px;
   font-size: 18px;
 }
-
 
 .blog-text {
   font-family: "Ubuntu", sans-serif;
@@ -240,22 +239,34 @@ footer {
   transition: opacity 300ms, transform 300ms;
 }
 
-
 .blog-image {
-  height: 50%; 
+  height: 50%;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 20px;
   border-radius: 10px;
-  
-
 }
 
 .blog-image img {
   height: 70%;
   width: 70%;
   object-fit: cover;
+}
 
+.custom-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #3889f2;
+ 
+}
+
+
+@media (min-width: 768px) {
+  .custom-card {
+    flex-direction: row;
+  }
 }
