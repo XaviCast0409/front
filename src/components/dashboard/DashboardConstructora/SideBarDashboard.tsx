@@ -16,34 +16,48 @@ const SideBarDashboard: React.FC = () => {
   return (
     <div className="flex flex-col bg-blue-500 text-white w-full h-screen md:w-64 py-6 px-4">
       <h2 className="text-2xl font-semibold mb-6 mt-16">Dashboard</h2>
-      <ul>
-        <Link to="/dashboardadmi" className="sidebar-link">
-          <li className="sidebar-item">
-            {!isAdmin && <FiUser className="mr-2" />} Profile
-          </li>
-        </Link>
-        <Link to="/dashboardadmitrade" className="sidebar-link">
-          <li className="sidebar-item">
-            <FiCreditCard className="mr-2" /> Trade
-          </li>
-        </Link>
-        <Link to="/Classes">
-          {!isAdmin && (
-            <li className="sidebar-item">
-              <FiUser className="mr-2" /> Class Trade
-            </li>
-          )}
-        </Link>
-        <Link to="/company/table-user" className="sidebar-link">
-          <li className="sidebar-item">
-            <FiCreditCard className="mr-2" /> Table Users
-          </li>
-        </Link>
-        <Link to="/dashboardadmiblog" className="sidebar-link">
-          <li className="sidebar-item">
-            <FiCreditCard className="mr-2" /> Blog
-          </li>
-        </Link>
+      <ul className="flex flex-col gap-6 text-xl">
+        {isAdmin && (
+          <>
+            <Link to="/dashboardadmi" className="sidebar-link">
+              <li className="sidebar-item flex">
+                <FiUser className="mr-2" />
+                Profile
+              </li>
+            </Link>
+            <Link to="/dashboardadmitrade" className="sidebar-link">
+              <li className="sidebar-item flex">
+                <FiCreditCard className="mr-2" /> Trade
+              </li>
+            </Link>
+            <Link to="/Classes">
+              <li className="sidebar-item flex">
+                <FiUser className="mr-2" /> Class Trade
+              </li>
+            </Link>
+            <Link to="/dashboardadmiblog" className="sidebar-link">
+              <li className="sidebar-item flex">
+                <FiCreditCard className="mr-2" /> Blog
+              </li>
+            </Link>
+          </>
+        )}
+
+        {!isAdmin && (
+          <>
+            <Link to="/dashboard" className="sidebar-link">
+              <li className="sidebar-item flex">
+                <FiUser className="mr-2" />
+                Profile
+              </li>
+            </Link>
+            <Link to="/company/table-user" className="sidebar-link">
+              <li className="sidebar-item flex">
+                <FiCreditCard className="mr-2" /> Table Users
+              </li>
+            </Link>
+          </>
+        )}
       </ul>
     </div>
   );
