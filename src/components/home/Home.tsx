@@ -24,6 +24,7 @@ import BlogPage from "../../pages/BlogPage";
 import UserCompanyPage from "../../pages/UserCompanyPage";
 import BlogAdmiPage from "../../pages/BlogAdmiPage";
 import EmailPhonePage from "../../pages/EmailPhonePage";
+import BlogsCardsPages from "../../pages/BlogsCardsPages";
 
 
 /* import { ProtectedRouter } from "../../utils/ProtectedRoute";
@@ -43,6 +44,7 @@ const Home= () => {
         <Route path="/matchingprosform" element={<MatchingProsPage /> ?? null}/>
         <Route path="/serviceneededformgutter" element={<ServiceNeededPage /> ?? null}/>
         <Route path="/blog" element={<BlogPage /> ?? null} />
+        <Route path="/blogscards" element={<BlogsCardsPages /> ?? null} />
 
 
         {/* create company */}

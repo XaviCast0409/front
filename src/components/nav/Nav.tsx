@@ -50,7 +50,7 @@ export const NavBar = () => {
             isMobileMenuOpen ? "hidden" : ""
           }`}
         >
-          <Link to="/blog" className="text-white">
+          <Link to="/blogscards" className="text-white">
             Blog
           </Link>
 
@@ -72,7 +72,7 @@ export const NavBar = () => {
           } fixed top-0 left-0 w-full h-screen bg-[#3889F2] bg-opacity-90 z-50`}
         >
           <div className="flex flex-col gap-12 items-center pt-16">
-            <Link to="/blog" onClick={toggleMobileMenu} className="text-white">
+            <Link to="/blogscards" onClick={toggleMobileMenu} className="text-white">
               Blog
             </Link>
             <Link to="/siginconstructorpage" className="text-white">
