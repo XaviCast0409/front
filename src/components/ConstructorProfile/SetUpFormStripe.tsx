@@ -83,7 +83,7 @@ const CheckoutForm = ({ handlePayment }) => {
         amount: 1000,
       });
 
-      console.log("handleSubmit: calling sendPaymentData");
+     
       await sendPaymentData(paymentMethod.id);
     } catch (e: any) {
       console.log("handleSubmit: error occurred during payment", e);
