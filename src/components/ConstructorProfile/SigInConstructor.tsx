@@ -103,7 +103,7 @@ const SignInConstructor: React.FC = () => {
             </p>
           </div>
         </div>
-        {!login && messageLogin === "NOT_FOUND_USER" && (
+        {!login && messageLogin === "NOT FOUND USER" && (
           <Modal
             message={messageLogin}
             isSuccess={login}
