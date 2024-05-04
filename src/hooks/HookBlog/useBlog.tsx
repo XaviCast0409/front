@@ -3,7 +3,8 @@ import { blogStore } from "../../store/blogStore";
 import { Blog } from "storeType";
 
 export function useBlog() {
-  const { blog } = blogStore();
+  const { blog, /* blogId */ } = blogStore();
+  /* const[blodPerId, setBlogPerId] = useState({}) */
   const [blogData, setBlogData] = useState<Blog[]>([]);
 
   useEffect(() => {
@@ -20,5 +21,21 @@ export function useBlog() {
     }
   }, [blog]);
 
-  return { blogData };
+  /* 
+    useEffect(() => {
+    if (blog) {
+      const newBlog = {
+        publicationDate: blogId.publicationDate,
+        id: blogId.id,
+        title: blogId.title?.toUpperCase(),
+        content: blogId.content?.slice(0, 100) + "...",
+        imageUrl: blogId.imageUrl
+      };
+      }
+      setBlogPerId(newBlog);
+    }
+  }, [blog]);
+   */
+
+  return { blogData, /* blodPerId */ };
 }

@@ -61,7 +61,7 @@ export const useFunctionBlog = () => {
     });
   };
 
-  const handleGetBlogById = async (id: string) => {
+  const handleGetBlogById = async (id: number) => {
     try {
       await getBlogById(id);
     } catch (error) {

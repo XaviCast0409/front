@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+// import { useBlogHook } from "../../hooks/HookBlog/useBlogHook";
 
 const BlogComponents: React.FC = () => {
   const { blogId } = useParams<{ blogId: string }>();
   const [blog, setBlog] = useState<any>(null); 
-
+  /* const { blodPerId, handleGetBlogById } = useBlogHook() */
+// handleGetBlogById usar esto
   useEffect(() => {
     console.log("useEffect BlogComponents, blogId:", blogId);
     const fetchBlog = async () => {
@@ -20,9 +22,9 @@ const BlogComponents: React.FC = () => {
         console.error("Error fetching blog:", error);
       }
     };
-
+    /* handleGetBlogById(blogId) */
     fetchBlog();
-  }, [blogId]);
+  }, [blogId,/* blogId */]);
 
   if (!blog) {
     console.log("BlogComponents, blog is null");
