@@ -8,8 +8,6 @@ const BlogsCardsComponents: React.FC = () => {
   const { blogData, getAllBlog } = useBlogHook();
   const [currentPage, setCurrentPage] = useState(1);
 
-  console.log(blogData);
-  console.log(getAllBlog);
 
   useEffect(() => {
     getAllBlog();
