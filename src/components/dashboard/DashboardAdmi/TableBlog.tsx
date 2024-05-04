@@ -31,9 +31,8 @@ export const TableBlogs: React.FC<TableBlogProps> = ({
       console.error("deleteBlog: id is null");
       return;
     }
-
     try {
-      
+    
       await axios.delete(`http://localhost:3000/company-blog-delete/${id}`);
       console.log("Blog eliminado exitosamente");
     } catch (error) {

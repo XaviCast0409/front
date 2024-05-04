@@ -9,7 +9,7 @@ export function useBlog() {
   useEffect(() => {
     if (blog) {
       const newBlog = blog.map((item, index) => ({
-        publicationDate: item.publicationDate, // Aquí deberías asignar la fecha de publicación
+        publicationDate: item.publicationDate, // 
         item: index + 1,
         id: item.id,
         title: item.title,

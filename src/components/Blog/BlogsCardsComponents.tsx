@@ -8,6 +8,9 @@ const BlogsCardsComponents: React.FC = () => {
   const { blogData, getAllBlog } = useBlogHook();
   const [currentPage, setCurrentPage] = useState(1);
 
+  console.log(blogData);
+  console.log(getAllBlog);
+
   useEffect(() => {
     getAllBlog();
   }, [getAllBlog]);
@@ -47,56 +50,60 @@ const BlogsCardsComponents: React.FC = () => {
     }
     const truncatedText = text.substr(0, maxLength);
     const lastSpaceIndex = truncatedText.lastIndexOf(" ");
-    return lastSpaceIndex === -1 ? truncatedText : truncatedText.substr(0, lastSpaceIndex) + " ...";
+    return lastSpaceIndex === -1
+      ? truncatedText
+      : truncatedText.substr(0, lastSpaceIndex) + " ...";
   };
-  
 
   return (
     <section className="flex flex-col justify-center items-center">
       <h1 className="text-black">All Blogs</h1>
       <div className="flex flex-col justify-center items-center  w-full h-full">
-  {currentPosts.map((blog, index) => (
-    <div
-      className={`max-w-4xl m-6  border-b-4  ${
-        index !== currentPosts.length - 1 ? "mb-4" : ""
-      } blog-container `}
-      key={blog.id}
-    >
-      <div className="custom-card h-full flex flex-col justify-between ">
-        <div className="w-full h-full">
-        <img
-          src={blog.imageUrl}
-          alt={`Imagen del blog ${blog.title}`}
-          className="w-full  object-cover object-center rounded shadow-lg"
-        />
-         </div>
-         <div className="w-full h-full">
-        <div className="flex flex-col justify-center m-4 flex-grow ">
-          <h3>{blog.title}</h3>
-          <p className="text-white">
-            {blog.content ? truncateText(blog.content, 250) : ""}
-          </p>
-          <p className="text-white font-thin">
-            {blog.publicationDate
-              ? new Date(blog.publicationDate).toLocaleDateString("es-ES", {
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                })
-              : ""}
-          </p>
-          <Link
-            to="/blog"
-            className="text-white hover:underline text-center m-1 bold"
+        {currentPosts.map((blog, index) => (
+          <div
+            className={`max-w-4xl m-6  border-b-4  ${
+              index !== currentPosts.length - 1 ? "mb-4" : ""
+            } blog-container `}
+            key={blog.id}
           >
-            Leer más
-          </Link>
-        </div>
-        </div>
+            <div className="custom-card h-full flex flex-col justify-between ">
+              <div className="w-full h-full">
+                <img
+                  src={blog.imageUrl}
+                  alt={`Imagen del blog ${blog.title}`}
+                  className="w-full  object-cover object-center rounded shadow-lg"
+                />
+              </div>
+              <div className="w-full h-full">
+                <div className="flex flex-col justify-center m-4 flex-grow ">
+                  <h3>{blog.title}</h3>
+                  <p className="text-white">
+                    {blog.content ? truncateText(blog.content, 250) : ""}
+                  </p>
+                  <p className="text-white font-thin">
+                    {blog.publicationDate
+                      ? new Date(blog.publicationDate).toLocaleDateString(
+                          "es-ES",
+                          {
+                            day: "numeric",
+                            month: "long",
+                            year: "numeric",
+                          }
+                        )
+                      : ""}
+                  </p>
+                  <Link
+                    to={`/blog/${blog.id}`}
+                    className="text-white hover:underline text-center m-1 bold"
+                  >
+                    Leer más
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
-    </div>
-  ))}
-</div>
 
       <div className="flex justify-center mt-4">{paginationButtons}</div>
     </section>
