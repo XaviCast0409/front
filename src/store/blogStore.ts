@@ -68,7 +68,7 @@ export const blogStore = create<BlogStoreAttributes>(
       console.log("Deleted blog:", response.data);
       set({ message: response.data.message });
     },
-    getBlogById: async (id: string) => {
+    getBlogById: async (id: number) => {
       const response = await axiosInstance.get(`/company-blog-byId/${id}`);
       set({ blog: [response.data.blog], message: response.data.message });
       // blogId: { id: response.data}
