@@ -15,7 +15,9 @@ const axiosInstance: AxiosInstance = axios.create({
 interface BlogStoreAttributes {
   message: string;
   blog: Blog[];
-  // blogId: Blog
+  blogId: {
+    id: Blog;
+  }
   getAllBlog: () => Promise<void>;
   getBlogById: (id: number) => Promise<void>;
   createBlog: (data: {
@@ -36,6 +38,7 @@ export const blogStore = create<BlogStoreAttributes>(
   (set: SetState<BlogStoreAttributes>) => ({
     message: "",
     blog: [],
+    blogId: { id: {} },
 
     getAllBlog: async () => {
       const response = await axiosInstance.get("/company-all-blogs")
@@ -70,8 +73,8 @@ export const blogStore = create<BlogStoreAttributes>(
     },
     getBlogById: async (id: number) => {
       const response = await axiosInstance.get(`/company-blog-byId/${id}`);
-      set({ blog: [response.data.blog], message: response.data.message });
-      // blogId: { id: response.data}
+      set({ blogId: { id: response.data }, message: response.data.message });
+
     },
   })
 );

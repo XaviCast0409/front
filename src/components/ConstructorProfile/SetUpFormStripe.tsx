@@ -10,6 +10,7 @@ import {
 import SideBarDashboard from "../dashboard/DashboardConstructora/SideBarDashboard";
 
 import axios from "axios";
+import { useCompanyHook } from "../../hooks/hookCompany/useCompanyHook";
 
 const inputStyle = {
   base: {
@@ -42,6 +43,18 @@ const CheckoutForm = ({ handlePayment }) => {
       setCardType(brand);
     });
   }, [elements]);
+
+  const { comapanyId, findCompanyById } = useCompanyHook();
+
+  const id = Number(localStorage.getItem("id")) || 0;
+
+  useEffect(() => {
+    findCompanyById(id);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  console.log("companyid", comapanyId);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -93,7 +106,7 @@ const CheckoutForm = ({ handlePayment }) => {
 
   const sendPaymentData = async (paymentMethodId) => {
     console.log("Sending payment data to server:", {
-      customerId: "ID_DEL_CLIENTE",
+      customerId: comapanyId.customerstripeId,
       cardToken: paymentMethodId,
     });
 
@@ -101,7 +114,7 @@ const CheckoutForm = ({ handlePayment }) => {
       const response = await axios.post(
         "http://localhost:3000/associate-card-with-payment",
         {
-          customerId: "ID_DEL_CLIENTE",
+          customerId: comapanyId.customerstripeId,
           cardToken: paymentMethodId,
         }
       );

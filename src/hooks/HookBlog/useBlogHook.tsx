@@ -14,7 +14,7 @@ export const useBlogHook = () => {
     handleGetBlogById,
   } = useFunctionBlog();
 
-  const { blogData, /* blodPerId */ } = useBlog();
+  const { blogData, blogById } = useBlog();
 
   return {
     blogData,
@@ -25,7 +25,7 @@ export const useBlogHook = () => {
     getAllBlog,
     handleUpdateBlog,
     handleGetBlogById,
-    /* blodPerId */
+    blogById
   };
 };
 

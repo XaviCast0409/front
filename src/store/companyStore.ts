@@ -2,8 +2,13 @@ import { create, SetState, GetState } from "zustand";
 import axios, { AxiosResponse, AxiosInstance } from "axios";
 import { CompanyAttributes } from "storeType";
 
+/*
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: "https://api2-2aj3.onrender.com",
+});*/
+
+const axiosInstance: AxiosInstance = axios.create({
+  baseURL: "http://localhost:3000/",
 });
 
 interface CompanyStoreAttributes {
@@ -15,7 +20,7 @@ interface CompanyStoreAttributes {
   createCompany: (data: CompanyAttributes) => Promise<void>;
   companiesByZipCode: (zipCode: number) => Promise<void>;
   addCardCompany: (data: CompanyAttributes) => Promise<void>;
-  createCompanyTrade: (data: { CompanyId: number, TradeId:number }) => Promise<void>;
+  createCompanyTrade: (data: { CompanyId: number, TradeId: number }) => Promise<void>;
   companyLogin: (data: CompanyAttributes) => Promise<void>;
   changeStatusCompany: (data: { CompanyId: number, status: boolean }) => Promise<void>;
   setMessage: () => void;
@@ -116,8 +121,8 @@ export const companyStore = create<CompanyStoreAttributes>(
           "add-trade-company",
           data
         );
-        console.log(response.data.message);
-        
+      console.log(response.data.message);
+
       set({
         message: response.data.message,
         isSuccess: response.data.isSuccess,
@@ -146,6 +151,7 @@ export const companyStore = create<CompanyStoreAttributes>(
           `/company-by-id/${companyId}`
         );
       set({ companyId: response.data.company });
+
     },
     changeStatusCompany: async (data) => {
       const response: AxiosResponse<{
