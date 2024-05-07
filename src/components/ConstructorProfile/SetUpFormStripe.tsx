@@ -77,7 +77,7 @@ const CheckoutForm = ({ handlePayment }) => {
           type: "card",
           card: cardElement as unknown as StripeCardElement,
           billing_details: {
-            name: "Nombre del titular de la tarjeta",
+            name: name,
           },
         });
 
@@ -105,27 +105,47 @@ const CheckoutForm = ({ handlePayment }) => {
   };
 
   const sendPaymentData = async (paymentMethodId) => {
-    console.log("Sending payment data to server:", {
-      customerId: comapanyId.customerstripeId,
-      cardToken: paymentMethodId,
-    });
-
+    if (!comapanyId || !comapanyId.customerstripeId) {
+      setError("customerstripeId is null or undefined");
+      return;
+    }
     try {
-      const response = await axios.post(
-        "http://localhost:3000/associate-card-with-payment",
-        {
+      console.log("Sending payment data to server:", {
+        customerId: comapanyId.customerstripeId,
+        paymentMethodId: paymentMethodId, // Usar la clave correcta aquí
+      });
+  
+      const [associateResponse, paymentIntentResponse] = await Promise.all([
+        axios.post("http://localhost:3000/associate-card-with-payment", {
           customerId: comapanyId.customerstripeId,
-          cardToken: paymentMethodId,
-        }
+          paymentMethodId: paymentMethodId, // Usar la clave correcta aquí
+        }),
+        axios.post("http://localhost:3000/create-payment-intent", {
+          paymentMethodId: paymentMethodId,
+          amount: 1000,
+        }),
+      ]);
+  
+      if (!associateResponse || !paymentIntentResponse) {
+        setError("Error sending payment data to server");
+        return;
+      }
+  
+      console.log(
+        "Response from associate-card-with-payment:",
+        associateResponse.data
       );
-
-      console.log("Response from server:", response.data);
+      console.log(
+        "Response from create-payment-intent:",
+        paymentIntentResponse.data
+      );
       console.log("Payment data successfully sent to server");
     } catch (error) {
       console.error("Error sending payment data to server:", error);
+      setError("Error sending payment data to server");
     }
   };
-
+  
   return (
     <div className="flex items-center h-screen">
       <SideBarDashboard />
