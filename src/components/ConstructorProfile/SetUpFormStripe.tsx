@@ -1,56 +1,20 @@
 import { StripeCardElement } from "@stripe/stripe-js";
 import { useState, useEffect } from "react";
-import {
-  CardNumberElement,
-  CardExpiryElement,
-  CardCvcElement,
-  useElements,
-  useStripe,
-} from "@stripe/react-stripe-js";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import SideBarDashboard from "../dashboard/DashboardConstructora/SideBarDashboard";
 
 import axios from "axios";
 import { useCompanyHook } from "../../hooks/hookCompany/useCompanyHook";
 
-const inputStyle = {
-  base: {
-    fontSize: "16px",
-    color: "#000000",
-    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-    fontSmoothing: "antialiased",
-    "::placeholder": {
-      color: "#000000",
-    },
-  },
-  invalid: {
-    color: "#fa755a",
-    iconColor: "#fa755a",
-  },
-};
 const CheckoutForm = ({ handlePayment }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [, /*error */ setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState<boolean>(false);
-  const [cardType, setCardType] = useState<string>("");
-  const [name, setName] = useState<string>(
-    localStorage.getItem("cardHolderName") || ""
-  );
-
-  useEffect(() => {
-    const cardNumberElement = elements?.getElement(CardNumberElement);
-    cardNumberElement?.on("change", (event) => {
-      const { brand } = event;
-      setCardType(brand);
-    });
-  }, [elements]);
+  const [reset, setReset] = useState<boolean>(false);
 
   const { comapanyId, findCompanyById } = useCompanyHook();
-
-  useEffect(() => {
-    localStorage.setItem("cardHolderName", name);
-  }, [name]);
 
   const id = Number(localStorage.getItem("id")) || 0;
 
@@ -70,14 +34,11 @@ const CheckoutForm = ({ handlePayment }) => {
       return;
     }
 
-    const cardElement = elements.getElement(CardNumberElement);
+    const cardElement = elements.getElement(CardElement);
     const { error: stripeError, paymentMethod } =
       await stripe.createPaymentMethod({
         type: "card",
-        card: cardElement as unknown as StripeCardElement,
-        billing_details: {
-          name: name,
-        },
+        card: cardElement as StripeCardElement,
       });
 
     if (stripeError) {
@@ -94,6 +55,8 @@ const CheckoutForm = ({ handlePayment }) => {
     await sendPaymentData(paymentMethod.id);
     setSuccess(true);
     setLoading(false);
+
+    setReset(true);
   };
 
   const sendPaymentData = async (paymentMethodId) => {
@@ -142,39 +105,24 @@ const CheckoutForm = ({ handlePayment }) => {
   return (
     <div className="flex items-center h-screen">
       <SideBarDashboard />
-      <div className="flex justify-center items-center h-screen bg-gray-100 w-screen">
-        <form className="w-full max-w-md bg-white p-6 rounded shadow-md">
-          <div className="mb-4">
-            <input
-              type="text"
-              placeholder="Nombre del titular de la tarjeta"
-              className="form-input w-full p-2 border border-gray-300 rounded"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="mb-4">
-            <label className="border-b">
-              <CardNumberElement options={{ style: inputStyle }} />
-            </label>
-            <div>{cardType}</div>
-          </div>
-          <div className="mb-4">
-            <label className="border-b">
-              <CardExpiryElement options={{ style: inputStyle }} />
-            </label>
-          </div>
-          <div className="mb-4">
-            <label className="border-b mb-2">
-              <CardCvcElement options={{ style: inputStyle }} />
-            </label>
-          </div>
+      <div
+        onSubmit={handleSubmit}
+        className="flex justify-center items-center h-screen bg-gray-100 w-screen"
+      >
+        <form className="w-full max-w-md bg-white p-6 rounded shadow-md m-4">
+          {reset ? (
+            <>
+              <CardElement key={Math.random()} />
+              {setReset(false)}
+            </>
+          ) : (
+            <CardElement />
+          )}
 
           <button
             type="submit"
-            disabled={loading}
-            className="w-full py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-            onClick={handleSubmit}
+            disabled={!stripe || loading}
+            className="w-full py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 my-4"
           >
             {`${success ? "Tarjeta añadida exitosamente" : "Guardar Tarjeta"}`}
           </button>
