@@ -1,9 +1,17 @@
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import Button from "../../utils/Button";
 
 export default function Footer() {
+
+
+  const handleClick = () => {
+    console.log("Button clicked!");
+  };
+
   return (
     <footer className="bg-[#3889F2] py-10 md:py-20 text-white">
-      <div className="container mx-auto text-center">
+      <div className="container mx-auto text-center flex flex-col w-1/2">
         <h1 className="h1">
           Let's collaborate on your <br /> next project.
         </h1>
@@ -11,6 +19,14 @@ export default function Footer() {
           Discover reputable professionals in your locality and kickstart your
           project today!
         </p>
+        <div className="flex justify-center">
+        <Button
+              className="btn-primary w-1/2 "
+              type={"button"}
+              text={<Link to="/formUser">Hire Local Professionals</Link>}
+              handleClick={handleClick}
+            />
+        </div>
 
         <hr className="border-t-2 my-6 border-white" />
         <div className="flex flex-col  justify-center items-center">

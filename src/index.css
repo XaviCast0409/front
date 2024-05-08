@@ -14,7 +14,14 @@ body,
 #root {
   height: 100%;
   font-family: "Lato", sans-serif;
-  background-color: rgb(240, 240, 240);
+  background-color: rgba(120, 119, 198, 0.3);
+  position: absolute;
+  top: 0;
+  z-index: -2;
+  height: 100vh;
+  width: 100vw;
+  background: white;
+  scroll-behavior: smooth;
 }
 
 .primary_color {
@@ -22,7 +29,7 @@ body,
 }
 
 .bg-primary {
-  color: #3889f2;
+  background-color: #3889f2;
 }
 
 h1 {
@@ -261,9 +268,7 @@ footer {
   align-items: center;
   border-radius: 10px;
   background-color: #3889f2;
- 
 }
-
 
 @media (min-width: 768px) {
   .custom-card {
