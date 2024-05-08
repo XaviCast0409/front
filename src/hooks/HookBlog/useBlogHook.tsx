@@ -11,9 +11,10 @@ export const useBlogHook = () => {
     handleDeleteBlog,
     handleGetAllBlogs,
     handleUpdateBlog,
+    handleGetBlogById,
   } = useFunctionBlog();
 
-  const { blogData } = useBlog();
+  const { blogData, blogById } = useBlog();
 
   return {
     blogData,
@@ -23,6 +24,8 @@ export const useBlogHook = () => {
     handleGetAllBlogs,
     getAllBlog,
     handleUpdateBlog,
+    handleGetBlogById,
+    blogById
   };
 };
 

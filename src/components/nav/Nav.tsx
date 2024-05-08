@@ -2,13 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import logoImage from "../../assets/asset/images/HOWS-ADVISOR-blanco.png";
 import { BarsNav } from "../../assets/Icons";
-
-
+import Button from "../../utils/Button";
 
 export const NavBar = () => {
   const lastScrollTop = useRef(0);
   const [isNavBarVisible, setIsNavBarVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const handleClick = () => {
+    console.log("Button clicked!");
+  };
 
   const handleScroll = () => {
     const { pageYOffset } = window;
@@ -50,21 +53,26 @@ export const NavBar = () => {
             isMobileMenuOpen ? "hidden" : ""
           }`}
         >
-          <Link to="/blogscards" className="text-white">
-            Blog
-          </Link>
+          {/*
+            <Link
+              to="/blogscards"
+              onClick={toggleMobileMenu}
+              className="text-white"
+            >
+              Blog
+            </Link>
+            */}
 
           <Link to="/siginconstructorpage" className="text-white">
             Are you a Contractor?
           </Link>
 
-          <Link
-            to="/formUser"
-            onClick={toggleMobileMenu}
-            className="text-white"
-          >
-            GET FREE ESTIMATE
-          </Link>
+          <Button
+            className="btn-primary text-primary bg-white"
+            type={"button"}
+            text={<Link to="/formUser">GET FREE ESTIMATE</Link>}
+            handleClick={handleClick}
+          />
         </div>
         <div
           className={`md:hidden ${
@@ -72,19 +80,24 @@ export const NavBar = () => {
           } fixed top-0 left-0 w-full h-screen bg-[#3889F2] bg-opacity-90 z-50`}
         >
           <div className="flex flex-col gap-12 items-center pt-16">
-            <Link to="/blogscards" onClick={toggleMobileMenu} className="text-white">
-              Blog
-            </Link>
-            <Link to="/siginconstructorpage" className="text-white">
-              Are you a Contractor?
-            </Link>
+            {/*
             <Link
-              to="/formUser"
+              to="/blogscards"
               onClick={toggleMobileMenu}
               className="text-white"
             >
-              GET FREE ESTIMATE
+              Blog
             </Link>
+            */}
+            <Link to="/siginconstructorpage" className="text-white">
+              Are you a Contractor?
+            </Link>
+            <Button
+              className="btn-primary text-primary bg-white"
+              type={"button"}
+              text={<Link to="/formUser">GET FREE ESTIMATE</Link>}
+              handleClick={handleClick}
+            />
           </div>
         </div>
         <div className="md:hidden z-50 mr-4">

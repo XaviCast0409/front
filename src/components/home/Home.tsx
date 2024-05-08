@@ -43,7 +43,7 @@ const Home= () => {
         <Route path="/matchingform" element={<MatchingPage /> ?? null} />
         <Route path="/matchingprosform" element={<MatchingProsPage /> ?? null}/>
         <Route path="/serviceneededformgutter" element={<ServiceNeededPage /> ?? null}/>
-        <Route path="/blog" element={<BlogPage /> ?? null} />
+        <Route path="/blog/:id" element={<BlogPage /> ?? null} />
         <Route path="/blogscards" element={<BlogsCardsPages /> ?? null} />
 
 

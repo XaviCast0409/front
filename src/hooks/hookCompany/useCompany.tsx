@@ -60,6 +60,7 @@ export function useCompany() {
         password: companyIdData.password,
         ZipCodeId: companyIdData.ZipCodeId,
         TokenId: companyIdData.TokenId,
+        customerstripeId: companyIdData.customerstripeId,
         TradeCompanyUsers: companyIdData.TradeCompanyUsers?.map((item) => ({
           id: item.id,
           name: item.name,
