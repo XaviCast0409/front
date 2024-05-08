@@ -1,35 +1,45 @@
-export function HowWeCanHelp() {
-  return (
-    <section>
-      <div className="mx-auto max-w-screen-2xl px-4 py-16 sm:px-6 lg:px-8">
-        <div>
-          <div className="order-2 md:order-1">
-            <div className="p-8 sm:p-16 lg:p-24">
-              <h2 className="text-2xl font-bold sm:text-3xl">
-                How We Can Assist You
-              </h2>
-              <hr className="border-t-2 border-black my-4" />
+import { Link } from "react-router-dom";
 
-              <p className="mt-4 text-gray-600">
-                As homeowners ourselves, we understand the stress of finding the
-                perfect assistance for your home projects. That's why we
-                specialize in connecting you with local professionals who are
-                tailored to meet your specific needs. Whether it's roofing,
-                kitchen renovations, or any other project, we match you with
-                skilled experts who comprehend the unique challenges of your
-                undertaking. Count on us to connect you with contractors who
-                share your passion for your home. Let's begin building your
-                dream home together!
-              </p>
+import Button from "../../../utils/Button";
+
+export function HowWeCanHelp() {
+  function handleClick() {
+    window.scrollTo(0, 0);
+  }
+  return (
+    <section className="py-14">
+      <div className="max-w-screen-xl mx-auto md:px-8">
+        <div className="items-center gap-x-12 sm:px-4 md:px-0 lg:flex">
+          <div className="flex-1 sm:hidden  lg:block">
+            <img
+              src="https://images.pexels.com/photos/7710011/pexels-photo-7710011.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt=""
+              className="rounded-lg shadow-md "
+            />
+          </div>
+          <div className="max-w-xl px-4 space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-2xl">
+            <h3 className="primary_color font-semibold">
+              Professional services
+            </h3>
+            <p className="text-gray-800 text-3xl font-semibold sm:text-4xl">
+              Build your SaaS solution with help from our experts
+            </p>
+            <p className="mt-3 text-gray-600">
+              Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+              cupidatat non proident, sunt in culpa qui officia deserunt mollit
+              anim id est laborum, sed ut perspiciatis unde omnis iste natus
+              error sit voluptatem accusantium doloremque laudantium
+            </p>
+            <div className="flex items-center justify-center space-x-3">
+            <Button
+              className="btn-primary"
+              type={"button"}
+              text={<Link to="/formUser">Hire Local Professionals</Link>}
+              handleClick={handleClick}
+            />
             </div>
           </div>
-        </div>
-        <div className="order-1 md:order-2">
-          <img
-            alt="img"
-            src="https://images.pexels.com/photos/7710011/pexels-photo-7710011.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            className="inset-0 h-full w-full object-cover rounded-lg shadow-2xl block mx-auto"
-          />
         </div>
       </div>
     </section>

@@ -12,18 +12,18 @@ export default function Hero() {
         className="w-full bg-cover bg-center py-32"
         style={{
           backgroundImage:
-            "url('https://images.pexels.com/photos/4969995/pexels-photo-4969995.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
+            "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
         }}
       >
         <div className="flex justify-center items-center flex-col container mx-auto text-center">
           <h1
-            className="text-5xl font-extrabold mb-6 md:text-6xl "
+            className="text-5xl font-extrabold mb-6 md:text-6xl text-white "
             style={{ textShadow: "1px 1px 2px rgba(0, 0, 0, 0.5)" }}
           >
             Discover reliable professionals in your vicinity.
           </h1>
           <p
-            className="text-xl font-thin mb-12"
+            className="text-xl font-thin mb-12 text-white"
             style={{ textShadow: "1px 1px 2px rgba(0, 0, 0, 0.5)" }}
           >
             Enhance your home with renovation projects.
