@@ -105,16 +105,19 @@ const CheckoutForm = ({ handlePayment }) => {
   };
 
   const sendPaymentData = async (paymentMethodId) => {
+    console.log("sendPaymentData: started");
     if (!comapanyId || !comapanyId.customerstripeId) {
+      console.log("sendPaymentData: customerstripeId is null or undefined");
       setError("customerstripeId is null or undefined");
       return;
     }
     try {
       console.log("Sending payment data to server:", {
         customerId: comapanyId.customerstripeId,
-        paymentMethodId: paymentMethodId, // Usar la clave correcta aquí
+        paymentMethodId: paymentMethodId, 
       });
   
+      console.log("sendPaymentData: calling axios.post");
       const [associateResponse, paymentIntentResponse] = await Promise.all([
         axios.post("http://localhost:3000/associate-card-with-payment", {
           customerId: comapanyId.customerstripeId,
@@ -126,22 +129,24 @@ const CheckoutForm = ({ handlePayment }) => {
         }),
       ]);
   
+      console.log("sendPaymentData: responses received from server");
       if (!associateResponse || !paymentIntentResponse) {
+        console.log("sendPaymentData: error sending payment data to server");
         setError("Error sending payment data to server");
         return;
       }
   
       console.log(
-        "Response from associate-card-with-payment:",
+        "sendPaymentData: Response from associate-card-with-payment:",
         associateResponse.data
       );
       console.log(
-        "Response from create-payment-intent:",
+        "sendPaymentData: Response from create-payment-intent:",
         paymentIntentResponse.data
       );
-      console.log("Payment data successfully sent to server");
+      console.log("sendPaymentData: Payment data successfully sent to server");
     } catch (error) {
-      console.error("Error sending payment data to server:", error);
+      console.error("sendPaymentData: Error sending payment data to server:", error);
       setError("Error sending payment data to server");
     }
   };
