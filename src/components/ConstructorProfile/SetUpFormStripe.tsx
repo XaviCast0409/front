@@ -20,8 +20,7 @@ const CheckoutForm = ({ handlePayment }) => {
 
   useEffect(() => {
     findCompanyById(id);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = async (event) => {
