@@ -30,13 +30,11 @@ const inputStyle = {
 const CheckoutForm = ({ handlePayment }) => {
   const stripe = useStripe();
   const elements = useElements();
-  const [, /*error */ setError] = useState("");
+  const [/*error */, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState<boolean>(false);
+  const [success , setSuccess] = useState<boolean>(false);
   const [cardType, setCardType] = useState<string>("");
-  const [name, setName] = useState<string>(
-    localStorage.getItem("cardHolderName") || ""
-  );
+  const [name, setName] = useState<string>(localStorage.getItem("cardHolderName") || "");
 
   useEffect(() => {
     const cardNumberElement = elements?.getElement(CardNumberElement);
@@ -47,10 +45,11 @@ const CheckoutForm = ({ handlePayment }) => {
   }, [elements]);
 
   const { comapanyId, findCompanyById } = useCompanyHook();
-
+  
   useEffect(() => {
-    localStorage.setItem("cardHolderName", name);
+  localStorage.setItem("cardHolderName", name);
   }, [name]);
+  
 
   const id = Number(localStorage.getItem("id")) || 0;
 
@@ -59,6 +58,8 @@ const CheckoutForm = ({ handlePayment }) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  console.log("companyid", comapanyId);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -126,12 +127,12 @@ const CheckoutForm = ({ handlePayment }) => {
       const [associateResponse] = await Promise.all([
         axios.post("http://localhost:3000/associate-card-with-payment", {
           customerId: comapanyId.customerstripeId,
-          paymentMethodId: paymentMethodId,
+          paymentMethodId: paymentMethodId,      
         }),
       ]);
 
       console.log("sendPaymentData: responses received from server");
-      if (!associateResponse) {
+      if (!associateResponse  ) {
         console.log("sendPaymentData: error sending payment data to server");
         setError("Error sending payment data to server");
         return;
@@ -141,7 +142,7 @@ const CheckoutForm = ({ handlePayment }) => {
         "sendPaymentData: Response from associate-card-with-payment:",
         associateResponse.data
       );
-
+      
       console.log("sendPaymentData: Payment data successfully sent to server");
     } catch (error) {
       console.error(
@@ -182,7 +183,7 @@ const CheckoutForm = ({ handlePayment }) => {
               <CardCvcElement options={{ style: inputStyle }} />
             </label>
           </div>
-
+       
           <button
             type="submit"
             disabled={loading}
@@ -191,6 +192,7 @@ const CheckoutForm = ({ handlePayment }) => {
           >
             {`${success ? "Tarjeta añadida exitosamente" : "Guardar Tarjeta"}`}
           </button>
+          
         </form>
       </div>
     </div>
