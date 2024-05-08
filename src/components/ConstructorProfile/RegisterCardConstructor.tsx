@@ -22,8 +22,7 @@ const RegisterCardConstructor: React.FC<RegisterCardConstructorProps> = () => {
   }, []);
 
   const handlePayment = async ({ paymentMethodId, amount }) => {
-    // Aquí es donde manejarías el pago.
-    // Por ejemplo, podrías enviar una solicitud a tu servidor para procesar el pago.
+    
     console.log(
       `Manejando el pago con el método de pago ${paymentMethodId} y el monto ${amount}`
     );
