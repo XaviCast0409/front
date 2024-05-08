@@ -20,7 +20,7 @@ const CheckoutForm = ({ handlePayment }) => {
 
   useEffect(() => {
     findCompanyById(id);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = async (event) => {
@@ -116,6 +116,12 @@ const CheckoutForm = ({ handlePayment }) => {
             </>
           ) : (
             <CardElement />
+          )}
+
+          {loading && (
+            <div className="text-blue-600 text-center">
+              Please wait while the card is being saved ...
+            </div>
           )}
 
           <button
