@@ -30,7 +30,7 @@ const inputStyle = {
 const CheckoutForm = ({ handlePayment }) => {
   const stripe = useStripe();
   const elements = useElements();
-  const [error, setError] = useState("");
+  const [/*error */, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [success , setSuccess] = useState<boolean>(false);
   const [cardType, setCardType] = useState<string>("");
