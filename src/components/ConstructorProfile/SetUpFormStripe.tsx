@@ -129,7 +129,7 @@ const CheckoutForm = ({ handlePayment }) => {
             disabled={!stripe || loading}
             className="w-full py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 my-4"
           >
-            {`${success ? "Tarjeta añadida exitosamente" : "Guardar Tarjeta"}`}
+            {`${success ? "Card saved successfully" : "Save card"}`}
           </button>
         </form>
       </div>
