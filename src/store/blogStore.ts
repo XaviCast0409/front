@@ -2,14 +2,24 @@ import axios, { AxiosResponse, AxiosInstance } from "axios";
 import { Blog } from "storeType";
 import { create, SetState } from "zustand";
 
-const axiosInstance: AxiosInstance = axios.create({
+/* const axiosInstance: AxiosInstance = axios.create({
   baseURL: "https://api2-2aj3.onrender.com",
 });
+*/
+
+const axiosInstance: AxiosInstance = axios.create({
+  baseURL: "https://localhost:3000",
+});
+
 
 interface BlogStoreAttributes {
   message: string;
   blog: Blog[];
+  blogId: {
+    id: Blog;
+  }
   getAllBlog: () => Promise<void>;
+  getBlogById: (id: number) => Promise<void>;
   createBlog: (data: {
     title: string;
     content: string;
@@ -28,6 +38,7 @@ export const blogStore = create<BlogStoreAttributes>(
   (set: SetState<BlogStoreAttributes>) => ({
     message: "",
     blog: [],
+    blogId: { id: {} },
 
     getAllBlog: async () => {
       const response = await axiosInstance.get("/company-all-blogs")
@@ -59,6 +70,11 @@ export const blogStore = create<BlogStoreAttributes>(
         }>(`/company-blog-delete?id=${data.id}`);
       console.log("Deleted blog:", response.data);
       set({ message: response.data.message });
+    },
+    getBlogById: async (id: number) => {
+      const response = await axiosInstance.get(`/company-blog-byId/${id}`);
+      set({ blogId: { id: response.data }, message: response.data.message });
+
     },
   })
 );
