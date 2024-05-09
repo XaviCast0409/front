@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import Button from "../../utils/Button";
 
 export default function Footer() {
-
-
   const handleClick = () => {
     console.log("Button clicked!");
   };
@@ -20,12 +18,12 @@ export default function Footer() {
           project today!
         </p>
         <div className="flex justify-center">
-        <Button
-              className="btn-primary w-1/2 "
-              type={"button"}
-              text={<Link to="/formUser">Hire Local Professionals</Link>}
-              handleClick={handleClick}
-            />
+          <Button
+            className="btn-secundary "
+            type={"button"}
+            text={<Link to="/formUser">Hire Local Professionals</Link>}
+            handleClick={handleClick}
+          />
         </div>
 
         <hr className="border-t-2 my-6 border-white" />
@@ -52,7 +50,7 @@ export default function Footer() {
           </div>
           <div>
             <p className="text-sm text-white">
-              &copy; {new Date().getFullYear()} Hows Advisor 
+              &copy; {new Date().getFullYear()} Hows Advisor
             </p>
           </div>
         </div>

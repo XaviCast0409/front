@@ -32,6 +32,11 @@ body,
   background-color: #3889f2;
 }
 
+.text-primary-blue {
+  color: #3889f2;
+}
+  
+
 h1 {
   margin-bottom: 2rem;
   margin-top: 2rem;
@@ -87,6 +92,10 @@ footer {
 /* Estilos de Botones */
 .btn-primary {
   @apply flex justify-center items-center bg-blue-500 text-white font-bold py-2 m-1 px-4 rounded-full hover:bg-blue-600;
+}
+
+.btn-secundary {
+  @apply flex justify-center items-center bg-white text-blue-500 font-bold py-2 m-1 px-4 rounded-full hover:bg-gray-200; ;
 }
 
 .h2 {
