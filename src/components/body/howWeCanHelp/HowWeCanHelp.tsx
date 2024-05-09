@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import Button from "../../../utils/Button";
 
 export function HowWeCanHelp() {
@@ -18,26 +17,25 @@ export function HowWeCanHelp() {
             />
           </div>
           <div className="max-w-xl px-4 space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-2xl">
-            <h3 className="primary_color font-semibold">
+            <h3 className="primary_color font-semibold text-center">
               Professional services
             </h3>
             <p className="text-gray-800 text-3xl font-semibold sm:text-4xl">
-              Build your SaaS solution with help from our experts
+              How We Can Assist You
             </p>
             <p className="mt-3 text-gray-600">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident, sunt in culpa qui officia deserunt mollit
-              anim id est laborum, sed ut perspiciatis unde omnis iste natus
-              error sit voluptatem accusantium doloremque laudantium
+              Discover the ideal local professionals for your home projects with
+              us! From roofing to kitchen renovations, we connect you with
+              experts who understand your needs. Trust us to match you with
+              passionate contractors dedicated to building your dream home.
             </p>
             <div className="flex items-center justify-center space-x-3">
-            <Button
-              className="btn-primary"
-              type={"button"}
-              text={<Link to="/formUser">Hire Local Professionals</Link>}
-              handleClick={handleClick}
-            />
+              <Button
+                className="btn-primary"
+                type={"button"}
+                text={<Link to="/formUser">Start today</Link>}
+                handleClick={handleClick}
+              />
             </div>
           </div>
         </div>

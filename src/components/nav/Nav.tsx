@@ -45,7 +45,7 @@ export const NavBar = () => {
           <img
             src={logoImage}
             alt="Logo"
-            className="w-36 h-36 p-2 object-contain "
+            className="w-36 h-36 p-2 object-contain color-slate-300"
           />
         </Link>
         <div
@@ -68,7 +68,7 @@ export const NavBar = () => {
           </Link>
 
           <Button
-            className="btn-primary text-primary bg-white"
+            className="btn-secundary"
             type={"button"}
             text={<Link to="/formUser">GET FREE ESTIMATE</Link>}
             handleClick={handleClick}

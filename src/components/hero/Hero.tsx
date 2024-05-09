@@ -20,18 +20,18 @@ export default function Hero() {
             className="text-5xl font-extrabold mb-6 md:text-6xl text-white "
             style={{ textShadow: "1px 1px 2px rgba(0, 0, 0, 0.5)" }}
           >
-            Discover reliable professionals in your vicinity.
+            Find trusted experts in your area
           </h1>
           <p
             className="text-xl font-thin mb-12 text-white"
             style={{ textShadow: "1px 1px 2px rgba(0, 0, 0, 0.5)" }}
           >
-            Enhance your home with renovation projects.
+            Home improvement projects.
           </p>
           <Button
             className="btn-primary"
             type={"button"}
-            text={<Link to="/formUser">Hire Local Professionals</Link>}
+            text={<Link to="/formUser">Book Local Experts</Link>}
             handleClick={handleClick}
           />
         </div>

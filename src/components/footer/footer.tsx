@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import Button from "../../utils/Button";
 
 export default function Footer() {
-
-
   const handleClick = () => {
     console.log("Button clicked!");
   };
@@ -12,20 +10,17 @@ export default function Footer() {
   return (
     <footer className="bg-[#3889F2] py-10 md:py-20 text-white">
       <div className="container mx-auto text-center flex flex-col w-1/2">
-        <h1 className="h1">
-          Let's collaborate on your <br /> next project.
-        </h1>
+        <h1 className="h1">Let’s work together on your next project</h1>
         <p className="text-lg md:text-xl mb-8 md:max-w-lg mx-auto">
-          Discover reputable professionals in your locality and kickstart your
-          project today!
+          Find trusted experts in your area and get your project started!
         </p>
         <div className="flex justify-center">
-        <Button
-              className="btn-primary w-1/2 "
-              type={"button"}
-              text={<Link to="/formUser">Hire Local Professionals</Link>}
-              handleClick={handleClick}
-            />
+          <Button
+            className="btn-secundary "
+            type={"button"}
+            text={<Link to="/formUser">Get FREE Estimate</Link>}
+            handleClick={handleClick}
+          />
         </div>
 
         <hr className="border-t-2 my-6 border-white" />
@@ -52,7 +47,7 @@ export default function Footer() {
           </div>
           <div>
             <p className="text-sm text-white">
-              &copy; {new Date().getFullYear()} Hows Advisor 
+              &copy; {new Date().getFullYear()} Hows Advisor
             </p>
           </div>
         </div>

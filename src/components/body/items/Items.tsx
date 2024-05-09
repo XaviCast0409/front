@@ -7,9 +7,7 @@ export function Items() {
         <div className="flex flex-col justify-between overflow-hidden text-left transition-shadow duration-200 bg-white rounded shadow-xl group hover:shadow-2xl">
           <div className="p-5 flex flex-col justify-center items-center">
             <img className="w-1/4  m-8" src={logo1} alt="" />
-            <h3 className="primary_color font-semibold">
-              Bathroom
-            </h3>
+            <h3 className="primary_color font-semibold">Bathroom</h3>
             <p className="text-sm leading-5 text-gray-900">
               Straightforward Bathroom Renovations to suit your needs. We can do
               it all.
@@ -34,10 +32,10 @@ export function Items() {
                 />
               </svg>
             </div>
-            <p className="mb-2 font-bold">Windows</p>
+            <h3 className="primary_color font-semibold">Windows</h3>
             <p className="text-sm leading-5 text-gray-900">
-              Comprehensive Details for Your Window Replacement and Repair. The
-              best window replacement service.
+              Detailed info for your windows replacement. Find the Best Energy
+              Efficient Solutions.
             </p>
           </div>
           <div className="w-full h-1 ml-auto duration-300 origin-left transform scale-x-0 bg-deep-purple-accent-400 group-hover:scale-x-100" />
@@ -59,10 +57,9 @@ export function Items() {
                 />
               </svg>
             </div>
-            <p className="mb-2 font-bold">Roofing</p>
+            <h3 className="primary_color font-semibold">Roofing</h3>
             <p className="text-sm leading-5 text-gray-900">
-              Straightforward Roof Assessments and Renovations. We can help with
-              your roof problems. We also offer roof repair.
+              Simple inspections and repairs for your roof.
             </p>
           </div>
           <div className="w-full h-1 ml-auto duration-300 origin-left transform scale-x-0 bg-deep-purple-accent-400 group-hover:scale-x-100" />
