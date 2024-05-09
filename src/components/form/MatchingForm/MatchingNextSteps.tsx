@@ -3,9 +3,8 @@ export default function MatchingNextSteps() {
     <>
       <section className="p-6 dark:text-gray-800 w-full">
         <h2 className="text-5xl font-bold text-center dark:text-gray-900">
-          Next Steps:  <b className="primary_color to-uppercase ">Phone Call</b> 
+          Next Steps: Phone Call
         </h2>
-        
         <div className="grid gap-6 my-16 lg:grid-cols-2">
           <div className="flex flex-col p-8 space-y-4 rounded-md dark:bg-gray-50">
             <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full  dark:text-gray-50 text-center btn-primary">
