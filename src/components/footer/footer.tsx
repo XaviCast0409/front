@@ -10,18 +10,15 @@ export default function Footer() {
   return (
     <footer className="bg-[#3889F2] py-10 md:py-20 text-white">
       <div className="container mx-auto text-center flex flex-col w-1/2">
-        <h1 className="h1">
-          Let's collaborate on your <br /> next project.
-        </h1>
+        <h1 className="h1">Let’s work together on your next project</h1>
         <p className="text-lg md:text-xl mb-8 md:max-w-lg mx-auto">
-          Discover reputable professionals in your locality and kickstart your
-          project today!
+          Find trusted experts in your area and get your project started!
         </p>
         <div className="flex justify-center">
           <Button
             className="btn-secundary "
             type={"button"}
-            text={<Link to="/formUser">Hire Local Professionals</Link>}
+            text={<Link to="/formUser">Get FREE Estimate</Link>}
             handleClick={handleClick}
           />
         </div>
