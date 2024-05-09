@@ -34,51 +34,53 @@ export default function ZipCodeForm() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen justify-center items-center">
+    <div className="flex  min-h-screen justify-around items-center">
       <img
         src={logoImage}
         alt="Logo"
         className="w-56 h-56 object-contain md:w-80 md:h-80 lg:w-96 lg:h-96"
       />
-      <div>
+      <div  className=" w-80 md:w-full lg:w-96">
         <h1 className="text-4xl font-bold text-gray-700">
           Let's find you Local Remodeling Pros
         </h1>
-      </div>
-      <FormContainer
-        title=" Enter your location to start">
-        <InputForm
-          id="floating_postal_code"
-          nameInput="zipCode"
-          type="text"
-          placeholder=" "
-          stateValue={zipCodeNumber}
-          handleChange={handleChange}
-          color="black"
-          title="Postal Code"
-          className="w-80 md:w-full lg:w-96"
-        />
-      </FormContainer>
-      {validate === false ? (
-        <div>
-          <p className="text-center text-red-600">{`${message}`}</p>
+
+        <div >
+          <FormContainer title=" Enter your location to start">
+            <InputForm
+              id="floating_postal_code"
+              nameInput="zipCode"
+              type="text"
+              placeholder=" "
+              stateValue={zipCodeNumber}
+              handleChange={handleChange}
+              color="black"
+              title="Postal Code"
+              className="w-80 md:w-full lg:w-96"
+            />
+          </FormContainer>
+          {validate === false ? (
+            <div>
+              <p className="text-center text-red-600">{`${message}`}</p>
+            </div>
+          ) : (
+            <div>
+              <p className="text-center text-green-600">
+                {zipCode?.city} {zipCode?.state}
+              </p>
+            </div>
+          )}
+          <div className="container_buttons gap-8">
+            <BackButtonArrow />
+            <Button
+              className="btn-primary"
+              type="button"
+              text="SUBMIT"
+              handleClick={createZipCode}
+              disabled={!validate}
+            />
+          </div>
         </div>
-      ) : (
-        <div>
-          <p className="text-center text-green-600">
-            {zipCode?.city} {zipCode?.state}
-          </p>
-        </div>
-      )}
-      <div className="container_buttons gap-8">
-        <BackButtonArrow />
-        <Button
-          className="btn-primary"
-          type="button"
-          text="SUBMIT"
-          handleClick={createZipCode}
-          disabled={!validate}
-        />
       </div>
     </div>
   );
