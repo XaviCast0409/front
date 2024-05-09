@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../../utils/Button";
 import { useState, useEffect } from "react";
 import { FormContainer } from "../../../utils/FormContainer";
+import BackButtonArrow from "../../../utils/BackButtonArrow";
 
 export default function EmailPhone() {
   const {
@@ -62,6 +63,7 @@ export default function EmailPhone() {
         />
       </FormContainer>
       <div className="container_buttons flex ">
+        <BackButtonArrow />
         {Button && (
           <Button
             className="btn-primary"

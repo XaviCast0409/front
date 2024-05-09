@@ -21,23 +21,34 @@ export default function MatchingForm() {
         <div className="mb-6 flex flex-col justify-normal items-center">
           <CheckBox
             id="terms-agreement"
-            labelText="We respect your privacy and want to make you aware of a few things. By clicking Get Results, you authorize CostGuide and up to four home improvement companies to call you on the phone or text you on the number provided to discuss your project. You understand that some may use automated phone technology or text to contact you. Txt STOP to cancel or HELP for help. Message and data rates may apply and frequency may vary. Your consent here is not a condition of purchase of any goods or services."
+            labelText="By clicking on Get Results, you authorize Hows Advisor and up to four home improvement companies to contact you to discuss your project. They may use automated phone technology. You can cancel or request help by sending a text message. Message and data rates may apply. Your consent is not a condition to purchase goods or services."
             isChecked={isChecked}
             handleChange={(event) => setIsChecked(event.target.checked)}
           />
         </div>
 
-        <div className="container_buttons flex   justify-between">
+        <div className="container_buttons flex   justify-between p-4 ">
+          <div className="flex justify-evenly p-4">
           <BackButtonArrow />
-          <Link to="/matchingprosform">
-            <Button
-              className="btn-primary"
-              type={"button"}
-              text="NEXT"
-              handleClick={handleClick}
-              disabled={!isChecked}
-            />
-          </Link>
+            <Link to="/">
+              <Button
+                className="btn-primary"
+                type={"button"}
+                text="Back to Home"
+                handleClick={handleClick}
+                disabled={!isChecked}
+              />
+            </Link>
+            <Link to="/matchingprosform">
+              <Button
+                className="btn-primary"
+                type={"button"}
+                text="GET RESULTS"
+                handleClick={handleClick}
+                disabled={!isChecked}
+              />
+            </Link>
+          </div>
         </div>
       </FormContainer>
     </div>

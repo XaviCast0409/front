@@ -7,7 +7,7 @@ export const CardTrade: React.FC<Props> = ({ handleNextClick, name, id }) => {
   return (
     <button
     type='button'
-    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    className="btn-primary"
     onClick={() => handleNextClick(id)}
   >
     {name}

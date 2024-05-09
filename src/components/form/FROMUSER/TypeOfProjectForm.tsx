@@ -20,20 +20,20 @@ export default function TypeOfProjectForm() {
     navigate("/form/classTrade");
   };
 
-  return (
-    <div className="flex flex-col min-h-screen">
-      <FormContainer title="Trade Company">
-        <section className="container_form_trade" style={{ width: "60%" }}>
-          {tradeUser?.map((item, index) => (
-            <CardTrade
-              key={index}
-              name={item.name || ""}
-              id={item.id || 0}
-              handleNextClick={setTradeIdStore}
-            />
-          ))}
-        </section>
-      </FormContainer>
-    </div>
-  );
+ return (
+  <div className="flex justify-center items-center min-h-screen">
+    <FormContainer title="Trade Company">
+      <section className="grid grid-cols-3 items-center gap-4 ">
+        {tradeUser?.map((item, index) => (
+          <CardTrade
+            key={index}
+            name={item.name || ""}
+            id={item.id || 0}
+            handleNextClick={setTradeIdStore}
+          />
+        ))}
+      </section>
+    </FormContainer>
+  </div>
+);
 }
