@@ -1,4 +1,6 @@
-import logo1 from "../../../../src/assets/asset/images/bathroom-icons.svg";
+import logo1 from "../../../../src/assets/asset/images/bathroom-icons.png";
+import logo2 from "../../../../src/assets/asset/images/windows-icons.png";
+import logo3 from "../../../../src/assets/asset/images/roofing-icons.png";
 
 export function Items() {
   return (
@@ -7,7 +9,7 @@ export function Items() {
         <div className="flex flex-col justify-between overflow-hidden text-left transition-shadow duration-200 bg-white rounded shadow-xl group hover:shadow-2xl">
           <div className="p-5 flex flex-col justify-center items-center">
             <img className="w-1/4  m-8" src={logo1} alt="" />
-            <h3 className="primary_color font-semibold">Bathroom</h3>
+            <h3 className="primary-color font-semibold">Bathroom</h3>
             <p className="text-sm leading-5 text-gray-900">
               Straightforward Bathroom Renovations to suit your needs. We can do
               it all.
@@ -16,23 +18,9 @@ export function Items() {
           <div className="w-full h-1 ml-auto duration-300 origin-left transform scale-x-0 bg-deep-purple-accent-400 group-hover:scale-x-100" />
         </div>
         <div className="flex flex-col justify-between overflow-hidden text-left transition-shadow duration-200 bg-white rounded shadow-xl group hover:shadow-2xl">
-          <div className="p-5">
-            <div className="flex items-center justify-center w-10 h-10 mb-4 rounded-full bg-blue-400">
-              <svg
-                className="w-8 h-8 text-deep-purple-accent-400"
-                stroke="white"
-                viewBox="0 0 52 52"
-              >
-                <polygon
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  fill="white"
-                  points="29 13 14 29 25 29 23 39 38 23 27 23"
-                />
-              </svg>
-            </div>
-            <h3 className="primary_color font-semibold">Windows</h3>
+          <div className="p-5 flex flex-col justify-center items-center">
+            <img className="w-1/4  m-8" src={logo2} alt="" />
+            <h3 className="primary-color font-semibold">Windows</h3>
             <p className="text-sm leading-5 text-gray-900">
               Detailed info for your windows replacement. Find the Best Energy
               Efficient Solutions.
@@ -41,23 +29,9 @@ export function Items() {
           <div className="w-full h-1 ml-auto duration-300 origin-left transform scale-x-0 bg-deep-purple-accent-400 group-hover:scale-x-100" />
         </div>
         <div className="flex flex-col justify-between overflow-hidden text-left transition-shadow duration-200 bg-white rounded shadow-xl group hover:shadow-2xl">
-          <div className="p-5">
-            <div className="flex items-center justify-center w-10 h-10 mb-4 rounded-full bg-blue-400">
-              <svg
-                className="w-8 h-8 text-deep-purple-accent-400"
-                stroke="white"
-                viewBox="0 0 52 52"
-              >
-                <polygon
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  fill="white"
-                  points="29 13 14 29 25 29 23 39 38 23 27 23"
-                />
-              </svg>
-            </div>
-            <h3 className="primary_color font-semibold">Roofing</h3>
+          <div className="p-5 flex flex-col justify-center items-center">
+            <img className="w-1/4  m-8" src={logo3} alt="" />
+            <h3 className="primary-color font-semibold">Roofing</h3>
             <p className="text-sm leading-5 text-gray-900">
               Simple inspections and repairs for your roof.
             </p>
