@@ -25,15 +25,15 @@ body,
 }
 
 .primary_color {
-  color: #3889f2;
+  color: #0760F0;
 }
 
 .bg-primary {
-  background-color: #3889f2;
+  background-color: #0760F0;
 }
 
 .text-primary-blue {
-  color: #3889f2;
+  color: #0760F0;
 }
   
 
@@ -43,7 +43,6 @@ h1 {
   font-size: 3.5rem;
   font-weight: 900;
   line-height: 1.2;
-
   display: flex;
   justify-content: center;
   font-family: "Lilita One", sans-serif;
@@ -91,11 +90,24 @@ footer {
 
 /* Estilos de Botones */
 .btn-primary {
-  @apply flex justify-center items-center bg-blue-500 text-white font-bold py-2 m-1 px-4 rounded-full hover:bg-blue-600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0760F0;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
+  border-radius: 9999px; /* un valor grande para hacer que el botón sea redondeado */
 }
 
+.btn-primary:hover {
+  background-color: #2795f0; /* Un tono más oscuro para el color de fondo al pasar el mouse */
+}
+
+
 .btn-secundary {
-  @apply flex justify-center items-center bg-white text-blue-500 font-bold py-2 m-1 px-4 rounded-full hover:bg-gray-200; ;
+  @apply flex justify-center items-center bg-white text-blue-600 font-bold py-2 m-1 px-4 rounded-full hover:bg-gray-200; ;
 }
 
 .h2 {
@@ -276,7 +288,7 @@ footer {
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  background-color: #3889f2;
+  background-color: #0760F0;
 }
 
 @media (min-width: 768px) {
