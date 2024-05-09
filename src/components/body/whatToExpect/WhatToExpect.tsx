@@ -13,9 +13,9 @@ export default function WhatToExpect() {
             <h3 className="primary_color font-semibold text-center">
               Professional services
             </h3>
-            <p className="text-gray-800 text-3xl font-semibold sm:text-4xl ">
-              What to expect
-            </p>
+            <h2 className="text-5xl font-bold text-center dark:text-gray-900">
+              What To Expect
+            </h2>
             <p className="mt-3 text-gray-600">
               Discover pros in your area, or let us suggest some. Compare
               estimates, clarify queries, and select the perfect company for
