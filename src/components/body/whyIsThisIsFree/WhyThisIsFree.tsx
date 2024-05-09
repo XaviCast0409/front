@@ -21,21 +21,17 @@ export default function WhyThisIsFree() {
               Professional services
             </h3>
             <p className="text-gray-800 text-3xl font-semibold sm:text-4xl">
-              What to expect
+              Why is this FREE?
             </p>
             <p className="mt-3 text-gray-600">
-              Discover pros in your area, or let us suggest some. Compare
-              estimates, clarify queries, and select the perfect company for
-              your home project. <br />
-              Effortless Scheduling Schedule appointments with local pros
-              hassle-free. Use their live calendars to pick a convenient time –
-              no more phone tags!
+              We believe finding project costs and booking estimates with
+              contractors should be a simple process.
             </p>
             <div className="flex items-center justify-center space-x-3">
               <Button
                 className="btn-primary"
                 type={"button"}
-                text={<Link to="/formUser">TRY NOW</Link>}
+                text={<Link to="/formUser">Compare Estimates</Link>}
                 handleClick={handleClick}
               />
             </div>
@@ -45,6 +41,3 @@ export default function WhyThisIsFree() {
     </section>
   );
 }
-
-
-
