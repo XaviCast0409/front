@@ -107,9 +107,21 @@ footer {
 
 
 .btn-secundary {
-  @apply flex justify-center items-center bg-white text-blue-600 font-bold py-2 m-1 px-4 rounded-full hover:bg-gray-200; ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  color: #0070FF; /* Cambiado a azul más oscuro */
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
+  border-radius: 9999px; /* Un valor grande para hacer que el botón sea redondeado */
 }
 
+.btn-secundary:hover {
+  background-color: #1C2B56;
+  color: #FFFFFF; /* Un tono más claro para el color de fondo al pasar el mouse */
+}
 .h2 {
   @apply text-2xl font-bold mb-8 text-center;
 }
