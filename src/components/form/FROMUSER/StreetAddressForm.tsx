@@ -23,8 +23,6 @@ export default function StreetAddressForm() {
   return (
     <div className="flex flex-col min-h-screen justify-center items-center">
      <FormContainer title=" Enter your Street Address ">
-
-   
         <InputForm
           id="floating_address"
           nameInput="address"

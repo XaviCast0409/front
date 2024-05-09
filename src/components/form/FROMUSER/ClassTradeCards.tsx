@@ -30,9 +30,9 @@ const ClassTradeCards: React.FC<Props> = () => {
     navigate("/fullnameform");
   };
   return (
-    <div className="container mx-auto px-4 py-8 mt-12">
-      <FormContainer title="class trade">
-        <div className="container_form_trade" style={{ width: "60%" }}>
+    <div className="flex justify-center items-center min-h-screen">
+      <FormContainer title="Class Trade">
+      <section className="grid grid-cols-3 items-center gap-4 ">
           {classUser.map((item, index) => (
             <CardTrade
               key={index}
@@ -41,7 +41,7 @@ const ClassTradeCards: React.FC<Props> = () => {
               id={item.id}
             />
           ))}
-        </div>
+        </section>
       </FormContainer>
     </div>
   );
