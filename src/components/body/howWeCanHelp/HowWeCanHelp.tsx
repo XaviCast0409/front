@@ -8,7 +8,7 @@ export function HowWeCanHelp() {
   return (
     <section className="py-14">
       <div className="max-w-screen-xl mx-auto md:px-8">
-        <div className="items-center gap-x-12 sm:px-4 md:px-0 lg:flex">
+        <div className="items-center gap-x-12 sm:px-4 md:px-0 lg:flex ">
           <div className="flex-1 sm:hidden  lg:block">
             <img
               src="https://images.pexels.com/photos/7710011/pexels-photo-7710011.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"

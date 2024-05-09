@@ -17,12 +17,13 @@ export default function WhyThisIsFree() {
             />
           </div>
           <div className="max-w-xl px-4 space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-2xl">
+            
             <p className="text-gray-800 text-3xl font-semibold sm:text-4xl">
               Why is this FREE?
             </p>
             <p className="mt-3 text-gray-600">
               We believe finding project costs and booking estimates with
-              contractors should be a simple process.
+              contractors should  be a <br />simple process.
             </p>
             <div className="flex items-center justify-center space-x-3">
               <Button

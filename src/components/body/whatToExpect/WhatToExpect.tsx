@@ -6,9 +6,9 @@ export default function WhatToExpect() {
     console.log("Button clicked!");
   };
   return (
-    <section className="py-14">
+    <section className="py-14  bg-gray-100 w-full">
       <div className="max-w-screen-xl mx-auto md:px-8">
-        <div className="items-center gap-x-12 sm:px-4 md:px-0 lg:flex md:flex-row sm:flex  sm:flex-col-reverse ">
+        <div className="items-center gap-x-12 sm:px-4 md:px-0 lg:flex md:flex-row sm:flex  sm:flex-col-reverse   ">
           <div className="max-w-xl px-4 space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-2xl ">
             <h3 className="primary_color font-semibold text-center">
               Professional services
