@@ -8,7 +8,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#3889F2] py-10 md:py-20 text-white">
+    <footer className="bg-[#0760F0] py-10 md:py-20 text-white">
       <div className="container mx-auto text-center flex flex-col w-1/2">
         <h1 className="h1">Let’s work together on your next project</h1>
         <p className="text-lg md:text-xl mb-8 md:max-w-lg mx-auto">
