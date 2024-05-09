@@ -25,27 +25,26 @@ body,
 }
 
 .primary_color {
-  color: #0760F0;
+  color: #0760f0;
 }
 
 .bg-primary {
-  background-color: #0760F0;
+  background-color: #0760f0;
 }
 
 .text-primary-blue {
-  color: #0760F0;
+  color: #0760f0;
 }
-  
 
 h1 {
   margin-bottom: 2rem;
   margin-top: 2rem;
   font-size: 3.5rem;
   font-weight: 900;
-  line-height: 1.2;
+
   display: flex;
   justify-content: center;
-  font-family: "Lilita One", sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
   text-align: center;
@@ -93,7 +92,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0760F0;
+  background-color: #0760f0;
   color: white;
   font-weight: bold;
   padding: 0.5rem 1rem;
@@ -105,13 +104,12 @@ footer {
   background-color: #2795f0; /* Un tono más oscuro para el color de fondo al pasar el mouse */
 }
 
-
 .btn-secundary {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #FFFFFF;
-  color: #0070FF; /* Cambiado a azul más oscuro */
+  background-color: #ffffff;
+  color: #0070ff; /* Cambiado a azul más oscuro */
   font-weight: bold;
   padding: 0.5rem 1rem;
   margin: 0.25rem;
@@ -119,8 +117,8 @@ footer {
 }
 
 .btn-secundary:hover {
-  background-color: #1C2B56;
-  color: #FFFFFF; /* Un tono más claro para el color de fondo al pasar el mouse */
+  background-color: #1c2b56;
+  color: #ffffff; /* Un tono más claro para el color de fondo al pasar el mouse */
 }
 .h2 {
   @apply text-2xl font-bold mb-8 text-center;
@@ -300,7 +298,7 @@ footer {
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  background-color: #0760F0;
+  background-color: #0760f0;
 }
 
 @media (min-width: 768px) {

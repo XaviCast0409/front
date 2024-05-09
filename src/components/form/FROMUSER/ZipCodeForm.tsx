@@ -35,8 +35,18 @@ export default function ZipCodeForm() {
 
   return (
     <div className="flex flex-col min-h-screen justify-center items-center">
-      <img src={logoImage} alt="Logo" className="w-56 h-56 object-contain md:w-80 md:h-80 lg:w-96 lg:h-96"  />
-      <FormContainer title=" Validate Zip Code ">
+      <img
+        src={logoImage}
+        alt="Logo"
+        className="w-56 h-56 object-contain md:w-80 md:h-80 lg:w-96 lg:h-96"
+      />
+      <div>
+        <h1 className="text-4xl font-bold text-gray-700">
+          Let's find you Local Remodeling Pros
+        </h1>
+      </div>
+      <FormContainer
+        title=" Enter your location to start">
         <InputForm
           id="floating_postal_code"
           nameInput="zipCode"
