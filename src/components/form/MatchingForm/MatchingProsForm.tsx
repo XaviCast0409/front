@@ -2,7 +2,14 @@
 import MatchingDetail from "./MatchingDetail";
 import MatchingNextSteps from "./MatchingNextSteps";
 
+import { Link } from "react-router-dom";
+import Button from "../../../utils/Button";
+
 export default function MatchingProsForm() {
+  const handleSubmit = () => {
+    console.log("Button clicked!");
+  };
+
   return (
     <>
       <div className="w-full">
@@ -26,7 +33,18 @@ export default function MatchingProsForm() {
           {/* Ajustes para MatchingNextSteps */}
           <MatchingNextSteps />
         </div>
-        {/* Tercer componente */}
+       
+
+                <div className="flex justify-center items-center my-10">
+                  <Link to="/">
+                    <Button
+                      className="btn-primary m-"
+                      type="button"
+                      text="Back To Home"
+                      handleClick={handleSubmit}
+                    />
+                  </Link>
+                </div>
       </div>
     </>
   );
