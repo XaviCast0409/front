@@ -1,6 +1,6 @@
-import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Button from "../../utils/Button";
+import Logos from "../../utils/Logos";
 
 export default function Footer() {
   const handleClick = () => {
@@ -22,29 +22,9 @@ export default function Footer() {
             handleClick={handleClick}
           />
         </div>
-
+        <Logos />
         <hr className="border-t-2 my-6 border-white" />
         <div className="flex flex-col  justify-center items-center">
-          <div className="flex mb-4 md:mb-4">
-            <a
-              href="#"
-              className="text-white mx-4 text-3xl transition duration-300 hover:text-gray-300"
-            >
-              <FaFacebookF />
-            </a>
-            <a
-              href="#"
-              className="text-white mx-4 text-3xl transition duration-300 hover:text-gray-300"
-            >
-              <FaTwitter />
-            </a>
-            <a
-              href="#"
-              className="text-white mx-4 text-3xl transition duration-300 hover:text-gray-300"
-            >
-              <FaInstagram />
-            </a>
-          </div>
           <div>
             <p className="text-sm text-white">
               &copy; {new Date().getFullYear()} Hows Advisor
