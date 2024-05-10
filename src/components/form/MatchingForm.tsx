@@ -4,6 +4,7 @@ import Button from "../../utils/Button";
 import CheckBox from "../../utils/CheckBox";
 import { useState } from "react";
 import { FormContainer } from "../../utils/FormContainer";
+import Check from "../../assets/asset/images/marca-de-verificacion.png"
 
 export default function MatchingForm() {
   const [isChecked, setIsChecked] = useState(false);
@@ -14,10 +15,8 @@ export default function MatchingForm() {
 
   return (
     <div className="flex flex-col min-h-screen justify-center items-center">
-      <FormContainer title="We have matching pro in your area ">
-        <p className="p mb-6">Where should we send your matches?</p>
-
-        {/* Checkbox */}
+      <img src={Check} className="w-24 h-24" alt="Check" />
+      <FormContainer title="We have matching pros in your area ">
         <div className="mb-6 flex flex-col justify-normal items-center">
           <CheckBox
             id="terms-agreement"
@@ -29,16 +28,8 @@ export default function MatchingForm() {
 
         <div className="container_buttons flex   justify-between p-4 ">
           <div className="flex justify-evenly p-4">
-          <BackButtonArrow />
-            <Link to="/">
-              <Button
-                className="btn-primary"
-                type={"button"}
-                text="Back to Home"
-                handleClick={handleClick}
-                disabled={!isChecked}
-              />
-            </Link>
+            <BackButtonArrow />
+
             <Link to="/matchingprosform">
               <Button
                 className="btn-primary"
@@ -54,3 +45,18 @@ export default function MatchingForm() {
     </div>
   );
 }
+
+/*
+
+<Link to="/">
+              <Button
+                className="btn-primary"
+                type={"button"}
+                text="Back to Home"
+                handleClick={handleClick}
+                disabled={!isChecked}
+              />
+            </Link>
+
+
+*/
