@@ -1,4 +1,4 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useUserHook } from "../../../hooks/hookUser/useUserHook";
 import { InputForm } from "../../../utils/InputForm";
 import { useNavigate } from "react-router-dom";
@@ -8,12 +8,12 @@ import BackButtonArrow from "../../../utils/BackButtonArrow";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string()
-    .email("Must be a valid email")
-    .required("The email is required"),
   phone: Yup.string()
     .matches(/^(\+\d{1,3}[- ]?)?\d{10}$/, "Must be a valid phone number")
     .required("The phone number is required"),
+  email: Yup.string()
+    .email("Must be a valid email")
+    .required("The email is required"),
 });
 
 export default function EmailPhone() {
@@ -37,13 +37,16 @@ export default function EmailPhone() {
 
   const handleValidate = async () => {
     try {
-      await validationSchema.validate({ email: userData.email, phone: userData.phone });
+      await validationSchema.validate({
+        email: userData.email,
+        phone: userData.phone,
+      });
 
       setUserStore({
         email: userData.email,
         phone: userData.phone,
       });
-      setError(""); 
+      setError("");
       return true;
     } catch (error: any) {
       setError(error.message);
