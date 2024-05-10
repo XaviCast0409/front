@@ -5,6 +5,13 @@ import Button from "../../../utils/Button";
 import { useState, useEffect } from "react";
 import { FormContainer } from "../../../utils/FormContainer";
 import BackButtonArrow from "../../../utils/BackButtonArrow";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Must be a valid email")
+    .required("The email is required"),
+});
 
 export default function EmailPhone() {
   const {
@@ -18,15 +25,34 @@ export default function EmailPhone() {
   const [create, setCreate] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    setUserStore({
-      email: userData.email,
-      phone: userData.phone,
-    });
-    setCreate(true);
-    setTimeout(() => {
-      navigate("/matchingform");
-    }, 500);
+  const handleValidate = async () => {
+    try {
+      // Valida los datos del formulario
+      await validationSchema.validate({ email: userData.email });
+
+      setUserStore({
+        email: userData.email,
+      });
+      return true;
+    } catch (error) {
+      // Maneja y muestra los errores de validación
+      console.error(error);
+      return false;
+    }
+  };
+
+  const handleSubmit = async () => {
+    const isValid = await handleValidate();
+    if (isValid) {
+      setUserStore({
+        email: userData.email,
+        phone: userData.phone,
+      });
+      setCreate(true);
+      setTimeout(() => {
+        navigate("/matchingform");
+      }, 500);
+    }
   };
 
   useEffect(() => {
