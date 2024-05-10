@@ -56,7 +56,7 @@ export const NavBar = () => {
         <div
           className={`md:hidden ${
             isMobileMenuOpen ? "block" : "hidden"
-          } fixed top-0 left-0 w-full h-screen bg-[#0760F0] bg-opacity-90 z-50`}
+          } fixed top-0 left-0 w-full h-screen bg-[#0760F0]  z-50`}
         >
           <div className="flex flex-col gap-12 items-center pt-16">
             {/*
