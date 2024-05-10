@@ -28,20 +28,10 @@ export const NavBar = () => {
           />
         </Link>
         <div
-          className={`hidden md:flex items-center gap-12 mr-8 ${
+          className={`hidden md:flex items-center gap-12 mr-8 transition-all duration-500 ease-in-out ${
             isMobileMenuOpen ? "hidden" : ""
           }`}
         >
-          {/*
-            <Link
-              to="/blogscards"
-              onClick={toggleMobileMenu}
-              className="text-white"
-            >
-              Blog
-            </Link>
-            */}
-
           <Link to="/siginconstructorpage" className="text-white">
             Are you a Contractor?
           </Link>
@@ -54,20 +44,11 @@ export const NavBar = () => {
           />
         </div>
         <div
-          className={`md:hidden ${
+          className={`md:hidden transition-all duration-500 ease-in-out ${
             isMobileMenuOpen ? "block" : "hidden"
           } fixed top-0 left-0 w-full h-screen bg-[#0760F0]  z-50`}
         >
           <div className="flex flex-col gap-12 items-center pt-16">
-            {/*
-            <Link
-              to="/blogscards"
-              onClick={toggleMobileMenu}
-              className="text-white"
-            >
-              Blog
-            </Link>
-            */}
             <Link to="/siginconstructorpage" className="text-white">
               Are you a Contractor?
             </Link>
@@ -88,3 +69,12 @@ export const NavBar = () => {
     </div>
   );
 };
+{/*
+            <Link
+              to="/blogscards"
+              onClick={toggleMobileMenu}
+              className="text-white"
+            >
+              Blog
+            </Link>
+            */}

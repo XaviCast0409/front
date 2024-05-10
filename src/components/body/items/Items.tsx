@@ -13,7 +13,11 @@ export function Items() {
               className="flex flex-col justify-center items-center"
               to="/formUser"
             >
-              <img className="w-1/4  m-8" src={logo1} alt="" />
+              <img
+                className="w-1/4  m-8"
+                src={logo1}
+                alt="item logo Bathroom"
+              />
             </Link>
             <h3 className="primary-color font-semibold">Bathroom</h3>
             <p className="text-sm leading-5 text-gray-900">
@@ -29,7 +33,7 @@ export function Items() {
               className="flex flex-col justify-center items-center"
               to="/formUser"
             >
-              <img className="w-1/4  m-8" src={logo2} alt="" />
+              <img className="w-1/4  m-8" src={logo2} alt="item logo Windows" />
             </Link>
             <h3 className="primary-color font-semibold">Windows</h3>
             <p className="text-sm leading-5 text-gray-900">
@@ -45,7 +49,7 @@ export function Items() {
               className="flex flex-col justify-center items-center"
               to="/formUser"
             >
-              <img className="w-1/4  m-8" src={logo3} alt="" />
+              <img className="w-1/4  m-8" src={logo3} alt="item logo Roofing" />
             </Link>
             <h3 className="primary-color font-semibold">Roofing</h3>
             <p className="text-sm leading-5 text-gray-900">
