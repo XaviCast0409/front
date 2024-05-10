@@ -1,45 +1,24 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import logoImage from "../../assets/asset/images/HOWS-ADVISOR-blanco.png";
 import { BarsNav } from "../../assets/Icons";
 import Button from "../../utils/Button";
 
 export const NavBar = () => {
-  const lastScrollTop = useRef(0);
-  const [isNavBarVisible, setIsNavBarVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleClick = () => {
     console.log("Button clicked!");
   };
 
-  const handleScroll = () => {
-    const { pageYOffset } = window;
-    if (pageYOffset > lastScrollTop.current) {
-      setIsNavBarVisible(false);
-    } else if (pageYOffset < lastScrollTop.current) {
-      setIsNavBarVisible(true);
-    }
-    lastScrollTop.current = pageYOffset;
-  };
-
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
-    <div className="absolute z-10 ">
+    <div className="fixed top-0 left-0">
       <nav
-        className={`fixed top-0 left-0 transform ${
-          isNavBarVisible ? "translate-y-0" : "-translate-y-72"
-        } flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 w-full h-20 shadow-md bg-[#0760F0] transition-transform duration-300 `}
+        className={`fixed top-0  flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 w-full h-20 shadow-md bg-primary transition-transform duration-500 ease-in-out`}
       >
         <Link to="/" className="text-white ml-4">
           <img
