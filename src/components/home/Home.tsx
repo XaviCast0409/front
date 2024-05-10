@@ -25,7 +25,7 @@ import UserCompanyPage from "../../pages/UserCompanyPage";
 import BlogAdmiPage from "../../pages/BlogAdmiPage";
 import EmailPhonePage from "../../pages/EmailPhonePage";
 import BlogsCardsPages from "../../pages/BlogsCardsPages";
-
+import MatchingFormNoFoundPage from "../../pages/MatchingFormNoFoundPage";
 
 /* import { ProtectedRouter } from "../../utils/ProtectedRoute";
 const token = localStorage.getItem("token");
@@ -42,6 +42,8 @@ const Home= () => {
         <Route path="/" element={<LandingPage /> ?? null} />
         <Route path="/matchingform" element={<MatchingPage /> ?? null} />
         <Route path="/matchingprosform" element={<MatchingProsPage /> ?? null}/>
+        <Route path="/matchingformnofound" element={<MatchingFormNoFoundPage /> ?? null}/>
+
         <Route path="/serviceneededformgutter" element={<ServiceNeededPage /> ?? null}/>
         <Route path="/blog/:id" element={<BlogPage /> ?? null} />
         <Route path="/blogscards" element={<BlogsCardsPages /> ?? null} />

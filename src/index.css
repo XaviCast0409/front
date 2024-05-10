@@ -39,7 +39,7 @@ body,
 h1 {
   margin-bottom: 2rem;
   margin-top: 2rem;
-  font-size: 3.5rem;
+  font-size: 1.5rem;
   font-weight: 900;
   display: flex;
   justify-content: center;
@@ -49,11 +49,47 @@ h1 {
   text-align: center;
 }
 
+@media (min-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+}
 h2 {
-  font-size: 3rem; /* text-5xl equivale a un tamaño de fuente de 3rem */
-  font-weight: bold; /* Cambia "font-bold" por "700" si lo prefieres */
-  text-align: center; /* Alineación centrada del texto */
-  color: #2d3748; /* Cambia "dark:text-gray-900" por el color deseado o su valor hexadecimal */
+  font-size: 1.5rem; /* Tamaño de fuente más pequeño para móviles muy pequeños */
+  font-weight: bold;
+  text-align: center;
+  color: #2d3748;
+}
+
+@media (min-width: 480px) {
+  h2 {
+    font-size: 2rem; /* Tamaño de fuente para móviles un poco más grandes */
+  }
+}
+
+@media (min-width: 768px) {
+  h2 {
+    font-size: 2.5rem; /* Tamaño de fuente para tabletas y superiores */
+  }
+}
+
+@media (min-width: 1024px) {
+  h2 {
+    font-size: 3rem; 
+    margin: 1rem
+  }
 }
 
 h3 {
@@ -97,14 +133,12 @@ footer {
   padding: 1.5rem 1.5rem;
   margin: 0.25rem;
   border-radius: 9999px; /* un valor grande para hacer que el botón sea redondeado */
- 
+
   transition: background-color 0.4s;
 }
 
 .btn-primary:hover {
-  background-color: #1c2b56; 
-
-  
+  background-color: #1c2b56;
 }
 
 .btn-secundary {
@@ -116,7 +150,7 @@ footer {
   font-weight: bold;
   padding: 1.5rem 1.5rem;
   margin: 0.25rem;
-  border-radius: 9999px; 
+  border-radius: 9999px;
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
@@ -232,8 +266,6 @@ footer {
   background-color: #68d391;
 }
 
-
-
 .wrong-error-input {
   border-color: #ec4899;
 }
@@ -309,7 +341,6 @@ footer {
   }
 }
 
-
 .checkbox {
   width: 1rem;
   height: 1rem;
@@ -317,9 +348,8 @@ footer {
   background-color: #f3f4f6;
   border-color: #d1d5db;
   border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 }
-
 
 .checkbox-label {
   margin-left: 0.5rem;
@@ -327,11 +357,10 @@ footer {
   line-height: 1.25rem;
   color: #4b5563;
   font-weight: 400;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  
 }

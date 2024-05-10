@@ -48,15 +48,6 @@ export default function MatchingForm() {
 
 /*
 
-<Link to="/">
-              <Button
-                className="btn-primary"
-                type={"button"}
-                text="Back to Home"
-                handleClick={handleClick}
-                disabled={!isChecked}
-              />
-            </Link>
 
 
 */
