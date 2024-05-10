@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
 import Button from "../../utils/Button";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
-  const handleClick = () => {
-    console.log("Button clicked!");
+  const navigate = useNavigate();
+  const handleSubmit = () => {
+    navigate("/formUser");
   };
 
   return (
@@ -31,8 +32,9 @@ export default function Hero() {
           <Button
             className="btn-primary"
             type={"button"}
-            text={<Link to="/formUser">Book Local Experts</Link>}
-            handleClick={handleClick}
+            text="Book Local Experts"
+            handleClick={handleSubmit}
+            disabled={false}
           />
         </div>
       </section>

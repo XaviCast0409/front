@@ -10,7 +10,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button className={className} onClick={handleClick} type={type} disabled={disabled}>
-      <div className={className}>
+      <div>
         {text}
         {icon}
       </div>
