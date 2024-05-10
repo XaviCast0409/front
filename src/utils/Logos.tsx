@@ -1,7 +1,7 @@
 import InstagramWhiteLogo from "../assets/asset/images/hows-advisor-instagram-white.png";
-import FacebookWhiteLogo from "../assets/asset/images/hows-advisor-facebook-white.png";
-import LinkedinWhiteLogo from "../assets/asset/images/hows-advisor-linkedin-white.png";
-import WhatsAppLogo from "../assets/asset/images/hows-advisor-whatsapp-white.png";
+//import FacebookWhiteLogo from "../assets/asset/images/hows-advisor-facebook-white.png";
+//import LinkedinWhiteLogo from "../assets/asset/images/hows-advisor-linkedin-white.png";
+//import WhatsAppLogo from "../assets/asset/images/hows-advisor-whatsapp-white.png";
 import { Link } from "react-router-dom";
 
 export default function Logos() {
@@ -18,7 +18,13 @@ export default function Logos() {
           alt="Img Instagram"
         />
       </Link>
-      <img
+    </div>
+  );
+}
+
+
+/*
+<img
         src={FacebookWhiteLogo}
         className="w-10 h-10 mx-4  my-2"
         alt="Img Facebook"
@@ -33,6 +39,5 @@ export default function Logos() {
         className="mx-4 my-2 w-10 h-10"
         alt="Img Whatsapp"
       />
-    </div>
-  );
-}
+
+*/
