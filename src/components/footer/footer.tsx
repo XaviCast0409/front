@@ -9,9 +9,9 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#0760F0] py-10 md:py-20 text-white">
-      <div className="container mx-auto text-center flex flex-col w-1/2 gap-8">
+      <div className="container mx-auto text-center flex flex-col w-80p gap-8">
         <h1 className="h1">Let’s work together on your next project</h1>
-        <p className="text-lg md:text-xl mb-8 md:max-w-lg mx-auto">
+        <p className="text-sm  md:text-xl  md:max-w-lg mx-auto">
           Find trusted experts in your area and get your project started!
         </p>
         <div className="flex flex-col items-center justify-center">

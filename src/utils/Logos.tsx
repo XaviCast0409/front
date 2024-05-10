@@ -6,17 +6,11 @@ import WhatsAppLogo from "../assets/asset/images/hows-advisor-whatsapp-white.png
 export default function Logos() {
   return (
     <div className="mx-4 p-4 text-center flex justify-center  items-center">
-      <a
-        href="https://www.instagram.com/howsadvisor/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          src={InstagramWhiteLogo}
-          className="w-10 h-10 mx-4 my-2"
-          alt="Img Instagram"
-        />
-      </a>
+      <img
+        src={InstagramWhiteLogo}
+        className="w-10 h-10 mx-4  my-2"
+        alt="Img Instagram"
+      />
       <img
         src={FacebookWhiteLogo}
         className="w-10 h-10 mx-4  my-2"
