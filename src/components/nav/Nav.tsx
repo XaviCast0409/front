@@ -16,7 +16,7 @@ export const NavBar = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0">
+    <div className="fixed top-0 left-0 z-10">
       <nav
         className={`fixed top-0  flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 w-full h-20 shadow-md bg-primary transition-transform duration-500 ease-in-out`}
       >
