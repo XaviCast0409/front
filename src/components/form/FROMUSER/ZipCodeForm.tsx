@@ -5,6 +5,8 @@ import BackButtonArrow from "../../../utils/BackButtonArrow";
 import { useZipcCodeHook } from "../../../hooks/hookZipCode/useZipCodeHook";
 import { useUserHook } from "../../../hooks/hookUser/useUserHook";
 import { FormContainer } from "../../../utils/FormContainer";
+import { useState } from "react";
+import BeatLoader from "react-spinners/BeatLoader";
 
 export default function ZipCodeForm() {
   const {
@@ -18,8 +20,13 @@ export default function ZipCodeForm() {
   } = useZipcCodeHook();
   const { filterRegisterUser } = useUserHook();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const createZipCode = () => {
+  const createZipCode = async () => {
+    setIsLoading(true);
+    await onSubmitCreate(zipCode ?? {});
+    setIsLoading(false);
+
     onSubmitCreate(zipCode ?? {});
     setMessage();
     filterRegisterUser({
@@ -31,22 +38,25 @@ export default function ZipCodeForm() {
       navigate("/form/tradeUser");
     }, 500);
   };
-
   return (
     <div className="flex flex-col min-h-screen justify-center items-center">
-      <FormContainer title=" Let's find you Local Remodeling Pros ">
-        <InputForm
-          id="floating_postal_code"
-          nameInput="zipCode"
-          type="text"
-          placeholder=" "
-          stateValue={zipCodeNumber}
-          handleChange={handleChange}
-          color="black"
-          title="Postal Code"
-          className="w-80 md:w-full lg:w-96"
-        />
-      </FormContainer>
+      {isLoading ? (
+        <BeatLoader color="#0760f0" loading={isLoading} size={15} />
+      ) : (
+        <FormContainer title=" Let's find you Local Remodeling Pros ">
+          <InputForm
+            id="floating_postal_code"
+            nameInput="zipCode"
+            type="text"
+            placeholder=" "
+            stateValue={zipCodeNumber}
+            handleChange={handleChange}
+            color="black"
+            title="Postal Code"
+            className="w-80 md:w-full lg:w-96"
+          />
+        </FormContainer>
+      )}
       {validate === false ? (
         <div>
           <p className="text-center text-red-600">{`${message}`}</p>
