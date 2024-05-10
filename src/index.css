@@ -218,7 +218,32 @@ footer {
 }
 
 .container_buttons {
-  @apply flex items-center justify-center mt-8 text-center lg:text-left;
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .container_buttons {
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 1023px) {
+  .container_buttons {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container_buttons {
+    text-align: left;
+    justify-content: center;
+  }
 }
 
 .card_matching {
