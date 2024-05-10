@@ -17,9 +17,9 @@ export function HowWeCanHelp() {
             />
           </div>
           <div className="max-w-xl px-4 space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-2xl">
-            <p className="text-gray-800 text-3xl font-semibold sm:text-4xl">
-              How We Can Assist You
-            </p>
+          <h2 className="text-5xl font-bold text-center dark:text-gray-900">
+             How We Can Assist You
+            </h2>
             <p className="mt-3 text-gray-600">
               Discover the ideal local professionals for your home projects with
               us! From roofing to kitchen renovations, we connect you with
