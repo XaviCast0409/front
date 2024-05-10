@@ -4,6 +4,7 @@ import Button from "../../utils/Button";
 import CheckBox from "../../utils/CheckBox";
 import { useState } from "react";
 import { FormContainer } from "../../utils/FormContainer";
+import Check from "../../assets/asset/images/marca-de-verificacion.png"
 
 export default function MatchingForm() {
   const [isChecked, setIsChecked] = useState(false);
@@ -14,6 +15,7 @@ export default function MatchingForm() {
 
   return (
     <div className="flex flex-col min-h-screen justify-center items-center">
+      <img src={Check} className="w-24 h-24" alt="Check" />
       <FormContainer title="We have matching pros in your area ">
         <div className="mb-6 flex flex-col justify-normal items-center">
           <CheckBox
