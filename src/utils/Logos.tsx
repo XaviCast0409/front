@@ -5,7 +5,17 @@ import LinkedinWhiteLogo from "../assets/asset/images/hows-advisor-linkedin-whit
 export default function Logos() {
   return (
     <div className="bottom-0 absolute p-4 text-center right-0 left-0 flex justify-center space-x-4">
-      <img className="w-10 h-10" src={InstagramWhiteLogo} alt="Img Instagram" />
+      <a
+        href="https://www.instagram.com/howsadvisor/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          className="w-10 h-10"
+          src={InstagramWhiteLogo}
+          alt="Img Instagram"
+        />
+      </a>
       <img className="w-10 h-10" src={FacebookWhiteLogo} alt="Img Facebook" />
       <img className="w-10 h-10" src={LinkedinWhiteLogo} alt="Img Linkedin" />
     </div>
