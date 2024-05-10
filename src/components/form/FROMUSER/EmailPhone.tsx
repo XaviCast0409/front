@@ -1,4 +1,4 @@
-import  { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useUserHook } from "../../../hooks/hookUser/useUserHook";
 import { InputForm } from "../../../utils/InputForm";
 import { useNavigate } from "react-router-dom";
@@ -28,6 +28,12 @@ export default function EmailPhone() {
   const [create, setCreate] = useState(false);
   const navigate = useNavigate();
   const [error, setError] = useState("");
+
+  // Función para guardar el estado del email y el phone en localStorage
+  useEffect(() => {
+    window.localStorage.setItem("email", userData.email ?? "");
+    window.localStorage.setItem("phone", userData.phone ?? "");
+  }, [userData.email, userData.phone]);
 
   const handleValidate = async () => {
     try {
