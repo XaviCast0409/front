@@ -1,10 +1,11 @@
 import Button from "../../utils/Button";
 import { useCompanyHook } from "../../hooks/hookCompany/useCompanyHook";
-import { InputForm } from "../../utils/InputForm";
-import { FormContainer } from "../../utils/FormContainer";
 import BackButtonArrow from "../../utils/BackButtonArrow";
 import { useZipcCodeHook } from "../../hooks/hookZipCode/useZipCodeHook";
 import { Modal } from "../../utils/ModalError";
+import { DataStates } from "../../utils/Utils";
+import InputSelect from "../../utils/SelectInput";
+import InputField from "../../utils/InputField";
 
 export default function ConstructorForm() {
   const {
@@ -17,6 +18,7 @@ export default function ConstructorForm() {
     setCreated,
   } = useCompanyHook();
   const { zipCode } = useZipcCodeHook();
+  const { statesEEUU } = DataStates();
 
   const handleButtonModal = () => {
     setMessage();
@@ -31,64 +33,67 @@ export default function ConstructorForm() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen justify-center items-center md:w-full ">
-      <FormContainer title="Register Company">
-        <InputForm
-          id="floating_company"
-          nameInput="name_company"
+    <div className="container flex flex-col h-full justify-center">
+      <h1>Register Company</h1>
+      <section className="grid grid-cols-12 gap-5 pt-5">
+        <InputField
+          name="name_company"
           type="text"
-          placeholder=" "
-          stateValue={companyData}
-          handleChange={handleChange}
-          color="black"
-          title="Company"
-          className="w-80 md:w-full lg:w-96"
+          placeholder="Name Company"
+          errors={{}}
+          labelText="Company"
+          requiredText="This field is required"
+          xlColSpan="xl:col-span-4"
+          onChange={(e) => handleChange(e, "name_company")}
         />
-        <InputForm
-          id="floating_email"
-          nameInput="email"
+        <InputField
+          name="email"
+          type="email"
+          placeholder="Email"
+          errors={{}}
+          labelText="Email"
+          requiredText="This field is required"
+          xlColSpan="xl:col-span-4"
+          onChange={(e) => handleChange(e, "email")}
+        />
+        <InputField
+          name="password"
+          type="password"
+          placeholder="Password"
+          errors={{}}
+          labelText="Password"
+          requiredText="This field is required"
+          xlColSpan="xl:col-span-4" 
+          onChange={(e) => handleChange(e, "password")}
+        />
+        <InputField
+          name="phone"
           type="text"
-          placeholder=" "
-          stateValue={companyData}
-          handleChange={handleChange}
-          color="black"
-          title="Email"
-          className="w-80 md:w-full lg:w-96"
+          placeholder="Phone"
+          errors={{}}
+          labelText="Phone"
+          requiredText="This field is required"
+          xlColSpan="xl:col-span-4"
+          onChange={(e) => handleChange(e, "phone")}
         />
-        <InputForm
-          id="floating_password"
-          nameInput="password"
+        <InputSelect
+          options={statesEEUU}
+          name="state"
+          labelText="State"
+          xlColSpan="xl:col-span-4"
+        />
+        <InputField
+          name="address"
           type="text"
-          placeholder=" "
-          stateValue={companyData}
-          handleChange={handleChange}
-          color="black"
-          title="Password"
-          className="w-80 md:w-full lg:w-96"
+          placeholder="Address"
+          errors={{}}
+          labelText="Address"
+          requiredText="This field is required"
+          xlColSpan="xl:col-span-4"
+          onChange={(e) => handleChange(e, "address")}
         />
-        <InputForm
-          id="floating_phone"
-          nameInput="phone"
-          type="text"
-          placeholder=" "
-          stateValue={companyData}
-          handleChange={handleChange}
-          color="black"
-          title="Phone"
-          className="w-80 md:w-full lg:w-96"
-        />
-        <InputForm
-          id="floating_address"
-          nameInput="address"
-          type="text"
-          placeholder=" "
-          stateValue={companyData}
-          handleChange={handleChange}
-          color="black"
-          title="Address"
-          className="w-80 md:w-full lg:w-96"
-        />
-        <div className="container_buttons">
+      </section>
+        <div className="flex w-full justify-center mt-8 ">
           <BackButtonArrow />
           <Button
             className="btn-primary"
@@ -97,7 +102,6 @@ export default function ConstructorForm() {
             handleClick={handleSubmit}
           />
         </div>
-      </FormContainer>
       {messageCreate !== "" && (
         <Modal
           message={messageCreate}
