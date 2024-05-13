@@ -4,7 +4,8 @@ import { Loading } from "../assets/Icons";
 interface InputFieldProps {
   placeholder: string;
   name: string;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: ChangeEvent<HTMLInputElement>, fieldName?: any) => void;
+  handleChange2?: (e: React.ChangeEvent<HTMLInputElement>, fieldName: any) => void;
   type: string;
   errors?: {
     [key: string]: {
