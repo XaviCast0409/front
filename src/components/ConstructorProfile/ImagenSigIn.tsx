@@ -1,8 +1,3 @@
-import InstagramWhiteLogo from "../../assets/asset/images/hows-advisor-instagram-white.png";
-import FacebookWhiteLogo from "../../assets/asset/images/hows-advisor-facebook-white.png";
-import LinkedinWhiteLogo from "../../assets/asset/images/hows-advisor-linkedin-white.png";
-import WhatsAppLogo from "../../assets/asset/images/hows-advisor-whatsapp-white.png";
-
 export const ImagenSigIn = () => {
   return (
     <div
@@ -20,7 +15,20 @@ export const ImagenSigIn = () => {
         <p className="text-3xl my-4">
           Crafting your spaces with precision and care, every step of the way.
         </p>
-        <div className=" mx-4 p-4 text-center flex justify-center  items-center">
+      </div>
+    </div>
+  );
+};
+
+/*
+import InstagramWhiteLogo from "../../assets/asset/images/hows-advisor-instagram-white.png";
+import FacebookWhiteLogo from "../../assets/asset/images/hows-advisor-facebook-white.png";
+import LinkedinWhiteLogo from "../../assets/asset/images/hows-advisor-linkedin-white.png";
+import WhatsAppLogo from "../../assets/asset/images/hows-advisor-whatsapp-white.png";
+
+
+
+ <div className=" mx-4 p-4 text-center flex justify-center  items-center">
           <a
             href="https://www.instagram.com/howsadvisor/"
             target="_blank"
@@ -48,7 +56,4 @@ export const ImagenSigIn = () => {
             alt="Img Whatsapp"
           />
         </div>
-      </div>
-    </div>
-  );
-};
+*/

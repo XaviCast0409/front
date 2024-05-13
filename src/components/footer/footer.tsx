@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Button from "../../utils/Button";
-import Logos from "../../utils/Logos";
 
 export default function Footer() {
   const handleClick = () => {
@@ -26,7 +25,6 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col justify-center items-center">
-          <Logos />
           <p className="text-sm text-white">
             &copy; {new Date().getFullYear()} Hows Advisor
           </p>
@@ -35,3 +33,9 @@ export default function Footer() {
     </footer>
   );
 }
+
+/*
+import Logos from "../../utils/Logos";
+
+<Logos />
+*/
