@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useUserHook } from "../../../hooks/hookUser/useUserHook";
 import { InputForm } from "../../../utils/InputForm";
 import { useNavigate } from "react-router-dom";
+
 import Button from "../../../utils/Button";
 import { FormContainer } from "../../../utils/FormContainer";
 import BackButtonArrow from "../../../utils/BackButtonArrow";
@@ -9,6 +10,7 @@ import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
   phone: Yup.string()
+    .matches(/^\d+$/, "Must contain only numbers")
     .matches(/^(\+\d{1,3}[- ]?)?\d{10}$/, "Must be a valid phone number")
     .required("The phone number is required"),
   email: Yup.string()
@@ -25,11 +27,15 @@ export default function EmailPhone() {
     onSubmit,
     companiesId,
   } = useUserHook();
-  const [create, setCreate] = useState(false);
-  const navigate = useNavigate();
-  const [error, setError] = useState("");
+  const [formState, setFormState] = useState({
+    create: false,
+    error: "",
+  });
+  
 
-  // Función para guardar el estado del email y el phone en localStorage
+  const navigate = useNavigate();
+
+   
   useEffect(() => {
     window.localStorage.setItem("email", userData.email ?? "");
     window.localStorage.setItem("phone", userData.phone ?? "");
@@ -46,10 +52,16 @@ export default function EmailPhone() {
         email: userData.email,
         phone: userData.phone,
       });
-      setError("");
+      setFormState((prevState) => ({
+        ...prevState,
+        error: "",
+      }));
       return true;
     } catch (error: any) {
-      setError(error.message);
+      setFormState((prevState) => ({
+        ...prevState,
+        error: error.message,
+      }));
       console.error(error);
       return false;
     }
@@ -58,11 +70,10 @@ export default function EmailPhone() {
   const handleSubmit = async () => {
     const isValid = await handleValidate();
     if (isValid) {
-      setUserStore({
-        email: userData.email,
-        phone: userData.phone,
-      });
-      setCreate(true);
+      setFormState((prevState) => ({
+        ...prevState,
+        create: true,
+      }));
       setTimeout(() => {
         navigate("/matchingform");
       }, 500);
@@ -70,11 +81,14 @@ export default function EmailPhone() {
   };
 
   useEffect(() => {
-    if (create) {
+    if (formState.create) {
       onSubmit(useStoreCreate, companiesId);
-      setCreate(false);
+      setFormState((prevState) => ({
+        ...prevState,
+        create: false,
+      }));
     }
-  }, [create, useStoreCreate, onSubmit, companiesId]);
+  }, [formState.create, useStoreCreate, onSubmit, companiesId]);
 
   return (
     <div className="flex flex-col min-h-screen justify-center items-center">
@@ -104,7 +118,7 @@ export default function EmailPhone() {
       </FormContainer>
 
       {/* Mostrar mensaje de error si existe */}
-      {error && <p className="text-red-500">{error}</p>}
+      {formState.error && <p className="text-red-500">{formState.error}</p>}
 
       <div className="container_buttons flex ">
         <BackButtonArrow />

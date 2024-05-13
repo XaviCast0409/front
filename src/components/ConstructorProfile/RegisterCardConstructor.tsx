@@ -4,13 +4,15 @@ import { loadStripe } from "@stripe/stripe-js";
 import SetupForm from "../../components/ConstructorProfile/SetUpFormStripe";
 
 
-
 interface RegisterCardConstructorProps {
   children?: ReactNode;
 }
 
 const RegisterCardConstructor: React.FC<RegisterCardConstructorProps> = () => {
   const [stripePromise, setStripePromise] = useState<Promise<any> | null>(null);
+
+  // Hacer un axios a la ruta de stripe para obtener el cliente secret
+  
 
   useEffect(() => {
     const fetchStripePromise = async () => {

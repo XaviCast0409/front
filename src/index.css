@@ -67,7 +67,7 @@ h1 {
   }
 }
 h2 {
-  font-size: 1.5rem; /* Tamaño de fuente más pequeño para móviles muy pequeños */
+  font-size: 1.5rem; 
   font-weight: bold;
   text-align: center;
   color: #2d3748;
@@ -153,11 +153,12 @@ footer {
   border-radius: 9999px;
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
-
+/*
 .btn-secundary:hover {
   background-color: #1c2b56;
   color: #ffffff; /* Un tono más claro para el color de fondo al pasar el mouse */
-}
+
+
 .h2 {
   @apply text-2xl font-bold mb-8 text-center;
 }
