@@ -11,6 +11,7 @@ export interface CompanyAttributes {
   token?: string
   status?: boolean;
   customerstripeId?: string;
+  stateCity?: striong;
   Trades?: [
     {
       id?: number,

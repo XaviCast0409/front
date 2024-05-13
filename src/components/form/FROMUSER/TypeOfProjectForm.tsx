@@ -20,7 +20,7 @@ export default function TypeOfProjectForm() {
     navigate("/form/classTrade");
   };
 
- return (
+return (
   <div className="flex justify-center items-center min-h-screen">
     <FormContainer title="Trade Company">
       <section className="grid grid-cols-3 items-center gap-4 ">

@@ -2,14 +2,14 @@ import { create, SetState, GetState } from "zustand";
 import axios, { AxiosResponse, AxiosInstance } from "axios";
 import { CompanyAttributes } from "storeType";
 
-/*
-const axiosInstance: AxiosInstance = axios.create({
-  baseURL: "https://api2-2aj3.onrender.com",
-});*/
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: "http://localhost:3000/",
+  baseURL: "https://api2-2aj3.onrender.com/",
 });
+
+/* const axiosInstance: AxiosInstance = axios.create({
+  baseURL: "http://localhost:3000/",
+}); */
 
 interface CompanyStoreAttributes {
   message: string;
@@ -121,7 +121,6 @@ export const companyStore = create<CompanyStoreAttributes>(
           "add-trade-company",
           data
         );
-      console.log(response.data.message);
 
       set({
         message: response.data.message,

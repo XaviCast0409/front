@@ -3,8 +3,12 @@ import axios, { AxiosResponse, AxiosInstance } from "axios";
 import { ClassAttributes } from "storeType";
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: "https://api2-2aj3.onrender.com",
+  baseURL: "https://api2-2aj3.onrender.com/",
 });
+/* 
+const axiosInstance: AxiosInstance = axios.create({
+  baseURL: "http://localhost:3000/",
+}); */
 
 interface ClassStoreAttributes {
   classes: ClassAttributes[];

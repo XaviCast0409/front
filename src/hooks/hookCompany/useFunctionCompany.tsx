@@ -23,6 +23,7 @@ export function useFunctionCompany() {
     phone: "",
     email: "",
     password: "",
+    stateCity: ""
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>, fieldName: keyof CompanyAttributes): void => {

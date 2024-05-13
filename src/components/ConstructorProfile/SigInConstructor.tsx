@@ -28,18 +28,20 @@ const SignInConstructor: React.FC = () => {
   const handleSubmit = async () => {
     try {
       const response = await axios.post("https://api2-2aj3.onrender.com/login-company", formData);
+      // const response = await axios.post("http://localhost:3000/login-company", formData);
       const token = response.data.company.token;
       localStorage.setItem("token", token);
       const tokenObj = isTokenObj(token);
-      // Redirige al usuario a la página correspondiente según si es administrador o no
+
       if (tokenObj.isAdmin && token !== "") {
         localStorage.setItem("id", `${tokenObj.id}`);
-        // Redirige al usuario administrador a una ruta específica
+        localStorage.setItem("isAdmin", `${tokenObj.isAdmin}`);
+
         setLogin(true)
         navigate("/dashboardadmi");
 
       } else if (tokenObj.isAdmin === false && token !== ""){
-        // Redirige al usuario no administrador a otra ruta
+
         localStorage.setItem("id", `${tokenObj.id}`);
         setLogin(true)
         navigate("/dashboard");
@@ -86,7 +88,7 @@ const SignInConstructor: React.FC = () => {
                 />
               </div>
               <div className="mt-6 flex justify-center items-center">
-                {/*                 <Link to="/dashboard"> */}
+                {/*<Link to="/dashboard"> */}
                 <Button
                   className="btn-primary"
                   type="button"
@@ -98,7 +100,7 @@ const SignInConstructor: React.FC = () => {
             </form>
             <p className="mt-4 text-gray-700">
               Don't have an account?{" "}
-              <Link to="/zipcodeconstructor" className="text-blue-500">
+              <Link to="/constructorform" className="text-blue-500">
                 Create an account
               </Link>
             </p>

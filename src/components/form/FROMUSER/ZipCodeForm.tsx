@@ -22,9 +22,9 @@ export default function ZipCodeForm() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
-  const createZipCode = async () => {
+  const createZipCode = () => {
     setIsLoading(true);
-    await onSubmitCreate(zipCode ?? {});
+    onSubmitCreate(zipCode ?? {});
     setIsLoading(false);
 
     onSubmitCreate(zipCode ?? {});

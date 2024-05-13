@@ -2,14 +2,14 @@ import axios, { AxiosResponse, AxiosInstance } from "axios";
 import { Blog } from "storeType";
 import { create, SetState } from "zustand";
 
-/* const axiosInstance: AxiosInstance = axios.create({
-  baseURL: "https://api2-2aj3.onrender.com",
-});
-*/
-
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: "https://localhost:3000",
+  baseURL: "https://api2-2aj3.onrender.com/",
 });
+
+
+/* const axiosInstance: AxiosInstance = axios.create({
+  baseURL: "http://localhost:3000/",
+}); */
 
 
 interface BlogStoreAttributes {

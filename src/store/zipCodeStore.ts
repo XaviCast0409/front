@@ -3,8 +3,12 @@ import axios, { AxiosResponse, AxiosInstance } from "axios";
 import { zipCodeAttributes } from "storeType";
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: "https://api2-2aj3.onrender.com",
+  baseURL: "https://api2-2aj3.onrender.com/",
 });
+
+/* const axiosInstance: AxiosInstance = axios.create({
+  baseURL: "http://localhost:3000/",
+}); */
 
 interface ZipCodeStoreAttributes {
   zipCode: zipCodeAttributes;
@@ -36,6 +40,7 @@ export const zipCodeStore = create<ZipCodeStoreAttributes>(
         zipCodeData: zipCodeAttributes;
         message: string;
       }>("validate-zip-code", zipCode);
+      console.log(response);
       set({
         validate: response.data.validate,
         zipCode: response.data.zipCodeData,

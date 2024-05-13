@@ -49,6 +49,7 @@ const ProfileDashboardTradeComponent = () => {
     }
     onSubmitCreate({ ...tradeSelected, classIdArray: idClass });
     setClassTrade([{ value: 0, label: "SelectClass" }]);
+    setOpenModal(false);
   };
 
   return (

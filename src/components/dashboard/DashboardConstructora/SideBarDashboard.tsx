@@ -14,7 +14,7 @@ const SideBarDashboard: React.FC = () => {
   }, [token]);
 
   return (
-    <div className="flex flex-col bg-blue-500 text-white w-full h-screen md:w-64 py-6 px-4">
+    <div className="flex flex-col bg-blue-500 text-white w-full h-screen md:w-64 py-6 px-4 mt-8">
       <h2 className="h2 mb-14 mt-14 text-white">Dashboard</h2>
       <ul className="flex flex-col gap-6 text-xl">
         {isAdmin && (

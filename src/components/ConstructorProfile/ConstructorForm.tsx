@@ -6,6 +6,7 @@ import { Modal } from "../../utils/ModalError";
 import { DataStates } from "../../utils/Utils";
 import InputSelect from "../../utils/SelectInput";
 import InputField from "../../utils/InputField";
+import { useState } from "react";
 
 export default function ConstructorForm() {
   const {
@@ -19,6 +20,7 @@ export default function ConstructorForm() {
   } = useCompanyHook();
   const { zipCode } = useZipcCodeHook();
   const { statesEEUU } = DataStates();
+  const [stateCity, SetStateCity] = useState<string>("");
 
   const handleButtonModal = () => {
     setMessage();
@@ -28,9 +30,19 @@ export default function ConstructorForm() {
   const handleSubmit = () => {
     onSubmit({
       ...companyData,
+      stateCity,
       ZipCodeId: zipCode?.id,
     });
   };
+
+  const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value;
+    const selectedOption = statesEEUU.find((option) => option.value === Number(value));
+    const abrev = selectedOption?.abrev;
+    if (abrev) {
+      SetStateCity(abrev);
+    }
+  }
 
   return (
     <div className="container flex flex-col h-full justify-center">
@@ -81,6 +93,7 @@ export default function ConstructorForm() {
           name="state"
           labelText="State"
           xlColSpan="xl:col-span-4"
+          onChange={handleSelect}
         />
         <InputField
           name="address"

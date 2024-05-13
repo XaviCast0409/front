@@ -22,6 +22,9 @@ export const NoResultData: React.FC = () => {
   );
 };
 export const DataStates = () => {
+  /* 
+    "20069": { "state": "DC", "city": "WASHINGTON" },
+  */
   const statesEEUU = [
     {"value": 0, "name": "Nueva York", "abrev": "NY"},
     {"value": 1, "name": "Pensilvania", "abrev": "PA"},
@@ -48,7 +51,6 @@ export const DataStates = () => {
     {"value": 22, "name": "Iowa", "abrev": "IA"},
     {"value": 23, "name": "Wisconsin", "abrev": "WI"},
     {"value": 24, "name": "Minnesota", "abrev": "MN"},
-    {"value": 25, "name": "Distrito de Columbia", "abrev": "DC"},
     {"value": 26, "name": "Dakota del Sur", "abrev": "SD"},
     {"value": 27, "name": "Dakota del Norte", "abrev": "ND"},
     {"value": 28, "name": "Montana", "abrev": "MT"},
@@ -77,7 +79,7 @@ export const DataStates = () => {
     {"value": 51, "name": "Islas Marianas del Norte", "abrev": "MP"},
     {"value": 52, "name": "Islas Marshall", "abrev": "MH"},
     {"value": 53, "name": "Oregón", "abrev": "OR"},
-    {"value": 54, "name": "Washington", "abrev": "WA"},
+    {"value": 54, "name": "Washington", "abrev": "DC"},
     {"value": 55, "name": "Alaska", "abrev": "AK"}
   ]
   return {

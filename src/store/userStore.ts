@@ -1,13 +1,16 @@
 // userStore.js
 
 import { create, SetState } from "zustand";
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosResponse, AxiosInstance } from "axios";
 import { UserAttributes } from "storeType";
 
-const axiosInstance = axios.create({
-  baseURL: "https://api2-2aj3.onrender.com",
+const axiosInstance: AxiosInstance = axios.create({
+  baseURL: "https://api2-2aj3.onrender.com/",
 });
 
+/* const axiosInstance: AxiosInstance = axios.create({
+  baseURL: "http://localhost:3000/",
+}); */
 interface UserStoreAttributes {
   message: string;
   user: UserAttributes[];
