@@ -99,7 +99,7 @@ const SignInConstructor: React.FC = () => {
                 className="text-black"
               />
             </div>
-            {/* Renderiza el mensaje de error debajo del formulario si existe */}
+
             {messageLogin && <p className="text-red-500">{messageLogin}</p>}
             <div className="mt-6 flex justify-center items-center">
               <Button
