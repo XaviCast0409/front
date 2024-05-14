@@ -176,7 +176,7 @@ export default function ConstructorForm() {
           message={messageCreate}
           isSuccess={created}
           handleFunction={handleButtonModal}
-          link={created ? "/tradecompany" : "/constructorform"}
+          link={created ? "/siginconstructorpage" : "/constructorform"}
         />
       )}
     </div>
