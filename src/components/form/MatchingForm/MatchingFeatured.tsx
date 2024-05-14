@@ -7,7 +7,7 @@ export default function MatchingFeatured() {
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
         <h2 className="text-5xl font-bold text-center dark:text-gray-900">
-          Your Matching <b className="primary_color">Pros</b>
+          Your Matching Pros
         </h2>
         </div>
         <div className="flex flex-col justify-between overflow-hidden text-left transition-shadow duration-200 bg-white rounded shadow-xl group hover:shadow-2xl h-1/2">
