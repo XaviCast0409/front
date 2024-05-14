@@ -37,16 +37,18 @@ export default function ConstructorForm() {
 
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
-    const selectedOption = statesEEUU.find((option) => option.value === Number(value));
+    const selectedOption = statesEEUU.find(
+      (option) => option.value === Number(value)
+    );
     const abrev = selectedOption?.abrev;
     if (abrev) {
       SetStateCity(abrev);
     }
-  }
+  };
 
   return (
-    <div className="container flex flex-col h-full justify-center">
-      <h1>Register Company</h1>
+    <div className="flex flex-col min-h-screen justify-center items-center">
+      <h2 className="h1 text-center  my-10">Register Company</h2>
       <section className="grid grid-cols-12 gap-5 pt-5">
         <InputField
           name="name_company"
@@ -75,7 +77,7 @@ export default function ConstructorForm() {
           errors={{}}
           labelText="Password"
           requiredText="This field is required"
-          xlColSpan="xl:col-span-4" 
+          xlColSpan="xl:col-span-4"
           onChange={(e) => handleChange(e, "password")}
         />
         <InputField
@@ -106,15 +108,15 @@ export default function ConstructorForm() {
           onChange={(e) => handleChange(e, "address")}
         />
       </section>
-        <div className="flex w-full justify-center mt-8 ">
-          <BackButtonArrow />
-          <Button
-            className="btn-primary"
-            type="button"
-            text="SUBMIT"
-            handleClick={handleSubmit}
-          />
-        </div>
+      <div className="flex w-full justify-center mt-8 ">
+        <BackButtonArrow />
+        <Button
+          className="btn-primary"
+          type="button"
+          text="SUBMIT"
+          handleClick={handleSubmit}
+        />
+      </div>
       {messageCreate !== "" && (
         <Modal
           message={messageCreate}
