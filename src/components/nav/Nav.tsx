@@ -9,7 +9,10 @@ export const NavBar = () => {
 
   const handleClick = () => {
     console.log("Button clicked!");
+    setIsMobileMenuOpen(false);
   };
+
+  //Hace una funcion para cuando se toque en mobile alguno de los dons link el toogle se cierre y se redirija a la pagina correspondiente
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -49,9 +52,13 @@ export const NavBar = () => {
           } fixed top-0 left-0 w-full h-screen bg-[#0760F0]  z-50`}
         >
           <div className="flex flex-col gap-12 items-center pt-16">
-            <Link to="/siginconstructorpage" className="text-white">
-              Are you a Contractor?
-            </Link>
+            
+            <Button
+              className="btn-primary text-primary bg-white"
+              type={"button"}
+              text={<Link to="/siginconstructorpage">Are you contractor?</Link>}
+              handleClick={handleClick}
+            />
             <Button
               className="btn-primary text-primary bg-white"
               type={"button"}
@@ -69,7 +76,8 @@ export const NavBar = () => {
     </div>
   );
 };
-{/*
+{
+  /*
             <Link
               to="/blogscards"
               onClick={toggleMobileMenu}
@@ -77,4 +85,5 @@ export const NavBar = () => {
             >
               Blog
             </Link>
-            */}
+            */
+}
