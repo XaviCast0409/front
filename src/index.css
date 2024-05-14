@@ -87,8 +87,8 @@ h2 {
 
 @media (min-width: 1024px) {
   h2 {
-    font-size: 3rem; 
-    margin: 1rem
+    font-size: 3rem;
+    margin: 1rem;
   }
 }
 
@@ -154,10 +154,6 @@ footer {
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
-.btn-secundary:hover {
-  background-color: #1c2b56;
-  color: #ffffff; /* Un tono más claro para el color de fondo al pasar el mouse */
-}
 .h2 {
   @apply text-2xl font-bold mb-8 text-center;
 }
