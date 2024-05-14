@@ -14,10 +14,10 @@ export const ImagenSigIn = () => {
     >
       <div className="absolute bg-black opacity-60 inset-0 z-0"></div>
       <div className="w-full px-24 z-10">
-        <h1 className="text-5xl font-bold text-center tracking-wide">
+        <h1 className="text-5xl font-bold text-center tracking-wide text-white">
           Building Excellence
         </h1>
-        <p className="text-3xl my-4">
+        <p className="text-3xl my-4 text-white">
           Crafting your spaces with precision and care, every step of the way.
         </p>
         <div className=" mx-4 p-4 text-center flex justify-center  items-center">
