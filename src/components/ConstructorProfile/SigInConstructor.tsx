@@ -75,7 +75,7 @@ const SignInConstructor: React.FC = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-stretch text-white">
+    <section className="min-h-screen flex items-stretch ">
       <ImagenSigIn />
       <div className="lg:w-1/2 w-full flex items-center justify-center text-center md:px-16 px-0 z-0">
         <div className="">

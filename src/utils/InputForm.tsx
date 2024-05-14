@@ -17,7 +17,7 @@ export const InputForm: React.FC<InputProps> = ({
         type={type}
         name={nameInput}
         id={id}
-        className="block w-full py-2.5 px-3 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none transition-colors duration-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500"
+        className="block w-full py-2.5 px-3 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none transition-colors duration-300  dark:border-gray-600 dark:focus:border-blue-500"
         placeholder={placeholder}
         value={stateValue.nameInput}
         onChange={(e) => handleChange(e, nameInput)}
