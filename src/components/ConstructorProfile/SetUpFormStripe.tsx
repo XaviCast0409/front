@@ -2,9 +2,13 @@ import { StripeCardElement } from "@stripe/stripe-js";
 import { useState, useEffect } from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import SideBarDashboard from "../dashboard/DashboardConstructora/SideBarDashboard";
-
 import axios from "axios";
 import { useCompanyHook } from "../../hooks/hookCompany/useCompanyHook";
+
+interface CardDetails {
+  last4: string;
+  brand: string;
+}
 
 const CheckoutForm = ({ handlePayment }) => {
   const stripe = useStripe();
@@ -13,6 +17,7 @@ const CheckoutForm = ({ handlePayment }) => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState<boolean>(false);
   const [reset, setReset] = useState<boolean>(false);
+  const [cardDetails, setCardDetails] = useState<CardDetails | null>(null);
 
   const { comapanyId, findCompanyById } = useCompanyHook();
 
@@ -101,13 +106,60 @@ const CheckoutForm = ({ handlePayment }) => {
     }
   };
 
+  const handlerGetStripeId = async (customerId) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3000/customer/${customerId}/card`
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching card details:", error);
+      throw error;
+    }
+  };
+
+  useEffect(() => {
+    if (comapanyId && comapanyId.customerstripeId) {
+      handlerGetStripeId(comapanyId.customerstripeId)
+        .then((cardDetails) => {
+          setCardDetails(cardDetails);
+        })
+        .catch((error) => {
+          console.error("Error fetching card details:", error);
+        });
+    }
+  }, [comapanyId]);
+
   return (
     <div className="flex items-center h-screen">
       <SideBarDashboard />
       <div
         onSubmit={handleSubmit}
-        className="flex justify-center items-center h-screen bg-gray-100 w-screen"
+        className="flex flex-col justify-center items-center h-screen bg-gray-100 w-screen"
       >
+        <h3> Registered Cards </h3>
+        <table className="table-auto w-1/2">
+          <thead>
+            <tr>
+              <th className="px-4 py-2">Brand</th>
+              <th className="px-4 py-2">Last 4 Digits</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cardDetails ? (
+              <tr>
+                <td className="border px-4 py-2">{cardDetails.brand}</td>
+                <td className="border px-4 py-2">{cardDetails.last4}</td>
+              </tr>
+            ) : (
+              <tr>
+                <td className="border px-4 py-2">-</td>
+                <td className="border px-4 py-2">-</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+        <h3> Register your cards </h3>
         <form className="w-full max-w-md bg-white p-6 rounded shadow-md m-4">
           {reset ? (
             <>
@@ -127,7 +179,7 @@ const CheckoutForm = ({ handlePayment }) => {
           <button
             type="submit"
             disabled={!stripe || loading}
-            className="w-full py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 my-4"
+            className="w-full py-2 px-4 bg-primary text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 my-4"
           >
             {`${success ? "Card saved successfully" : "Save card"}`}
           </button>
