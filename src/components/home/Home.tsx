@@ -26,7 +26,7 @@ import BlogAdmiPage from "../../pages/BlogAdmiPage";
 import EmailPhonePage from "../../pages/EmailPhonePage";
 import BlogsCardsPages from "../../pages/BlogsCardsPages";
 import MatchingFormNoFoundPage from "../../pages/MatchingFormNoFoundPage";
-
+import ConstructorInformationPage from "../../pages/ConstructorInformationPage";
 /* import { ProtectedRouter } from "../../utils/ProtectedRoute";
 const token = localStorage.getItem("token");
 const isAdmin = localStorage.getItem("isAdmin") === "true" ? true : false; */
@@ -58,6 +58,7 @@ const Home= () => {
 
         {/* login companies and admin */}
         <Route path="/siginconstructorpage" element={<SigInConstructorPage />}/>
+        <Route path="/constructorinformation" element={<ConstructorInformationPage />}/>
 
 {/*         <Route element={<ProtectedRouter token={token} isAdmin={isAdmin} redirectPath={"/"}/>}> */}
            {/* dashboard profile company */}
