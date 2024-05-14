@@ -135,27 +135,31 @@ const CheckoutForm = ({ handlePayment }) => {
       <SideBarDashboard />
       <div
         onSubmit={handleSubmit}
-        className="flex flex-col mt-48 items-center h-screen bg-gray-100 w-screen"
+        className="flex flex-col justify-center items-center h-screen bg-gray-100 w-screen"
       >
         <h3> Registered Cards </h3>
         <table className="table-auto w-1/2">
           <thead>
             <tr>
-              <th className="px-4 py-2">Brand</th>
-              <th className="px-4 py-2">Last 4 Digits</th>
-              <th className="px-4 py-2 ">Delete</th>
+              <th className="px-4 py-2  bg-white">Brand</th>
+              <th className="px-4 py-2  bg-white">Last 4 Digits</th>
+              <th className="px-4 py-2 bg-white ">Delete</th>
             </tr>
           </thead>
           <tbody>
             {cardDetails ? (
               <tr>
-                <td className="border px-4 py-2">{cardDetails.brand}</td>
-                <td className="border px-4 py-2">{cardDetails.last4}</td>
-                <td className="border px-4 py-2">
+                <td className="border px-4 py-2  bg-white">
+                  {cardDetails.brand}
+                </td>
+                <td className="border px-4 py-2  bg-white">
+                  {cardDetails.last4}
+                </td>
+                <td className="border px-4 py-2  bg-white">
                   <button
                     type="submit"
                     disabled={!stripe || loading}
-                    className="w-full py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 my-4"
+                    className="w-full py-2 px-4 bg-primary text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 my-4"
                   >
                     {`${success ? "Card saved successfully" : "Save card"}`}
                   </button>
