@@ -47,6 +47,7 @@ export function useFunctionUser() {
     try {
     const response = await createUser({ ...value, CompanyId: companiesId });
     return response;
+  
     } catch (error) {
       console.log(error);
       throw error;

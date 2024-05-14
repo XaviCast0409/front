@@ -68,7 +68,7 @@ export default function EmailPhone() {
       }, 500);
     }
   };
-
+  console.log(companiesId)
   useEffect(() => {
     if (create) {
       onSubmit(useStoreCreate, companiesId);

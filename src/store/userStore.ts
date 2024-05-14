@@ -94,10 +94,10 @@ export const userStore = create<UserStoreAttributes>(
     },
     filterRegisterUser: async(data) => {
       const { zipcode, tradeId, classId } = data
-      const response = await axiosInstance.get<{ trades: [], classes: [], companiesId: [] }>(
+      const response = await axiosInstance.get<{ trades: [], classes: [], randomCompanyIds: [] }>(
         `/filter-company-user?zipcode=${zipcode}&tradeId=${tradeId}&classId=${classId}`
       )
-      set({ trade: response.data.trades, classes: response.data.classes, companiesId: response.data.companiesId})
+      set({ trade: response.data.trades, classes: response.data.classes, companiesId: response.data.randomCompanyIds})
     },
     setCompaniesId: (data) => {
       set({ companiesId: data })

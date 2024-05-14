@@ -11,7 +11,7 @@ import { useTradeHook } from "../../../hooks/hookTrade/useTradeHook";
 
 const DashboardComponent: React.FC = () => {
   const { comapanyId, findCompanyById } = useCompanyHook();
-  const { getAllTrades, trade, tradeById, getTradeById } = useTradeHook()
+  const { getAllTrades , trade, tradeById, getTradeById } = useTradeHook()
   const {
     deleteTradeClassCompanyUser,
     createTradeClassCompanyUser,
@@ -33,7 +33,7 @@ const DashboardComponent: React.FC = () => {
   }, []);
 
   const refresh = () => {
-    findCompanyById(1);
+    findCompanyById(id);
   };
   const createClassProfile = () => {
     createTradeClassCompanyUser({
@@ -56,7 +56,7 @@ const DashboardComponent: React.FC = () => {
   };
   
   const createTradeProfile = () => {
-    createTradeCompanyUser({ name: tradeName.name, companyId: 1 });
+    createTradeCompanyUser({ name: tradeName.name, companyId: id });
     setTradeCreate({ name: ""})
     setTimeout(() => {
       refresh();
