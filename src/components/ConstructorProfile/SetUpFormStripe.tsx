@@ -93,6 +93,7 @@ const CheckoutForm = ({ handlePayment }) => {
           paymentMethodId: paymentMethodId,
         }),
       ]);
+      
 
       console.log("sendPaymentData: responses received from server");
       if (!associateResponse) {
