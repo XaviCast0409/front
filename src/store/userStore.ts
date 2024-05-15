@@ -3,14 +3,14 @@
 import { create, SetState } from "zustand";
 import axios, { AxiosResponse, AxiosInstance } from "axios";
 import { UserAttributes } from "storeType";
-
+/*
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: "https://api2-2aj3.onrender.com/",
 });
-
-/* const axiosInstance: AxiosInstance = axios.create({
+*/
+ const axiosInstance: AxiosInstance = axios.create({
   baseURL: "http://localhost:3000/",
-}); */
+}); 
 interface UserStoreAttributes {
   message: string;
   user: UserAttributes[];
@@ -73,6 +73,7 @@ export const userStore = create<UserStoreAttributes>(
       );
       set({ userCreate: response.data.user });
       return response;
+    
     },
 
     userTradeCreate: async (data) => {

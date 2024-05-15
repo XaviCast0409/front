@@ -14,7 +14,7 @@ const validationSchema = Yup.object().shape({
   address: Yup.string()
     .required("The address is required")
     .matches(
-      /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/,
+      /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9 ]+)$/,
       "The address must contain at least one letter and one number"
     ),
   state: Yup.string().required("The state is required"),
@@ -25,10 +25,11 @@ const validationSchema = Yup.object().shape({
   password: Yup.string()
     .required("The password is required")
     .matches(
-      /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/,
-      "The password must contain at least one letter and one number"
+      /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9 ]+)$/,
+      "The password must contain at least one letter, one number, and can include spaces"
     )
     .min(6, "The password must be at least 6 characters"),
+
   email: Yup.string()
     .email("Must be a valid email")
     .required("The email is required"),
@@ -49,7 +50,7 @@ export default function ConstructorForm() {
   } = useCompanyHook();
   const { zipCode } = useZipcCodeHook();
   const { statesEEUU } = DataStates();
-  const [stateCity, SetStateCity] = useState<string>("");
+  const [stateCity, setStateCity] = useState<string>("");
   const [error, setError] = useState("");
 
   const handleButtonModal = () => {
@@ -57,7 +58,6 @@ export default function ConstructorForm() {
     setCreated();
   };
 
-  // Crea fuuncion Handler Validate
   const handleValidate = async () => {
     try {
       await validationSchema.validate({
@@ -95,21 +95,20 @@ export default function ConstructorForm() {
     );
     const abrev = selectedOption?.abrev;
     if (abrev) {
-      SetStateCity(abrev);
+      setStateCity(abrev);
     }
   };
 
   return (
     <div className="flex flex-col min-h-screen justify-center items-center">
-      <h2 className="h1 text-center  my-10">Register Company</h2>
+      <h2 className="h1 text-center my-10">Register Company</h2>
       <section className="grid grid-cols-12 gap-5 pt-5">
         <InputField
           name="name_company"
           type="text"
           placeholder="Name Company"
-          errors={{}}
           labelText="Company"
-          requiredText="This field is required"
+          requiredText="This field is required and must be at least 3 characters"
           xlColSpan="xl:col-span-4"
           onChange={(e) => handleChange(e, "name_company")}
         />
@@ -117,9 +116,8 @@ export default function ConstructorForm() {
           name="email"
           type="email"
           placeholder="Email"
-          errors={{}}
           labelText="Email"
-          requiredText="This field is required"
+          requiredText="Must be a valid email"
           xlColSpan="xl:col-span-4"
           onChange={(e) => handleChange(e, "email")}
         />
@@ -127,9 +125,8 @@ export default function ConstructorForm() {
           name="password"
           type="password"
           placeholder="Password"
-          errors={{}}
           labelText="Password"
-          requiredText="This field is required"
+          requiredText="This field is required and must contain at least one letter and one number"
           xlColSpan="xl:col-span-4"
           onChange={(e) => handleChange(e, "password")}
         />
@@ -137,9 +134,8 @@ export default function ConstructorForm() {
           name="phone"
           type="text"
           placeholder="Phone"
-          errors={{}}
           labelText="Phone"
-          requiredText="This field is required"
+          requiredText="This field is required and must contain only numbers"
           xlColSpan="xl:col-span-4"
           onChange={(e) => handleChange(e, "phone")}
         />
@@ -154,15 +150,14 @@ export default function ConstructorForm() {
           name="address"
           type="text"
           placeholder="Address"
-          errors={{}}
           labelText="Address"
-          requiredText="This field is required"
+          requiredText="This field is required and must contain at least one letter and one number"
           xlColSpan="xl:col-span-4"
           onChange={(e) => handleChange(e, "address")}
         />
       </section>
-      {error && <p className="text-red-500">{error}</p>}ª
-      <div className="flex w-full justify-center mt-8 ">
+      {error && <p className="text-red-500">{error}</p>}
+      <div className="flex w-full justify-center mt-8">
         <BackButtonArrow />
         <Button
           className="btn-primary"
