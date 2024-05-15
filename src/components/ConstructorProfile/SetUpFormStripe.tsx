@@ -104,6 +104,8 @@ const CheckoutForm = ({ handlePayment }) => {
       );
       setError("Error sending payment data to server");
     }
+    const response = await axios.get(`/api/payment-methods/${paymentMethodId}`);
+    
   };
 
   const handlerGetStripeId = async (customerId) => {

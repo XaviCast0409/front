@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { userStore } from "../../store/userStore";
 import { UserAttributes, TradeUser, ClassUser, CompanyUser } from "storeType";
 
+
 export function useUser() {
   const { user: userData, trade, classes, companiesId } = userStore();
   const [user, setUser] = useState<UserAttributes[]>([]);
