@@ -18,6 +18,7 @@ const CheckoutForm = ({ handlePayment }) => {
   const [success, setSuccess] = useState<boolean>(false);
   const [reset, setReset] = useState<boolean>(false);
   const [cardDetails, setCardDetails] = useState<CardDetails | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const { comapanyId, findCompanyById } = useCompanyHook();
 
@@ -61,6 +62,14 @@ const CheckoutForm = ({ handlePayment }) => {
     setLoading(false);
 
     setReset(true);
+
+    if (cardElement) {
+      cardElement.clear();
+    }
+    setSuccessMessage("Registered successfully"); // Cambiado el mensaje
+    setTimeout(() => {
+      setSuccessMessage(null);
+    }, 3000);
   };
 
   const sendPaymentData = async (paymentMethodId) => {
@@ -97,6 +106,12 @@ const CheckoutForm = ({ handlePayment }) => {
       );
 
       console.log("sendPaymentData: Payment data successfully sent to server");
+
+      const response = await axios.get(
+        `/api/payment-methods/${paymentMethodId}`
+      );
+      // Actualizar el estado con los detalles de la tarjeta
+      setCardDetails(response.data.card);
     } catch (error) {
       console.error(
         "sendPaymentData: Error sending payment data to server:",
@@ -104,33 +119,7 @@ const CheckoutForm = ({ handlePayment }) => {
       );
       setError("Error sending payment data to server");
     }
-    const response = await axios.get(`/api/payment-methods/${paymentMethodId}`);
-    
   };
-
-  const handlerGetStripeId = async (customerId) => {
-    try {
-      const response = await axios.get(
-        `http://localhost:3000/customer/${customerId}/card`
-      );
-      return response.data;
-    } catch (error) {
-      console.error("Error fetching card details:", error);
-      throw error;
-    }
-  };
-
-  useEffect(() => {
-    if (comapanyId && comapanyId.customerstripeId) {
-      handlerGetStripeId(comapanyId.customerstripeId)
-        .then((cardDetails) => {
-          setCardDetails(cardDetails);
-        })
-        .catch((error) => {
-          console.error("Error fetching card details:", error);
-        });
-    }
-  }, [comapanyId]);
 
   return (
     <div className="flex items-center h-screen">
@@ -139,29 +128,29 @@ const CheckoutForm = ({ handlePayment }) => {
         onSubmit={handleSubmit}
         className="flex flex-col justify-center items-center h-screen bg-gray-100 w-screen"
       >
-        <h3> Registered Cards </h3>
-        <table className="table-auto w-1/2">
+        <h3 className="text-lg font-semibold mb-4"> Registered Cards </h3>
+        <table className="table-auto w-3/4 mb-8">
           <thead>
             <tr>
-              <th className="px-4 py-2  bg-white">Brand</th>
-              <th className="px-4 py-2  bg-white">Last 4 Digits</th>
-              <th className="px-4 py-2 bg-white ">Delete</th>
+              <th className="px-4 py-2 bg-gray-200">Brand</th>
+              <th className="px-4 py-2 bg-gray-200">Last 4 Digits</th>
+              <th className="px-4 py-2 bg-gray-200">Delete</th>
             </tr>
           </thead>
           <tbody>
             {cardDetails ? (
               <tr>
-                <td className="border px-4 py-2  bg-white">
+                <td className="border px-4 py-2 bg-white">
                   {cardDetails.brand}
                 </td>
-                <td className="border px-4 py-2  bg-white">
+                <td className="border px-4 py-2 bg-white">
                   {cardDetails.last4}
                 </td>
-                <td className="border px-4 py-2  bg-white">
+                <td className="border px-4 py-2 bg-white">
                   <button
                     type="submit"
                     disabled={!stripe || loading}
-                    className="w-full py-2 px-4 bg-primary text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 my-4"
+                    className="w-full py-2 px-4 bg-primary text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 my-4 transition-colors duration-300"
                   >
                     {`${success ? "Card saved successfully" : "Save card"}`}
                   </button>
@@ -175,8 +164,8 @@ const CheckoutForm = ({ handlePayment }) => {
             )}
           </tbody>
         </table>
-        <h3> Register your cards </h3>
-        <form className="w-full max-w-md bg-white p-6 rounded shadow-md m-4">
+        <h3 className="text-lg font-semibold mb-4"> Register your cards </h3>
+        <form className="w-full max-w-md bg-white p-6 rounded shadow-md">
           {reset ? (
             <>
               <CardElement key={Math.random()} />
@@ -195,10 +184,13 @@ const CheckoutForm = ({ handlePayment }) => {
           <button
             type="submit"
             disabled={!stripe || loading}
-            className="w-full py-2 px-4 bg-primary text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 my-4"
+            className="w-full py-2 px-4 bg-primary text-white rounded hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 my-4 transition-colors duration-300"
           >
             {`${success ? "Card saved successfully" : "Save card"}`}
           </button>
+          {successMessage && (
+            <div className="text-green-500">{successMessage}</div>
+          )}
         </form>
       </div>
     </div>
