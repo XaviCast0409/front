@@ -13,7 +13,7 @@ interface CardDetails {
 const CheckoutForm = ({ handlePayment }) => {
   const stripe = useStripe();
   const elements = useElements();
-  const [, /*error */ setError] = useState("");
+  const [/*error*/, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState<boolean>(false);
   const [reset, setReset] = useState<boolean>(false);
@@ -32,6 +32,7 @@ const CheckoutForm = ({ handlePayment }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
+    setError(""); // Update the initial value of the error state to an empty string instead of null
 
     if (!stripe || !elements) {
       setError(`Stripe or Elements is null`);
@@ -66,7 +67,7 @@ const CheckoutForm = ({ handlePayment }) => {
     if (cardElement) {
       cardElement.clear();
     }
-    setSuccessMessage("Registered successfully"); // Cambiado el mensaje
+    setSuccessMessage("Card saved successfully"); // Cambiado el mensaje
     setTimeout(() => {
       setSuccessMessage(null);
     }, 3000);
