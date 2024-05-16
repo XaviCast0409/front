@@ -29,6 +29,8 @@ const CheckoutForm = ({ handlePayment }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  console.log("comapanyId", comapanyId);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
@@ -94,6 +96,7 @@ const CheckoutForm = ({ handlePayment }) => {
         }),
       ]);
 
+
       console.log("sendPaymentData: responses received from server");
       if (!associateResponse) {
         console.log("sendPaymentData: error sending payment data to server");
@@ -109,7 +112,7 @@ const CheckoutForm = ({ handlePayment }) => {
       console.log("sendPaymentData: Payment data successfully sent to server");
 
       const response = await axios.get(
-        `/api/payment-methods/${paymentMethodId}`
+        `/payment-method-id`
       );
       // Actualizar el estado con los detalles de la tarjeta
       setCardDetails(response.data.card);
