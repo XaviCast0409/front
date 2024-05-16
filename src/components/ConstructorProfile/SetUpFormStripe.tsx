@@ -90,7 +90,7 @@ const CheckoutForm = ({ handlePayment }) => {
 
       console.log("sendPaymentData: calling axios.post");
       const [associateResponse] = await Promise.all([
-        axios.post("http://localhost:3000/associate-card-with-payment", {
+        axios.post("https://api2-2aj3.onrender.com/associate-card-with-payment", {
           customerId: comapanyId.customerstripeId,
           paymentMethodId: paymentMethodId,
         }),
@@ -112,9 +112,9 @@ const CheckoutForm = ({ handlePayment }) => {
       console.log("sendPaymentData: Payment data successfully sent to server");
 
       const response = await axios.get(
-        `http://localhost:3000/payment-method-id`
+        `https://api2-2aj3.onrender.com/payment-method-id`
       );
-      // Actualizar el estado con los detalles de la tarjeta
+    
       setCardDetails(response.data.card);
     } catch (error) {
       console.error(
