@@ -111,9 +111,8 @@ const CheckoutForm = ({ handlePayment }) => {
 
       console.log("sendPaymentData: Payment data successfully sent to server");
 
-      const response = await axios.get(
-        `https://api2-2aj3.onrender.com/payment-method-id`
-      );
+      const response = await axios.get(`https://api2-2aj3.onrender.com/payment-method-id/${paymentMethodId}`);
+      console.log("sendPaymentData: Response from payment-method-id:", response.data);
     
       setCardDetails(response.data.card);
     } catch (error) {
