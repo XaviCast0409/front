@@ -112,7 +112,7 @@ const CheckoutForm = ({ handlePayment }) => {
       console.log("sendPaymentData: Payment data successfully sent to server");
 
       const response = await axios.get(
-        `/payment-method-id`
+        `http://localhost:3000/payment-method-id`
       );
       // Actualizar el estado con los detalles de la tarjeta
       setCardDetails(response.data.card);
