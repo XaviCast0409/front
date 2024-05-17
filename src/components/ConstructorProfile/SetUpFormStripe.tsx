@@ -23,19 +23,9 @@ const CheckoutForm = ({ handlePayment }) => {
   const { companyId, findCompanyById } = useCompanyHook();
 
   const id = Number(localStorage.getItem("id")) || 0;
+  
   useEffect(() => {
-    const fetchCompany = async () => {
-      try {
-        const response = await axios.get(
-          `https://api2-2aj3.onrender.com/company-by-id/${id}`
-        );
-        console.log("response", response.data.company.id); // Acceder a response.data.company.id en lugar de response.data.companyId
-        findCompanyById(response.data.company.id); // Usar response.data.company.id en lugar de response.data.companyId
-      } catch (error) {
-        console.error("Error fetching company:", error);
-      }
-    };
-    fetchCompany();
+    findCompanyById(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
