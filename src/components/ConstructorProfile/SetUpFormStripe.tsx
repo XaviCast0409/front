@@ -29,7 +29,7 @@ const CheckoutForm = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log("companyId", companyId);
+  console.log("companyId", companyId.id);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -68,7 +68,7 @@ const CheckoutForm = () => {
       console.log("Sending payment data to server:", {
         customerId: customerId,
         paymentMethodId: paymentMethod.id,
-        companyId: companyId,
+        companyId: companyId.id,
       });
 
       console.log("sendPaymentData: calling axios.post");
@@ -76,7 +76,7 @@ const CheckoutForm = () => {
         axios.post("https://api2-2aj3.onrender.com/associate-card-with-payment", {
           customerId: customerId,
           paymentMethodId: paymentMethod.id,
-          company: companyId,
+          company: companyId.id,
         }),
       ]);
 
@@ -134,7 +134,7 @@ const CheckoutForm = () => {
         paymentMethodId: paymentMethod.id,
         amount: 1000,
         customerId: customerId,
-        company: companyId,
+        company: companyId.id,
       });
       setSuccess(true);
       setLoading(false);
@@ -172,7 +172,7 @@ const CheckoutForm = () => {
         axios.post("https://api2-2aj3.onrender.com/associate-card-with-payment", {
           customerId: companyId.customerstripeId,
           paymentMethodId: paymentMethodId,
-          company: companyId,
+          company: companyId.id,
         }),
       ]);
 
