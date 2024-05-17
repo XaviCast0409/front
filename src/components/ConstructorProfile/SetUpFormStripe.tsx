@@ -22,12 +22,17 @@ const CheckoutForm = ({ handlePayment }) => {
 
   const { companyId, findCompanyById } = useCompanyHook();
 
+console.log(findCompanyById)
+
+
   const id = Number(localStorage.getItem("id")) || 0;
   
   useEffect(() => {
     findCompanyById(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
