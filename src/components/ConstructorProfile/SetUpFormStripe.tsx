@@ -73,7 +73,7 @@ const CheckoutForm = ({ handlePayment }) => {
       await handlePayment({
         paymentMethodId: paymentMethod.id,
         amount: 1000,
-        customerId: customerId,
+        customerId,
       });
       setSuccess(true);
       setLoading(false);
@@ -103,7 +103,7 @@ const CheckoutForm = ({ handlePayment }) => {
       console.log("Sending payment data to server:", {
         customerId: companyId.customerstripeId,
         paymentMethodId: paymentMethodId,
-        company: companyId.id,
+        companyId: companyId.id || null ,
       });
 
       console.log("sendPaymentData: calling axios.post");
@@ -111,7 +111,7 @@ const CheckoutForm = ({ handlePayment }) => {
         axios.post("https://api2-2aj3.onrender.com/associate-card-with-payment", {
           customerId: companyId.customerstripeId,
           paymentMethodId: paymentMethodId,
-          company: companyId.id,
+          companyId: companyId.id,
         }),
       ]);
 
