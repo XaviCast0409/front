@@ -10,7 +10,7 @@ interface CardDetails {
   brand: string;
 }
 
-const CheckoutForm = ({ handlePayment }) => {
+const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const [/*error*/, setError] = useState("");
@@ -21,7 +21,6 @@ const CheckoutForm = ({ handlePayment }) => {
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const { companyId, findCompanyById } = useCompanyHook();
- 
 
   const id = Number(localStorage.getItem("id")) || 0;
 
@@ -36,6 +35,75 @@ const CheckoutForm = ({ handlePayment }) => {
     event.preventDefault();
     setLoading(true);
     setError("");
+
+    try {
+      if (!companyId) {
+        console.error("companyId is required");
+        setError("companyId is required");
+        return;
+      }
+
+      const customerId = companyId.customerstripeId;
+
+      if (!stripe || !elements) {
+        setError(`Stripe or Elements is null`);
+        setLoading(false);
+        return;
+      }
+
+      const cardElement = elements.getElement(CardElement);
+      const { error: stripeError, paymentMethod } =
+        await stripe.createPaymentMethod({
+          type: "card",
+          card: cardElement as StripeCardElement,
+        });
+
+      if (stripeError) {
+        setError(stripeError.message || "");
+        setLoading(false);
+        console.error("Error creating payment method:", stripeError);
+        return;
+      }
+
+      console.log("Sending payment data to server:", {
+        customerId: customerId,
+        paymentMethodId: paymentMethod.id,
+      });
+
+      console.log("sendPaymentData: calling axios.post");
+      const [associateResponse] = await Promise.all([
+        axios.post("https://api2-2aj3.onrender.com/associate-card-with-payment", {
+          customerId: customerId,
+          paymentMethodId: paymentMethod.id,
+          company: companyId,
+        }),
+      ]);
+
+      console.log("sendPaymentData: responses received from server");
+      if (!associateResponse) {
+        console.log("sendPaymentData: error sending payment data to server");
+        setError("Error sending payment data to server");
+        return;
+      }
+
+      console.log(
+        "sendPaymentData: Response from associate-card-with-payment:",
+        associateResponse.data
+      );
+
+      console.log("sendPaymentData: Payment data successfully sent to server");
+
+      const response = await axios.get(`https://api2-2aj3.onrender.com/payment-method-id/${paymentMethod.id}`);
+      console.log("sendPaymentData: Response from payment-method-id:", response.data);
+
+      setCardDetails(response.data.card);
+    } catch (error) {
+      console.error(
+        "sendPaymentData: Error sending payment data to server:",
+        error
+      );
+      setError("Error sending payment data to server");
+    }
 
     const customerId = companyId;
 
@@ -129,6 +197,16 @@ const CheckoutForm = ({ handlePayment }) => {
         error
       );
       setError("Error sending payment data to server");
+    }
+  };
+
+  const handlePayment = async (paymentData) => {
+    try {
+      const response = await axios.post("https://your-payment-handler-endpoint.com", paymentData);
+      console.log("Payment handled successfully:", response.data);
+    } catch (error) {
+      console.error("Error handling payment:", error);
+      throw new Error("Error handling payment");
     }
   };
 
