@@ -2,15 +2,15 @@ import { useCompanyHook } from "../../../hooks/hookCompany/useCompanyHook";
 import { PropsProfileConstructoraComponent } from "utils";
 
  const ProfileConstructoraComponent: React.FC<PropsProfileConstructoraComponent> = () => {
-  const { comapanyId } = useCompanyHook();
+  const { companyId } = useCompanyHook();
 
   return (
     <div>
-      {comapanyId ? (
+      {companyId ? (
         <div>
-          <h1>{comapanyId.name_company}</h1>
-          <p>Dirección: {comapanyId.address}</p>
-          <p>Teléfono: {comapanyId.phone}</p>
+          <h1>{companyId.name_company}</h1>
+          <p>Dirección: {companyId.address}</p>
+          <p>Teléfono: {companyId.phone}</p>
         </div>
       ) : (
         <p>Cargando...</p>

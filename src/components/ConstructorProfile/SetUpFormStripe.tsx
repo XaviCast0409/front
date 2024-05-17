@@ -20,7 +20,8 @@ const CheckoutForm = ({ handlePayment }) => {
   const [cardDetails, setCardDetails] = useState<CardDetails | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  const { comapanyId, findCompanyById } = useCompanyHook();
+  const { companyId, findCompanyById } = useCompanyHook();
+ 
 
   const id = Number(localStorage.getItem("id")) || 0;
 
@@ -29,14 +30,14 @@ const CheckoutForm = ({ handlePayment }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log("comapanyId", comapanyId);
+  console.log("companyId", companyId);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
     setError("");
 
-    const customerId = comapanyId;
+    const customerId = companyId;
 
     if (!stripe || !elements) {
       setError(`Stripe or Elements is null`);
@@ -84,23 +85,23 @@ const CheckoutForm = ({ handlePayment }) => {
 
   const sendPaymentData = async (paymentMethodId) => {
     console.log("sendPaymentData: started");
-    if (!comapanyId || !comapanyId.customerstripeId) {
+    if (!companyId || !companyId.customerstripeId) {
       console.log("sendPaymentData: customerstripeId is null or undefined");
       setError("customerstripeId is null or undefined");
       return;
     }
     try {
       console.log("Sending payment data to server:", {
-        customerId: comapanyId.customerstripeId,
+        customerId: companyId.customerstripeId,
         paymentMethodId: paymentMethodId,
       });
 
       console.log("sendPaymentData: calling axios.post");
       const [associateResponse] = await Promise.all([
         axios.post("https://api2-2aj3.onrender.com/associate-card-with-payment", {
-          customerId: comapanyId.customerstripeId,
+          customerId: companyId.customerstripeId,
           paymentMethodId: paymentMethodId,
-          company: comapanyId,
+          company: companyId,
         }),
       ]);
 

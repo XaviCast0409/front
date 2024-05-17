@@ -19,7 +19,7 @@ export function useCompanyHook() {
     login,
     setMessageLogin,
   } = companyStore();
-  const { company, tokenLogin, tradeFilter, comapanyId, usersCompany } = useCompany();
+  const { company, tokenLogin, tradeFilter, companyId, usersCompany } = useCompany();
   const {
     onSubmit,
     handleChange,
@@ -58,7 +58,7 @@ export function useCompanyHook() {
     getAllCompaniesData,
     findCompanyById,
     companyCreate,
-    comapanyId,
+    companyId,
     isSuccess,
     setIsSuccess,
     setMessage,

@@ -13,7 +13,7 @@ export function useCompany() {
   const [usersCompany, setUsersCompany] = useState<UserAttributes[]>([]);
   const [tokenLogin, setTokenLogin] = useState({});
   const [tradeFilter, setTradeFilter] = useState<TradeAttributesFilter[]>([]);
-  const [comapanyId, setComapanyId] = useState<CompanyAttributes>({})
+  const [companyId, setComapanyId] = useState<CompanyAttributes>({})
 
   useEffect(() => {
     const newCompany = companyData.map((item, index) => ({
@@ -88,7 +88,7 @@ export function useCompany() {
     company,
     tokenLogin,
     tradeFilter,
-    comapanyId,
+    companyId,
     usersCompany
   };
 }

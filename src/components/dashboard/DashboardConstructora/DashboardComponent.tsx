@@ -10,7 +10,7 @@ import { classStore } from "../../../store/classStore";
 import { useTradeHook } from "../../../hooks/hookTrade/useTradeHook";
 
 const DashboardComponent: React.FC = () => {
-  const { comapanyId, findCompanyById } = useCompanyHook();
+  const { companyId, findCompanyById } = useCompanyHook();
   const { getAllTrades , trade, tradeById, getTradeById } = useTradeHook()
   const {
     deleteTradeClassCompanyUser,
@@ -82,9 +82,9 @@ const DashboardComponent: React.FC = () => {
           />
         </div>
         <div className="flex flex-wrap mt-5">
-          {comapanyId &&
+          {companyId &&
             (
-              comapanyId.TradeCompanyUsers as {
+              companyId.TradeCompanyUsers as {
                 id: number;
                 name: string;
                 Classes: [{ id: number; name: string }];
