@@ -36,6 +36,8 @@ const CheckoutForm = ({ handlePayment }) => {
     setLoading(true);
     setError(""); // Update the initial value of the error state to an empty string instead of null
 
+    const customerId = comapanyId;
+
     if (!stripe || !elements) {
       setError(`Stripe or Elements is null`);
       setLoading(false);
@@ -58,6 +60,7 @@ const CheckoutForm = ({ handlePayment }) => {
     await handlePayment({
       paymentMethodId: paymentMethod.id,
       amount: 1000,
+      customerId: customerId,
     });
 
     await sendPaymentData(paymentMethod.id);

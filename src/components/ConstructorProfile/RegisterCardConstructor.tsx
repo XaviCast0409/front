@@ -23,7 +23,7 @@ const RegisterCardConstructor: React.FC<RegisterCardConstructorProps> = () => {
     fetchStripePromise();
   }, []);
 
-  const handlePayment = async ({ paymentMethodId, amount }) => {
+  const handlePayment = async ({ paymentMethodId, amount  }) => {
     // Aquí es donde manejarías el pago.
     // Por ejemplo, podrías enviar una solicitud a tu servidor para procesar el pago.
     console.log(
