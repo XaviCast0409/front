@@ -13,7 +13,7 @@ interface CardDetails {
 const CheckoutForm = ({ handlePayment }) => {
   const stripe = useStripe();
   const elements = useElements();
-  const [/*error*/, setError] = useState("");
+  const [, /*error*/ setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState<boolean>(false);
   const [reset, setReset] = useState<boolean>(false);
@@ -21,16 +21,16 @@ const CheckoutForm = ({ handlePayment }) => {
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const { companyId, findCompanyById } = useCompanyHook();
- 
 
   const id = Number(localStorage.getItem("id")) || 0;
-
   useEffect(() => {
     const fetchCompany = async () => {
       try {
-        const response = await axios.get(`https://api2-2aj3.onrender.com/company-by-id/${id}`);
-        findCompanyById(response.data.companyId);
-        console.log("response", response.data.companyId)
+        const response = await axios.get(
+          `https://api2-2aj3.onrender.com/company-by-id/${id}`
+        );
+        console.log("response", response.data.company.id); // Acceder a response.data.company.id en lugar de response.data.companyId
+        findCompanyById(response.data.company.id); // Usar response.data.company.id en lugar de response.data.companyId
       } catch (error) {
         console.error("Error fetching company:", error);
       }
@@ -38,8 +38,6 @@ const CheckoutForm = ({ handlePayment }) => {
     fetchCompany();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log("companyId id", companyId.id);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -103,16 +101,19 @@ const CheckoutForm = ({ handlePayment }) => {
       console.log("Sending payment data to server:", {
         customerId: companyId.customerstripeId,
         paymentMethodId: paymentMethodId,
-        companyId: companyId.id || null ,
+        companyId: companyId.id || null,
       });
 
       console.log("sendPaymentData: calling axios.post");
       const [associateResponse] = await Promise.all([
-        axios.post("https://api2-2aj3.onrender.com/associate-card-with-payment", {
-          customerId: companyId.customerstripeId,
-          paymentMethodId: paymentMethodId,
-          companyId: companyId.id,
-        }),
+        axios.post(
+          "https://api2-2aj3.onrender.com/associate-card-with-payment",
+          {
+            customerId: companyId.customerstripeId,
+            paymentMethodId: paymentMethodId,
+            companyId: companyId.id,
+          }
+        ),
       ]);
 
       console.log("sendPaymentData: responses received from server");
@@ -129,8 +130,13 @@ const CheckoutForm = ({ handlePayment }) => {
 
       console.log("sendPaymentData: Payment data successfully sent to server");
 
-      const response = await axios.get(`https://api2-2aj3.onrender.com/payment-method-id/${paymentMethodId}`);
-      console.log("sendPaymentData: Response from payment-method-id:", response.data);
+      const response = await axios.get(
+        `https://api2-2aj3.onrender.com/payment-method-id/${paymentMethodId}`
+      );
+      console.log(
+        "sendPaymentData: Response from payment-method-id:",
+        response.data
+      );
 
       setCardDetails(response.data.card);
     } catch (error) {
