@@ -28,7 +28,7 @@ const CheckoutForm = ({ handlePayment }) => {
   useEffect(() => {
     const fetchCompany = async () => {
       try {
-        const response = await axios.get(`/company-by-id/${id}`);
+        const response = await axios.get(`http://localhost:3000/company-by-id/${id}`);
         findCompanyById(response.data.id);
         console.log("response", response.data.id)
       } catch (error) {
