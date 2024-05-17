@@ -96,6 +96,7 @@ const CheckoutForm = ({ handlePayment }) => {
         axios.post("https://api2-2aj3.onrender.com/associate-card-with-payment", {
           customerId: comapanyId.customerstripeId,
           paymentMethodId: paymentMethodId,
+          company: comapanyId,
         }),
       ]);
 
