@@ -68,6 +68,7 @@ const CheckoutForm = () => {
       console.log("Sending payment data to server:", {
         customerId: customerId,
         paymentMethodId: paymentMethod.id,
+        companyId: companyId,
       });
 
       console.log("sendPaymentData: calling axios.post");
@@ -133,6 +134,7 @@ const CheckoutForm = () => {
         paymentMethodId: paymentMethod.id,
         amount: 1000,
         customerId: customerId,
+        company: companyId,
       });
       setSuccess(true);
       setLoading(false);
@@ -162,6 +164,7 @@ const CheckoutForm = () => {
       console.log("Sending payment data to server:", {
         customerId: companyId.customerstripeId,
         paymentMethodId: paymentMethodId,
+        company: companyId,
       });
 
       console.log("sendPaymentData: calling axios.post");
