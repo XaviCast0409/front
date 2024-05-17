@@ -29,8 +29,8 @@ const CheckoutForm = ({ handlePayment }) => {
     const fetchCompany = async () => {
       try {
         const response = await axios.get(`https://api2-2aj3.onrender.com/company-by-id/${id}`);
-        findCompanyById(response.data.id);
-        console.log("response", response.data.id)
+        findCompanyById(response.data.companyId);
+        console.log("response", response.data.companyId)
       } catch (error) {
         console.error("Error fetching company:", error);
       }
