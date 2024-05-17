@@ -30,7 +30,7 @@ const CheckoutForm = ({ handlePayment }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log("companyId", companyId);
+  console.log("companyId", companyId.id);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
