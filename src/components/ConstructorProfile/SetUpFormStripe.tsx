@@ -26,7 +26,16 @@ const CheckoutForm = ({ handlePayment }) => {
   const id = Number(localStorage.getItem("id")) || 0;
 
   useEffect(() => {
-    findCompanyById(id);
+    const fetchCompany = async () => {
+      try {
+        const response = await axios.get(`/company-by-id/${id}`);
+        findCompanyById(response.data.id);
+        console.log("response", response.data.id)
+      } catch (error) {
+        console.error("Error fetching company:", error);
+      }
+    };
+    fetchCompany();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
