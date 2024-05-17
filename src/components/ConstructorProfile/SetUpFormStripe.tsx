@@ -34,7 +34,7 @@ const CheckoutForm = ({ handlePayment }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
-    setError(""); // Update the initial value of the error state to an empty string instead of null
+    setError("");
 
     const customerId = comapanyId;
 
@@ -54,28 +54,32 @@ const CheckoutForm = ({ handlePayment }) => {
     if (stripeError) {
       setError(stripeError.message || "");
       setLoading(false);
+      console.error("Error creating payment method:", stripeError);
       return;
     }
 
-    await handlePayment({
-      paymentMethodId: paymentMethod.id,
-      amount: 1000,
-      customerId: customerId,
-    });
-
-    await sendPaymentData(paymentMethod.id);
-    setSuccess(true);
-    setLoading(false);
-
-    setReset(true);
-
-    if (cardElement) {
-      cardElement.clear();
+    try {
+      await sendPaymentData(paymentMethod.id);
+      await handlePayment({
+        paymentMethodId: paymentMethod.id,
+        amount: 1000,
+        customerId: customerId,
+      });
+      setSuccess(true);
+      setLoading(false);
+      setReset(true);
+      if (cardElement) {
+        cardElement.clear();
+      }
+      setSuccessMessage("Card saved successfully");
+      setTimeout(() => {
+        setSuccessMessage(null);
+      }, 3000);
+    } catch (error) {
+      setError("Error processing payment");
+      setLoading(false);
+      console.error("Error processing payment:", error);
     }
-    setSuccessMessage("Card saved successfully"); // Cambiado el mensaje
-    setTimeout(() => {
-      setSuccessMessage(null);
-    }, 3000);
   };
 
   const sendPaymentData = async (paymentMethodId) => {
@@ -100,7 +104,6 @@ const CheckoutForm = ({ handlePayment }) => {
         }),
       ]);
 
-
       console.log("sendPaymentData: responses received from server");
       if (!associateResponse) {
         console.log("sendPaymentData: error sending payment data to server");
@@ -117,7 +120,7 @@ const CheckoutForm = ({ handlePayment }) => {
 
       const response = await axios.get(`https://api2-2aj3.onrender.com/payment-method-id/${paymentMethodId}`);
       console.log("sendPaymentData: Response from payment-method-id:", response.data);
-    
+
       setCardDetails(response.data.card);
     } catch (error) {
       console.error(
