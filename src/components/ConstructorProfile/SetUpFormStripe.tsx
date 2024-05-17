@@ -37,7 +37,7 @@ const CheckoutForm = ({ handlePayment }) => {
     setLoading(true);
     setError("");
 
-    const customerId = companyId;
+    const customerId = companyId.id;
 
     if (!stripe || !elements) {
       setError(`Stripe or Elements is null`);
@@ -85,7 +85,7 @@ const CheckoutForm = ({ handlePayment }) => {
 
   const sendPaymentData = async (paymentMethodId) => {
     console.log("sendPaymentData: started");
-    if (!companyId || !companyId.customerstripeId) {
+    if (!companyId.id || !companyId.customerstripeId) {
       console.log("sendPaymentData: customerstripeId is null or undefined");
       setError("customerstripeId is null or undefined");
       return;
@@ -94,6 +94,7 @@ const CheckoutForm = ({ handlePayment }) => {
       console.log("Sending payment data to server:", {
         customerId: companyId.customerstripeId,
         paymentMethodId: paymentMethodId,
+        company: companyId.id,
       });
 
       console.log("sendPaymentData: calling axios.post");
