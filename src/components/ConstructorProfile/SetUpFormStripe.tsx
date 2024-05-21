@@ -5,6 +5,7 @@ import SideBarDashboard from "../dashboard/DashboardConstructora/SideBarDashboar
 import axios from "axios";
 import { useCompanyHook } from "../../hooks/hookCompany/useCompanyHook";
 
+
 interface CardDetails {
   last4: string;
   brand: string;
@@ -17,22 +18,34 @@ const CheckoutForm = ({ handlePayment }) => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState<boolean>(false);
   const [reset, setReset] = useState<boolean>(false);
-  const [cardDetails, setCardDetails] = useState<CardDetails | null>(null);
+  const [/*cardDetails*/, setCardDetails] = useState<CardDetails | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [creditCards, setCreditCards] = useState<any[]>([]);
 
   const { companyId, findCompanyById } = useCompanyHook();
 
-console.log("uno" , findCompanyById)
-console.log("dos" , 
-  companyId.id
-)
-const id = Number(localStorage.getItem("id")) || 0;
-useEffect(() => {
-  findCompanyById(id);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-}, []);
+  console.log("uno", findCompanyById);
+  console.log("dos", companyId.id);
+  const id = Number(localStorage.getItem("id")) || 0;
+  useEffect(() => {
+    findCompanyById(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
+  useEffect(() => {
+    const fetchCreditCards = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/checkout-session/${id}`
+        );
+        setCreditCards(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
+    fetchCreditCards();
+  }, [id]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -160,26 +173,25 @@ useEffect(() => {
             </tr>
           </thead>
           <tbody>
-            {cardDetails ? (
-              <tr>
-                <td className="border px-4 py-2 bg-white">
-                  {cardDetails.brand}
-                </td>
-                <td className="border px-4 py-2 bg-white">
-                  {cardDetails.last4}
-                </td>
-                <td className="border px-4 py-2 bg-white">
-                  <button
-                    type="submit"
-                    disabled={!stripe || loading}
-                    className="w-full py-2 px-4 bg-primary text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 my-4 transition-colors duration-300"
-                  >
-                    {`${success ? "Card saved successfully" : "Save card"}`}
-                  </button>
-                </td>
-              </tr>
+            {creditCards.length > 0 ? (
+              creditCards.map((card, index) => (
+                <tr key={index}>
+                  <td className="border px-4 py-2 bg-white">{card.brand}</td>
+                  <td className="border px-4 py-2 bg-white">{card.last4}</td>
+                  <td className="border px-4 py-2 bg-white">
+                    <button
+                      type="button"
+                      disabled={!stripe || loading}
+                      className="w-full py-2 px-4 bg-primary text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 my-4 transition-colors duration-300"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))
             ) : (
               <tr>
+                <td className="border px-4 py-2">-</td>
                 <td className="border px-4 py-2">-</td>
                 <td className="border px-4 py-2">-</td>
               </tr>

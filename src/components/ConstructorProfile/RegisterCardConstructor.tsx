@@ -2,9 +2,6 @@ import React, { ReactNode, useState, useEffect } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import SetupForm from "../../components/ConstructorProfile/SetUpFormStripe";
-import axios from "axios";
-
-
 
 interface RegisterCardConstructorProps {
   children?: ReactNode;
@@ -12,24 +9,6 @@ interface RegisterCardConstructorProps {
 
 const RegisterCardConstructor: React.FC<RegisterCardConstructorProps> = () => {
   const [stripePromise, setStripePromise] = useState<Promise<any> | null>(null);
-  const [creditCards, setCreditCards] = useState<any[]>([]);
-
-  //Hace un axios para traer los de la tarjeta de credito del constructor y los muestra en la pantalla
-  useEffect(() => {
-    const fetchCreditCards = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/creditCards");
-        setCreditCards(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchCreditCards();
-  }, []);
-
-
-
 
   useEffect(() => {
     const fetchStripePromise = async () => {
@@ -41,6 +20,9 @@ const RegisterCardConstructor: React.FC<RegisterCardConstructorProps> = () => {
 
     fetchStripePromise();
   }, []);
+
+  //Hace un axios para traer los de la tarjeta de credito del constructor y los muestra en la pantalla
+ 
 
   const handlePayment = async ({ paymentMethodId, amount  }) => {
     // Aquí es donde manejarías el pago.
