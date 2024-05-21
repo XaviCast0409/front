@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Button from "../../utils/Button";
-import Logos from "../../utils/Logos";
+
 
 export default function Footer() {
   const handleClick = () => {
