@@ -7,16 +7,12 @@ import { DataStates } from "../../utils/Utils";
 import InputSelect from "../../utils/SelectInput";
 import InputField from "../../utils/InputField";
 import { useState } from "react";
+import { Loading } from "../../assets/Icons";
 
 import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
-  address: Yup.string()
-    .required("The address is required")
-    .matches(
-      /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9 ]+)$/,
-      "The address must contain at least one letter and one number"
-    ),
+  address: Yup.string().required("The address is required"),
   state: Yup.string().required("The state is required"),
   phone: Yup.string()
     .required("The phone number is required")
@@ -52,6 +48,7 @@ export default function ConstructorForm() {
   const { statesEEUU } = DataStates();
   const [stateCity, setStateCity] = useState<string>("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleButtonModal = () => {
     setMessage();
@@ -89,6 +86,7 @@ export default function ConstructorForm() {
   };
 
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setIsLoading(true);
     const value = e.target.value;
     const selectedOption = statesEEUU.find(
       (option) => option.value === Number(value)
@@ -97,6 +95,7 @@ export default function ConstructorForm() {
     if (abrev) {
       setStateCity(abrev);
     }
+    setIsLoading(false);
   };
 
   return (
@@ -166,13 +165,17 @@ export default function ConstructorForm() {
           handleClick={handleSubmit}
         />
       </div>
-      {messageCreate !== "" && (
-        <Modal
-          message={messageCreate}
-          isSuccess={created}
-          handleFunction={handleButtonModal}
-          link={created ? "/siginconstructorpage" : "/constructorform"}
-        />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        messageCreate !== "" && (
+          <Modal
+            message={messageCreate}
+            isSuccess={created}
+            handleFunction={handleButtonModal}
+            link={created ? "/siginconstructorpage" : "/constructorform"}
+          />
+        )
       )}
     </div>
   );
