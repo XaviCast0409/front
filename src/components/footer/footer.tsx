@@ -26,7 +26,6 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col justify-center items-center">
-          <Logos />
           <p className="text-sm text-white">
             &copy; {new Date().getFullYear()} Hows Advisor
           </p>
