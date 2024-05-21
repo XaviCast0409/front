@@ -26,12 +26,12 @@ const Modal: React.FC<ModalProps> = ({
           }
         >
           {/* header */}
-          <div className="flex items-start justify-between py-5 rounded-t ">
+          <div className="flex items-center justify-between py-5 rounded-t ">
             <div>
               <h3 className="text-2xl">{title}</h3>
             </div>
             <button
-              className="float-right leading-none font-semibold outline-none focus:outline-none"
+              className="flex float-right leading-none font-semibold outline-none focus:outline-none"
               onClick={closeModal}
             >
               <span className="text-stone-500 h-6 w-6 text-4xl block outline-none focus:outline-none">
