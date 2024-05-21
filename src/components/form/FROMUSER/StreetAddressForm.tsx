@@ -9,7 +9,7 @@ import { FormContainer } from "../../../utils/FormContainer";
 import * as Yup from "yup";
 
 export default function StreetAddressForm() {
-  const { handleChange, userData, setUserStore, } = useUserHook();
+  const { handleChange, userData, setUserStore } = useUserHook();
   const navigate = useNavigate();
   const [isChecked, setIsChecked] = useState(false);
   const [error, setError] = useState("");
@@ -34,6 +34,11 @@ export default function StreetAddressForm() {
   };
 
   const handleSubmit = async () => {
+    if (!isChecked) {
+      setError("You must confirm that you are the homeowner to continue.");
+      return;
+    }
+
     const isValid = await handleValidate();
     if (isValid) navigate("/emailphone");
   };
